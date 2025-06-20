@@ -1,0 +1,126 @@
+/nutri-mind
+│
+├── public/                        # Static assets (images, icons, etc.)
+├── src/
+│   ├── app/                       # Next.js app directory (routing, pages)
+│   │   ├── (auth)/                # Auth routes (login, register, reset, etc.)
+│   │   ├── (dashboard)/           # Authenticated user dashboard routes
+│   │   ├── api/                   # API routes (Next.js API handlers)
+│   │   ├── home/                  # Home page
+│   │   ├── profile/               # User profile page
+│   │   ├── food-scanner/          # Food scanner/database page
+│   │   ├── faq/                   # FAQ/Support page
+│   │   ├── plans/                 # Plans & Pricing page
+│   │   ├── blog/                  # Nutrition blog
+│   │   ├── recipes/               # Healthy recipes
+│   │   ├── tracker/               # Health progress tracker
+│   │   ├── calculator/            # Calorie calculator
+│   │   ├── chatbot/               # AI chatbot interface
+│   │   ├── forum/                 # Community forum
+│   │   ├── admin/                 # Admin dashboard
+│   │   ├── testimonials/          # Testimonials / Success Stories
+│   │   ├── habits/                # Habit tracker
+│   │   ├── grocery-list/          # Grocery list generator
+│   │   ├── settings/              # User settings
+│   │   └── layout.tsx             # App layout (theme, nav, etc.)
+│   │
+│   ├── components/                # Reusable UI components
+│   │   ├── ui/                    # shadcn/ui components
+│   │   ├── charts/                # Chart components
+│   │   ├── forms/                 # Form components
+│   │   ├── chatbot/               # Chatbot UI components
+│   │   ├── cards/                 # Card components
+│   │   ├── modals/                # Modal components
+│   │   ├── navigation/            # Navbar, sidebar, etc.
+│   │   ├── notifications/         # Toasts, alerts, etc.
+│   │   ├── search/                # Search & filter components
+│   │   ├── avatars/               # User avatar components
+│   │   ├── progress/              # Progress bars, trackers
+│   │   ├── ...                    # More UI components
+│   │
+│   ├── features/                  # Feature-specific logic/components
+│   │   ├── auth/                  # Auth logic (hooks, context, etc.)
+│   │   ├── meal-planner/          # Meal planning logic
+│   │   ├── tracker/               # Progress tracking logic
+│   │   ├── chatbot/               # AI/chatbot logic
+│   │   ├── forum/                 # Community forum logic
+│   │   ├── admin/                 # Admin dashboard logic
+│   │   ├── notifications/         # Notification logic
+│   │   ├── ...                    # More features
+│   │
+│   ├── hooks/                     # Custom React hooks
+│   ├── lib/                       # Utility functions, API clients, helpers
+│   ├── stores/                    # Zustand stores (state management)
+│   ├── styles/                    # Global and component styles (Tailwind, etc.)
+│   ├── types/                     # TypeScript types/interfaces
+│   └── constants/                 # App-wide constants (routes, enums, etc.)
+│
+├── .env.local                     # Environment variables
+├── tailwind.config.js
+├── shadcn.config.js
+├── package.json
+└── README.md
+
+
+🏗️ Unified Features, Components, and Pages
+Core Features
+AI Chatbot (Dietitian Assistant): Conversational interface for meal suggestions, nutrition advice, and answering user queries.
+User Information Intake: Collect and store user data (age, weight, goals, allergies, preferences, etc.).
+Meal Planner: AI-powered meal suggestions and scheduling.
+Calorie Calculator: Calculate daily caloric needs and track intake.
+Authentication & Authorization: Secure login, registration, and protected routes.
+User Profile: Manage personal info, preferences, and settings.
+Progress & Health Tracker: Track weight, calories, macros, water, sleep, exercise, and other health habits.
+Food Scanner / Database: Barcode/photo upload and search for food items.
+Plans & Pricing: Subscription or plan options.
+Nutrition Blog: Articles, tips, and news.
+Healthy Recipes: Searchable, filterable recipe database with nutrition info.
+FAQ / Support: Help center and support contact.
+Light/Dark Mode: Theme switcher.
+Forms: For user input, onboarding, and feedback.
+Charts & Graphics: Visualize progress, nutrition breakdown, and trends.
+Images & Media: Rich visuals for recipes, blog, and UI.
+Community Forum: User discussions, sharing, and support.
+Habit Tracker: Water, sleep, exercise, etc.
+Progress Badges & Achievements: Gamified milestones.
+Integration with Wearables: Sync with Fitbit, Apple Health, etc.
+Grocery List Generator: Auto-generate shopping lists from meal plans.
+Allergy & Preference Filters: Personalize meal and recipe suggestions.
+Macro & Micro Nutrient Breakdown: Detailed nutrition analytics.
+Push Notifications / Reminders: Meal, water, and activity reminders.
+Social Sharing: Share progress, recipes, or achievements.
+Admin Dashboard: Manage users, content, and analytics.
+Testimonials & Success Stories: Showcase user transformations.
+Key Components
+Reusable Card, Modal, Drawer, and Accordion Components
+Customizable Chart Components (e.g., Chart.js, Recharts)
+Animated Progress Bars & Circular Trackers
+Recipe Cards with Nutrition Info
+Meal Plan Calendar View
+Food Item Scanner (Barcode/Photo Upload)
+Theme Switcher (Light/Dark)
+User Avatar & Profile Editor
+Step-by-Step Form Wizard
+Rating & Review System
+Loading Skeletons & Placeholders
+Notification/Toast System
+Search & Filter Components
+Sidebar & Navigation Components
+Pages
+Home
+User Profile
+Food Scanner / Database
+FAQ / Support
+Plans & Pricing
+Nutrition Blog
+Healthy Recipes
+Health Progress Tracker
+Calorie Calculator
+Chatbot
+Community Forum
+Admin Dashboard
+Testimonials / Success Stories
+Habit Tracker
+Grocery List
+Login / Register / Forgot Password
+Settings
