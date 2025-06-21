@@ -8,6 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import { selectUserForm } from "@/stores/userFormApi";
 import { RootState } from "@/stores";
+import { NotificationsDropdown } from "@/components/notifications";
 
 export function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -116,6 +117,8 @@ export function Navbar() {
           <option value="en">EN</option>
           <option value="ar">AR</option>
         </select>
+        {/* Notifications dropdown */}
+        <NotificationsDropdown />
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
