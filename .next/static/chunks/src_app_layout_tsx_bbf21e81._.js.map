@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/HP/Desktop/projects/nutri-mind/src/app/layout.tsx"],"sourcesContent":["'use client';\r\nimport \"../styles/globals.css\";\r\nimport { ReactNode } from \"react\";\r\nimport { Navbar, Footer, Sidebar } from \"@/components/navigation\";\r\nimport { Provider } from \"react-redux\";\r\nimport { store } from \"@/stores\";\r\n\r\nexport default function RootLayout({ children }: { children: ReactNode }) {\r\n  return (\r\n    <html lang=\"en\" suppressHydrationWarning>\r\n      <body className=\"min-h-screen bg-background text-foreground antialiased transition-colors\">\r\n        <Provider store={store}>\r\n          <Sidebar />\r\n          <div>\r\n            <Navbar/>\r\n            <main className=\"pl-16\">{children}</main>\r\n            <Footer />\r\n          </div>\r\n        </Provider>\r\n      </body>\r\n    </html>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;;;;;AAIA;;;;;;AAJA;;;;;;AAOe,SAAS,WAAW,EAAE,QAAQ,EAA2B;IACtE,qBACE,6LAAC;QAAK,MAAK;QAAK,wBAAwB;kBACtC,cAAA,6LAAC;YAAK,WAAU;sBACd,cAAA,6LAAC,4JAAA,CAAA,WAAQ;gBAAC,OAAO;;kCACf,6LAAC;;;;;kCACD,6LAAC;;0CACC,6LAAC;;;;;0CACD,6LAAC;gCAAK,WAAU;0CAAS;;;;;;0CACzB,6LAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;AAMb;KAfwB","debugId":null}}]
+}

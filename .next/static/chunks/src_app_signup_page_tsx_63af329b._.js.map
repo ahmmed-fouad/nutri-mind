@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/HP/Desktop/projects/nutri-mind/src/app/signup/page.tsx"],"sourcesContent":["\"use client\";\r\nimport { SignupForm } from \"@/features/auth\";\r\n\r\nexport default function SignupPage() {\r\n  return (\r\n    <section className=\"flex flex-col items-center justify-center min-h-[60vh]\">\r\n      <SignupForm />\r\n    </section>\r\n  );\r\n} "],"names":[],"mappings":";;;;;;;;;AAAA;;;AAGe,SAAS;IACtB,qBACE,6LAAC;QAAQ,WAAU;kBACjB,cAAA,6LAAC;;;;;;;;;;AAGP;KANwB","debugId":null}}]
+}
