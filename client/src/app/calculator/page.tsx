@@ -1,23 +1,16 @@
 "use client";
 import { useState } from "react";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import {
+  goals,
+  activityLevels,
+  dietaryPrefs,
+  calorieBarColor,
+  macroColors,
+  tips,
+  mealPlan,
+} from "@/data/homepageData";
 
-const macroColors = ["#34d399", "#60a5fa", "#fbbf24"];
-const calorieBarColor = "#4f46e5";
-
-const activityLevels = [
-  { label: "Sedentary", value: 1.2 },
-  { label: "Lightly active", value: 1.375 },
-  { label: "Moderately active", value: 1.55 },
-  { label: "Very active", value: 1.725 },
-  { label: "Extra active", value: 1.9 },
-];
-const goals = [
-  { label: "Lose Weight", value: -500 },
-  { label: "Maintain Weight", value: 0 },
-  { label: "Gain Weight", value: 500 },
-];
-const dietaryPrefs = ["None", "Vegan", "Vegetarian", "Keto", "Paleo", "Low-Carb", "High-Protein"];
 
 function calculateBMR(gender: string, weight: number, height: number, age: number) {
   // Mifflin-St Jeor Equation
@@ -80,21 +73,6 @@ export default function DietCalculatorPage() {
   const calorieBarData = results ? [
     { name: "Calories", value: results.calories },
   ] : [];
-
-  // Sample meal plan
-  const mealPlan = [
-    { meal: "Breakfast", desc: "Oats with berries & nuts", icon: "🥣" },
-    { meal: "Lunch", desc: "Grilled chicken salad", icon: "🥗" },
-    { meal: "Snack", desc: "Greek yogurt & fruit", icon: "🍎" },
-    { meal: "Dinner", desc: "Salmon, quinoa, veggies", icon: "🍣" },
-  ];
-  // Sample tips
-  const tips = [
-    "Aim for at least 25g fiber daily.",
-    "Stay hydrated: drink water throughout the day.",
-    "Include a protein source in every meal.",
-    "Limit added sugars and processed foods.",
-  ];
 
   return (
     <section className="min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-blue-50 to-green-50 py-10 px-2">
