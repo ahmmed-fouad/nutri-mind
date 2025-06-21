@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { User, BarChart2, Settings, Bot, ListTodo, LogOut, Menu, LogIn, UserPlus, Sun, Moon, ShoppingBasket } from "lucide-react";
+import { User, BarChart2, Settings, Bot, ListTodo, LogOut, Menu, LogIn, UserPlus, Sun, Moon, ShoppingBasket, Calculator, Star, MessageCircle, LayoutDashboard, ShieldUser, UserRound } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useRouter, usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -81,10 +81,25 @@ export function Navbar() {
           <Link href="/recipes" className={pathname.startsWith("/recipes") ? "underline underline-offset-8 text-primary font-semibold" : "hover:underline hover:underline-offset-8 transition-colors"}>Recipes</Link>
         </li>
         <li>
+          <Link href="/food-scanner" className={pathname.startsWith("/food-scanner") ? "underline underline-offset-8 text-primary font-semibold flex items-center gap-1" : "hover:underline hover:underline-offset-8 transition-colors flex items-center gap-1"}>
+            <ShoppingBasket className="w-5 h-5" /> Food Scanner
+          </Link>
+        </li>
+        <li>
           <Link href="/plans" className={pathname.startsWith("/plans") ? "underline underline-offset-8 text-primary font-semibold" : "hover:underline hover:underline-offset-8 transition-colors"}>Plans</Link>
         </li>
         <li>
+          <Link href="/testimonials" className={pathname.startsWith("/testimonials") ? "underline underline-offset-8 text-primary font-semibold flex items-center gap-1" : "hover:underline hover:underline-offset-8 transition-colors flex items-center gap-1"}>
+            <Star className="w-5 h-5" /> Testimonials
+          </Link>
+        </li>
+        <li>
           <Link href="/blog" className={pathname.startsWith("/blog") ? "underline underline-offset-8 text-primary font-semibold" : "hover:underline hover:underline-offset-8 transition-colors"}>Blog</Link>
+        </li>
+        <li>
+          <Link href="/forum" className={pathname.startsWith("/forum") ? "underline underline-offset-8 text-primary font-semibold flex items-center gap-1" : "hover:underline hover:underline-offset-8 transition-colors flex items-center gap-1"}>
+            <MessageCircle className="w-5 h-5" /> Forum
+          </Link>
         </li>
         <li>
           <Link href="/faq" className={pathname.startsWith("/faq") ? "underline underline-offset-8 text-primary font-semibold" : "hover:underline hover:underline-offset-8 transition-colors"}>FAQ</Link>
@@ -141,20 +156,20 @@ export function Sidebar() {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
-  };
-
   const navItems = [
     { href: "/profile", label: "Profile", icon: User },
     { href: "/tracker", label: "Progress Tracker", icon: BarChart2 },
+    { href: "/calculator", label: "Diet Calculator", icon: Calculator },
     { href: "/form", label: "User Form", icon: UserPlus },
     { href: "/settings", label: "Settings", icon: Settings },
     { href: "/chatbot", label: "AI Chatbot", icon: Bot },
     { href: "/habits", label: "Habit Tracker", icon: ListTodo },
     { href: "/grocery-list", label: "Grocery List", icon: ShoppingBasket },
-    { href: "/admin", label: "Admin", icon: Settings },
+    // Dashboard with submenu
+    { label: "Dashboard", icon: LayoutDashboard, submenu: [
+      { href: "/admin", label: "Admin", icon: ShieldUser },
+      { href: "/dashboard", label: "User Dashboard", icon: UserRound },
+    ] },
   ];
   return (
     <>
@@ -168,28 +183,37 @@ export function Sidebar() {
           <Menu className="w-5 h-5 mx-auto" />
         </button>
         <div className="flex-1 flex flex-col gap-1 mt-4">
-          {navItems.map(({ href, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex items-center justify-center p-3 rounded hover:bg-accent transition-colors"
-            >
-              <Icon className="w-5 h-5" />
-            </Link>
-          ))}
+          {navItems.map((item, idx) => {
+            if (!item.submenu) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="flex items-center justify-center p-3 rounded hover:bg-accent transition-colors"
+                >
+                  <item.icon className="w-5 h-5" />
+                </Link>
+              );
+            } else {
+              // Dashboard with submenu
+              return (
+                <SidebarDashboardMenu key={item.label} expanded={expanded} />
+              );
+            }
+          })}
         </div>
         <div className="p-3 border-t border-border flex flex-col gap-2 items-center">
           {!user ? (
             <>
               <Link
-                href="/login"
+                href="/auth"
                 className="flex items-center gap-2 text-primary hover:underline"
               >
                 <LogIn className="w-5 h-5" />
                 {expanded && <span className="hidden md:inline">Login</span>}
               </Link>
               <Link
-                href="/signup"
+                href="/auth"
                 className="flex items-center gap-2 text-primary hover:underline"
               >
                 <UserPlus className="w-5 h-5" />
@@ -197,13 +221,13 @@ export function Sidebar() {
               </Link>
             </>
           ) : (
-            <button
-              onClick={handleLogout}
+            <Link
+              href="/auth"
               className="flex items-center gap-2 text-red-600 hover:underline"
             >
               <LogOut className="w-5 h-5" />
               {expanded && <span className="hidden md:inline">Logout</span>}
-            </button>
+            </Link>
           )}
         </div>
       </aside>
@@ -224,22 +248,30 @@ export function Sidebar() {
               <Menu className="w-5 h-5 mx-auto"/>
             </button>
             <div className="flex-1 flex flex-col gap-1 mt-4">
-              {navItems.map(({ href, label, icon: Icon }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="flex items-center gap-3 p-3 rounded hover:bg-accent transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                  <span>{label}</span>
-                </Link>
-              ))}
+              {navItems.map((item, idx) => {
+                if (!item.submenu) {
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="flex items-center gap-3 p-3 rounded hover:bg-accent transition-colors"
+                    >
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                } else {
+                  return (
+                    <SidebarDashboardMenu key={item.label} expanded={true} />
+                  );
+                }
+              })}
             </div>
             <div className="pb-5 border-t border-border flex flex-col gap-2 items-center">
               {!user ? (
                 <>
                   <Link
-                    href="/login"
+                    href="/auth"
                     className="flex border w-full items-center gap-3 p-3 text-primary cursor-pointer rounded hover:bg-accent transition-colors"
                     onClick={() => setExpanded(false)}
                   >
@@ -247,7 +279,7 @@ export function Sidebar() {
                     <span>Login</span>
                   </Link>
                   <Link
-                    href="/signup"
+                    href="/auth"
                     className="flex border w-full items-center gap-3 p-3 text-primary cursor-pointer rounded hover:bg-accent transition-colors"
                     onClick={() => setExpanded(false)}
                   >
@@ -256,13 +288,14 @@ export function Sidebar() {
                   </Link>
                 </>
               ) : (
-                <button
-                  onClick={handleLogout}
-                  className="flex border w-full items-center gap-3 p-3 text-primary cursor-pointer rounded hover:bg-accent transition-colors"
+                <Link
+                  href="/auth"
+                  className="flex border w-full items-center gap-3 p-3 text-primary cursor-pointer rounded hover:bg-accent transition-colors text-red-600"
+                  onClick={() => setExpanded(false)}
                 >
                   <LogOut className="w-5 h-5" />
                   <span>Logout</span>
-                </button>
+                </Link>
               )}
             </div>
           </aside>
@@ -282,5 +315,41 @@ export function Footer() {
         <Link href="/contact">Contact</Link>
       </div>
     </footer>
+  );
+} 
+
+// SidebarDashboardMenu: handles hover/expand for Dashboard submenu
+import { useState as useLocalState } from "react";
+function SidebarDashboardMenu({ expanded }: { expanded: boolean }) {
+  const [open, setOpen] = useLocalState(false);
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        className={`flex items-center ${expanded ? "gap-3 p-3" : "justify-center p-3"} rounded hover:bg-accent transition-colors w-full`}
+        tabIndex={0}
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+      >
+        <LayoutDashboard className="w-5 h-5" />
+        {expanded && <span>Dashboard</span>}
+      </button>
+      {open && (
+        <div className={`absolute left-full top-0 z-50 bg-background border border-border rounded-lg shadow-lg min-w-[180px] ${expanded ? "ml-2" : "ml-4"}`} style={{ minWidth: 180 }}>
+          <Link href="/admin" className="flex items-center gap-3 p-3 hover:bg-accent rounded-t-lg transition-colors">
+            <ShieldUser className="w-5 h-5 text-primary" />
+            <span>Admin</span>
+          </Link>
+          <Link href="/dashboard" className="flex items-center gap-3 p-3 hover:bg-accent rounded-b-lg transition-colors">
+            <UserRound className="w-5 h-5 text-primary" />
+            <span>User Dashboard</span>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 } 

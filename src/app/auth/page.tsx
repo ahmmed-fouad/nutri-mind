@@ -1,6 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { selectUserForm } from "@/stores/userFormApi";
+import { RootState } from "@/stores";
 
 export default function AuthPage() {
   const [tab, setTab] = useState<"login" | "signup">("login");
@@ -24,6 +28,9 @@ export default function AuthPage() {
     };
   }, []);
 
+  const router = useRouter();
+  const userForm = useSelector((state: RootState) => selectUserForm(state.userForm, email));
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -31,7 +38,10 @@ export default function AuthPage() {
     setSuccess(null);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) setError(error.message);
-    else setSuccess("Logged in!");
+    else {
+      if (userForm) router.push("/");
+      else router.push("/form");
+    }
     setLoading(false);
   };
 

@@ -8,7 +8,7 @@
    return new Promise((resolve) => setTimeout(resolve, ms));
  }
 
- const ChatBox: React.FC = () => {
+ const ChatBot: React.FC = () => {
    const [input, setInput] = useState<string>("");
    const [response, setResponse] = useState<string>("");
    const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -66,4 +66,4 @@
    );
  };
 
- export default ChatBox;
+ export default ChatBot;
