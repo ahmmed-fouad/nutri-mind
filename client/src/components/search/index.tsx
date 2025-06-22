@@ -97,8 +97,8 @@ export function SearchInput() {
   };
 
   return (
-    <div className="relative w-full max-w-xs">
-      <div className="flex gap-2">
+    <div className="relative w-full">
+      <div className="flex gap-2 h-[2rem]">
         <input
           ref={inputRef}
           type="text"
@@ -177,6 +177,8 @@ export function SearchIconInput() {
   const [active, setActive] = useState(-1);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
@@ -188,6 +190,22 @@ export function SearchIconInput() {
       setResults([]);
     }
   }, [query, option]);
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(e.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open]);
 
   const handleKeyDown = (e: any) => {
     if (!open) return;
@@ -205,28 +223,32 @@ export function SearchIconInput() {
   return (
     <div className="relative">
       <button
+        ref={buttonRef}
         className="p-2 rounded-full hover:bg-accent transition-colors focus:outline-none"
         aria-label="Search"
-        onClick={() => setOpen(o => !o)}
+        onClick={() => setOpen((o) => !o)}
       >
         <Search className="w-6 h-6 text-primary" />
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-80 bg-white/90 glassmorphism rounded-xl shadow-2xl z-50 animate-fade-in">
+        <div
+          ref={modalRef}
+          className="absolute right-[-9rem] mt-5 w-[30rem]  glassmorphism rounded-xl shadow-2xl z-50 animate-fade-in"
+        >
           <div className="flex gap-2 p-2">
             <input
               ref={inputRef}
               type="text"
-              className="input glassmorphism w-full"
+              className="input glassmorphism w-full h-[2rem]"
               placeholder="Search..."
               value={query}
-              onChange={e => setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
             />
             <select
               className="rounded-lg border border-zinc-200 bg-white px-2 text-sm text-zinc-600"
               value={option}
-              onChange={e => setOption(e.target.value)}
+              onChange={(e) => setOption(e.target.value)}
             >
               <option value="all">All</option>
               <option value="titles">Titles</option>
@@ -235,11 +257,19 @@ export function SearchIconInput() {
           </div>
           {query && (
             <ul className="divide-y divide-zinc-100">
-              {results.length === 0 && <li className="p-4 text-zinc-400">No results found.</li>}
+              {results.length === 0 && (
+                <li className="p-4 text-zinc-400">No results found.</li>
+              )}
               {results.map((r, i) => (
-                <li key={r.path} className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-accent/30 transition-colors ${i === active ? "bg-primary/10" : ""}`}
+                <li
+                  key={r.path}
+                  className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-accent/30 transition-colors ${
+                    i === active ? "bg-primary/10" : ""
+                  }`}
                   onMouseDown={() => {
-                    router.push(`${r.path}?search=${encodeURIComponent(query)}`);
+                    router.push(
+                      `${r.path}?search=${encodeURIComponent(query)}`
+                    );
                     setOpen(false);
                     setQuery("");
                     setActive(-1);
@@ -255,14 +285,14 @@ export function SearchIconInput() {
       )}
       <style jsx>{`
         .glassmorphism {
-          background: rgba(255,255,255,0.7);
+          background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(8px);
         }
         .input {
           padding: 0.75rem 1rem;
           border-radius: 0.75rem;
           border: 1px solid #e5e7eb;
-          background: rgba(255,255,255,0.5);
+          background: rgba(255, 255, 255, 0.5);
           font-size: 1rem;
           outline: none;
           transition: border 0.2s;
@@ -271,11 +301,17 @@ export function SearchIconInput() {
           border: 1.5px solid #34d399;
         }
         .animate-fade-in {
-          animation: fadeIn 0.5s cubic-bezier(0.4,0,0.2,1);
+          animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>

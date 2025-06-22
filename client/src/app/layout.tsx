@@ -13,10 +13,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Provider store={store}>
           <Toaster />
           <Sidebar />
-          <div>
-            <Navbar/>
-            <main className="pl-16">{children}</main>
-            <Footer />
+          <div className="ml-[64px]">
+            <div>
+              <Navbar />
+              <main className="px-15">{children}</main>
+              <Footer />
+            </div>
           </div>
         </Provider>
       </body>
