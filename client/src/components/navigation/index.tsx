@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { User, BarChart2, Settings, Bot, ListTodo, LogOut, Menu, LogIn, UserPlus, Sun, Moon, ShoppingBasket, Calculator, Star, MessageCircle, LayoutDashboard, ShieldUser, UserRound } from "lucide-react";
+import { User, BarChart2, Settings, Bot, ListTodo, LogOut, Menu, LogIn, UserPlus, Sun, Moon, ShoppingBasket, Calculator, Star, MessageCircle, LayoutDashboard, ShieldUser, UserRound, ChevronDown } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useRouter, usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -71,10 +71,14 @@ export function Navbar() {
     { href: "/food-scanner", label: "Food Scanner" },
     { href: "/plans", label: "Plans" },
     { href: "/testimonials", label: "Testimonials" },
-    { href: "/blog", label: "Blog" },
-    { href: "/forum", label: "Forum" },
     { href: "/faq", label: "FAQ" },
   ];
+  const socialLinks = [
+    { href: "/blog", label: "Blog" },
+    { href: "/forum", label: "Forum" },
+    { href: "/social-hub", label: "SocialHub" },
+  ];
+  const [socialOpen, setSocialOpen] = useState(false);
 
   return (
     <nav className="w-full bg-background border-b border-border py-4 pl-22 pr-8 flex items-center justify-between">
@@ -89,15 +93,15 @@ export function Navbar() {
         <p>NutriMind</p>
       </Link>
       {/* Centered nav links */}
-      <ul className="flex-1 flex justify-center gap-4 text-lg">
+      <ul className="flex-1 flex justify-center gap-4 text-lg relative">
         {navbarLinks.map(link => (
           <li key={link.href}>
             <Link
               href={link.href}
               className={
                 pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
-                  ? `underline underline-offset-8 text-primary font-bold${["/", "/plans", "/blog", "/faq"].includes(link.href) ? " font-bold" : " flex items-center gap-1"}`
-                  : `hover:underline hover:underline-offset-8 transition-colors${["/", "/plans", "/blog", "/faq"].includes(link.href) ? "" : " flex items-center gap-1"}`
+                  ? `underline underline-offset-8 text-primary font-bold${["/", "/plans", "/faq"].includes(link.href) ? " font-bold" : " flex items-center gap-1"}`
+                  : `hover:underline hover:underline-offset-8 transition-colors${["/", "/plans", "/faq"].includes(link.href) ? "" : " flex items-center gap-1"}`
               }
             >
               {/* {link.icon && <link.icon className="w-5 h-5" />} */}
@@ -105,6 +109,29 @@ export function Navbar() {
             </Link>
           </li>
         ))}
+        <li
+          className="relative"
+          onMouseEnter={() => setSocialOpen(true)}
+          onMouseLeave={() => setSocialOpen(false)}
+        >
+          <button className="flex items-center gap-1 px-2 py-1 rounded hover:bg-accent transition-colors focus:outline-none">
+            Social <ChevronDown className="w-4 h-4" />
+          </button>
+          {socialOpen && (
+            <ul className="absolute left-0 top-full mt-2 w-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg z-50">
+              {socialLinks.map((slink) => (
+                <li key={slink.href}>
+                  <Link
+                    href={slink.href}
+                    className="block px-4 py-2 hover:bg-accent/30 transition-colors rounded-lg"
+                  >
+                    {slink.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
       </ul>
       {/* Right section: language, theme, avatar */}
       <div className="flex items-center gap-2">
