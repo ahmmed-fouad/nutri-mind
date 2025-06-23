@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useGetRecipesQuery } from "@/features/meal-planner";
+import { useGetRecipesQuery } from "@/services/recipesApi";
 import {
   PieChart,
   Pie,
@@ -25,7 +25,7 @@ function getNutritionData(recipe: any) {
 export default function RecipesPage() {
   const { data, isLoading, error } = useGetRecipesQuery();
   const [selected, setSelected] = useState<any>(null);
-
+console.log(data)
   return (
     <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-10 px-4">
       <div className="max-w-7xl mx-auto">
@@ -82,6 +82,7 @@ export default function RecipesPage() {
           ))}
         </div>
       </div>
+
       {/* Modal for recipe details */}
       {selected && (
         <div
@@ -89,7 +90,7 @@ export default function RecipesPage() {
           onClick={() => setSelected(null)}
         >
           <div
-            className="bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 p-4 max-w-3xl w-full relative animate-in fade-in"
+            className="bg-white  dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 p-4 max-h-[35rem] max-w-[53rem] w-full relative animate-in fade-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -100,13 +101,13 @@ export default function RecipesPage() {
               ×
             </button>
             <div className="flex gap-8">
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-5">
                 <img
                   src={selected.strMealThumb}
                   alt={selected.strMeal}
-                  className="w-40 h-40 object-cover rounded-xl shadow"
+                  className="w-[12rem] h-[12rem] object-cover rounded-xl shadow mb-0"
                 />
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer className="w-[12rem] !h-[12rem] ">
                   <PieChart>
                     <Pie
                       data={getNutritionData(selected)}
@@ -141,7 +142,7 @@ export default function RecipesPage() {
                       {selected.strCategory} | {selected.strArea}
                     </div>
                     {/* ingr */}
-                    <div className="mb-2">
+                    <div className="mb-5 mx-2 w-[13rem] max-h-[20rem] overflow-y-auto">
                       <span className="font-semibold">Ingredients:</span>
                       <ul className="list-disc ml-6 text-zinc-700 dark:text-zinc-200">
                         {Array.from({ length: 20 }).map((_, i) => {
@@ -151,7 +152,9 @@ export default function RecipesPage() {
                             <li key={i}>
                               {ingredient}{" "}
                               {measure && (
-                                <span className="text-zinc-400">({measure})</span>
+                                <span className="text-zinc-400">
+                                  ({measure})
+                                </span>
                               )}
                             </li>
                           ) : null;
@@ -161,13 +164,16 @@ export default function RecipesPage() {
                   </div>
                   <div>
                     <div className="mb-2 w-[22rem]">
-                      <span className="font-semibold">Instructions:</span>
-                      <p className="text-zinc-600 dark:text-zinc-300 whitespace-pre-line mt-1">
-                        {selected.strInstructions.split(0,1)}
+                      <span className="font-bold">Instructions:</span>
+                      <p className="text-zinc-600 max-h-60 overflow-y-auto dark:text-zinc-300 whitespace-pre-line mt-1">
+                        {selected.strInstructions}
                       </p>
                     </div>
                     <div className="mb-2">
-                      <span className="font-semibold">Nutrition:</span>
+                      <span className="font-bold">Nutrition:</span>
+                      <p className="text-zinc-600 dark:text-zinc-300 whitespace-pre-line mt-1">
+                        {selected.strTags}
+                      </p>
                       <div className="w-full"></div>
                     </div>
                   </div>

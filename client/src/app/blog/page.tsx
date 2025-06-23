@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useGetBlogPostsQuery } from "@/features/blog";
+import { useGetBlogPostsQuery } from "@/services/blogApi";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from "recharts";
 import { chartData } from "@/data/homepageData";
 import BlogPostModal from "@/components/blog/BlogPostModal";

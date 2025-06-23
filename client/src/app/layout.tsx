@@ -14,11 +14,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Toaster />
           <Sidebar />
           <div className="ml-[64px]">
-            <div>
+
               <Navbar />
               <main className="px-15">{children}</main>
               <Footer />
-            </div>
+
           </div>
         </Provider>
       </body>

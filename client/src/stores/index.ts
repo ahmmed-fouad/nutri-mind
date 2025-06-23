@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userFormReducer from './userFormApi';
-import { recipesApi } from '@/features/meal-planner';
-import { blogApi } from '@/features/blog';
+import { recipesApi } from '@/services/recipesApi';
+import { blogApi } from '@/services/blogApi';
 
 export const store = configureStore({
   reducer: {
