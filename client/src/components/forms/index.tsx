@@ -84,9 +84,20 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
       <div className="w-full max-w-6xl bg-white/80 dark:bg-zinc-900/80 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row overflow-hidden backdrop-blur-xl animate-fade-in-up">
         {/* Illustration/Graphic */}
         <div className="hidden md:flex flex-col items-center justify-center bg-gradient-to-br from-primary/10 to-primary/30 dark:from-primary/20 dark:to-zinc-800 p-10 w-1/2 relative">
-          <Image src="/assets/logo2.png" alt="Wellness" width={220} height={220} className="mb-8 drop-shadow-xl animate-fade-in" />
-          <h2 className="text-3xl font-bold text-primary mb-2 text-center animate-fade-in-up">Welcome to NutriMind</h2>
-          <p className="text-zinc-500 dark:text-zinc-300 text-lg text-center max-w-xs animate-fade-in-up">Personalize your nutrition journey. Fill out the form to get tailored plans and insights!</p>
+          <Image
+            src="/assets/logo2.png"
+            alt="Wellness"
+            width={220}
+            height={220}
+            className="mb-8 drop-shadow-xl animate-fade-in"
+          />
+          <h2 className="text-3xl font-bold text-primary mb-2 text-center animate-fade-in-up">
+            Welcome to NutriMind
+          </h2>
+          <p className="text-zinc-500 dark:text-zinc-300 text-lg text-center max-w-xs animate-fade-in-up">
+            Personalize your nutrition journey. Fill out the form to get
+            tailored plans and insights!
+          </p>
         </div>
         {/* Form */}
         <form
@@ -365,12 +376,16 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-4">
             <button
               type="submit"
-              className="btn btn-primary w-full md:w-1/2 py-3 rounded-xl font-semibold text-lg bg-primary text-white shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 animate-fade-in"
+              className="btn btn-primary w-full md:w-1/2 py-3 rounded-xl font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 animate-fade-in"
               disabled={isLoading}
             >
               {isLoading ? "Saving..." : "Save"}
             </button>
-            {isSuccess && <div className="text-green-600 mt-2 animate-fade-in">Saved! Redirecting...</div>}
+            {isSuccess && (
+              <div className="text-green-600 mt-2 animate-fade-in">
+                Saved! Redirecting...
+              </div>
+            )}
           </div>
         </form>
       </div>

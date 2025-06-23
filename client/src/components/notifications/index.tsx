@@ -28,51 +28,73 @@ export function NotificationsDropdown() {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="relative p-2 rounded-full hover:bg-accent transition-colors focus:outline-none"
+        className="relative p-2 rounded-full hover:bg-accent transition-colors focus:outline-none cursor-pointer"
         aria-label="Notifications"
-        onClick={() => setOpen(o => !o)}
+        onClick={() => setOpen((o) => !o)}
       >
         <Bell className="w-6 h-6 text-primary" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold shadow">{unreadCount}</span>
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold shadow">
+            {unreadCount}
+          </span>
         )}
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-80 bg-white/80 dark:bg-zinc-900/90 glassmorphism rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 z-50 animate-fade-in">
-          <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 font-bold text-primary text-lg flex items-center gap-2">
+        <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-zinc-900/90 glassmorphism rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 z-50 animate-fade-in">
+          <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 font-bold text-zinc-700 text-lg flex items-center gap-2">
             <Bell className="w-5 h-5" /> Notifications
           </div>
           <ul className="max-h-80 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-800">
-            {notifications.slice(0, 5).map(n => (
-              <li key={n.id} className={`flex items-start gap-3 p-4 hover:bg-accent/30 transition-colors ${n.unread ? "bg-blue-50 dark:bg-zinc-800/40" : ""}`}>
+            {notifications.slice(0, 5).map((n) => (
+              <li
+                key={n.id}
+                className={`flex items-start gap-3 p-4 hover:bg-accent cursor-pointer transition-colors ${
+                  n.unread ? "bg-blue-100 dark:bg-zinc-600" : ""
+                }`}
+              >
                 <div>{n.icon}</div>
                 <div className="flex-1">
-                  <div className="font-semibold text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
+                  <div className="font-semibold text-zinc-800 dark:text-zinc-400 flex items-center gap-2">
                     {n.title}
-                    {n.unread && <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full inline-block" />}
+                    {n.unread && (
+                      <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full inline-block" />
+                    )}
                   </div>
-                  <div className="text-sm text-zinc-500 dark:text-zinc-400">{n.message}</div>
+                  <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                    {n.message}
+                  </div>
                   <div className="text-xs text-zinc-400 mt-1">{n.time}</div>
                 </div>
               </li>
             ))}
           </ul>
           <div className="p-3 border-t border-zinc-200 dark:border-zinc-800 text-center">
-            <Link href="/notifications" className="text-primary font-semibold hover:underline">See more →</Link>
+            <Link
+              href="/notifications"
+              className="text-primary font-semibold hover:underline"
+            >
+              See more →
+            </Link>
           </div>
         </div>
       )}
       <style jsx>{`
         .glassmorphism {
           backdrop-filter: blur(8px);
-          background: rgba(255,255,255,0.7);
+          background: rgba(255, 255, 255, 0.7);
         }
         .animate-fade-in {
-          animation: fadeIn 0.5s cubic-bezier(0.4,0,0.2,1);
+          animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>

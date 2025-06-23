@@ -19,7 +19,7 @@ export default function SocialDropdown({ socialLinks, open, onMouseEnter, onMous
         Social <ChevronDown className="w-4 h-4" />
       </button>
       {open && (
-        <div className="absolute left-1/2 -translate-x-1/2">
+        <div className="absolute left-1/2 -translate-x-1/2 z-20">
           <ul className="top-full mt-2 w-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg z-50">
             {socialLinks.map((slink) => (
               <li key={slink.href}>

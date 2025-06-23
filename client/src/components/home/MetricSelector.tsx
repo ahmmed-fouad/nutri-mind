@@ -15,7 +15,7 @@ export default function MetricSelector({ metric, setMetric }: Props) {
           onClick={() => setMetric(opt.key)}
           className={`cursor-pointer px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${
             metric === opt.key
-              ? "bg-primary text-white border-primary"
+              ? "bg-primary text-[var(--darkcard)] border-primary"
               : "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300"
           }`}
         >

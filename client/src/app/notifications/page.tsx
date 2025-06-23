@@ -51,15 +51,27 @@ export default function NotificationsPage() {
   const deleteSelected = () => setNotifs(ns => ns.filter(n => !selected.includes(n.id)));
 
   return (
-    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-indigo-50 to-blue-50 py-10 px-2">
+    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-300/60 py-10 px-2">
       <div className="max-w-5xl w-full glassmorphism p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary flex items-center gap-3"><Bell className="w-8 h-8" /> Notifications</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 flex items-center gap-3">
+            <Bell className="w-8 h-8" /> Notifications
+          </h1>
           <div className="w-72">
-            <ResponsiveContainer width="100%" height={120}>
+            <ResponsiveContainer className="!h-[13rem]">
               <PieChart>
-                <Pie data={chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} label>
-                  {chartData.map((entry, i) => <Cell key={i} fill={typeColors[i % typeColors.length]} />)}
+                <Pie
+                  data={chartData}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={50}
+                  label
+                >
+                  {chartData.map((entry, i) => (
+                    <Cell key={i} fill={typeColors[i % typeColors.length]} />
+                  ))}
                 </Pie>
                 <Tooltip />
                 <Legend />
@@ -70,51 +82,147 @@ export default function NotificationsPage() {
         {/* Tabs and Bulk Actions */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <div className="flex gap-2">
-            <button className={`px-4 py-2 rounded-lg font-semibold transition ${tab === "all" ? "bg-primary text-white" : "bg-white/70 text-primary hover:bg-primary/10"}`} onClick={() => setTab("all")}>All</button>
-            <button className={`px-4 py-2 rounded-lg font-semibold transition ${tab === "current" ? "bg-primary text-white" : "bg-white/70 text-primary hover:bg-primary/10"}`} onClick={() => setTab("current")}>Current</button>
-            <button className={`px-4 py-2 rounded-lg font-semibold transition ${tab === "old" ? "bg-primary text-white" : "bg-white/70 text-primary hover:bg-primary/10"}`} onClick={() => setTab("old")}>Old</button>
+            <button
+              className={`px-4 py-2 rounded-lg font-semibold transition ${
+                tab === "all"
+                  ? "bg-foreground text-[var(--darkcard)]"
+                  : "bg-zinc-400 text-[var(--darkcard)] hover:bg-primary/10"
+              }`}
+              onClick={() => setTab("all")}
+            >
+              All
+            </button>
+            <button
+              className={`px-4 py-2 rounded-lg font-semibold transition ${
+                tab === "current"
+                  ? "bg-foreground text-[var(--darkcard)]"
+                  : "bg-zinc-400 text-[var(--darkcard)] hover:bg-primary/10"
+              }`}
+              onClick={() => setTab("current")}
+            >
+              Current
+            </button>
+            <button
+              className={`px-4 py-2 rounded-lg font-semibold transition ${
+                tab === "old"
+                  ? "bg-foreground text-[var(--darkcard)]"
+                  : "bg-zinc-400 text-[var(--darkcard)] hover:bg-primary/10"
+              }`}
+              onClick={() => setTab("old")}
+            >
+              Old
+            </button>
           </div>
           <div className="flex gap-2 flex-wrap">
-            <button className="btn btn-primary flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow" onClick={markAllRead}><Check className="w-4 h-4" /> Mark All Read</button>
-            <button className="btn btn-accent flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow" onClick={deleteAll}><Trash2 className="w-4 h-4" /> Delete All</button>
-            {selected.length > 0 && <>
-              <button className="btn btn-primary flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow" onClick={markSelectedRead}><Check className="w-4 h-4" /> Mark Selected Read</button>
-              <button className="btn btn-accent flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow" onClick={deleteSelected}><Trash2 className="w-4 h-4" /> Delete Selected</button>
-            </>}
+            <button
+              className="btn btn-primary flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow"
+              onClick={markAllRead}
+            >
+              <Check className="w-4 h-4" /> Mark All Read
+            </button>
+            <button
+              className="btn btn-accent flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow"
+              onClick={deleteAll}
+            >
+              <Trash2 className="w-4 h-4" /> Delete All
+            </button>
+            {selected.length > 0 && (
+              <>
+                <button
+                  className="btn btn-primary flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow"
+                  onClick={markSelectedRead}
+                >
+                  <Check className="w-4 h-4" /> Mark Selected Read
+                </button>
+                <button
+                  className="btn btn-accent flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow"
+                  onClick={deleteSelected}
+                >
+                  <Trash2 className="w-4 h-4" /> Delete Selected
+                </button>
+              </>
+            )}
           </div>
         </div>
         {/* Notification List */}
         <ul className="flex flex-col gap-4">
-          {filtered.length === 0 && <li className="text-center text-zinc-400 py-12">No notifications found.</li>}
-          {filtered.map(n => (
-            <li key={n.id} className={`glassmorphism p-5 rounded-2xl shadow-xl flex items-center gap-4 animate-fade-in-up ${n.unread ? "border-l-4 border-primary" : ""}`}>
-              <input type="checkbox" checked={selected.includes(n.id)} onChange={() => toggleSelect(n.id)} className="accent-primary w-5 h-5" />
+          {filtered.length === 0 && (
+            <li className="text-center text-zinc-400 py-12">
+              No notifications found.
+            </li>
+          )}
+          {filtered.map((n) => (
+            <li
+              key={n.id}
+              className={`glassmorphism p-5 rounded-2xl shadow-xl flex items-center gap-4 animate-fade-in-up ${
+                n.unread ? "border-l-4 border-primary" : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={selected.includes(n.id)}
+                onChange={() => toggleSelect(n.id)}
+                className="accent-primary w-5 h-5"
+              />
               <div>{getTypeIcon(n.type)}</div>
               <div className="flex-1">
                 <div className="font-semibold text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                   {n.title}
-                  {n.unread && <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full inline-block" />}
+                  {n.unread && (
+                    <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full inline-block" />
+                  )}
                 </div>
-                <div className="text-sm text-zinc-500 dark:text-zinc-400">{n.message}</div>
+                <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                  {n.message}
+                </div>
                 <div className="text-xs text-zinc-400 mt-1">{n.time}</div>
               </div>
               {n.unread ? (
-                <button className="btn btn-primary px-2 py-1 rounded-lg font-semibold shadow text-xs" onClick={() => setNotifs(ns => ns.map(x => x.id === n.id ? { ...x, unread: false } : x))}>Mark Read</button>
+                <button
+                  className="btn btn-primary px-2 py-1 rounded-lg font-semibold shadow text-xs"
+                  onClick={() =>
+                    setNotifs((ns) =>
+                      ns.map((x) =>
+                        x.id === n.id ? { ...x, unread: false } : x
+                      )
+                    )
+                  }
+                >
+                  Mark Read
+                </button>
               ) : (
-                <button className="btn btn-secondary px-2 py-1 rounded-lg font-semibold shadow text-xs" onClick={() => setNotifs(ns => ns.map(x => x.id === n.id ? { ...x, unread: true } : x))}>Mark Unread</button>
+                <button
+                  className="btn btn-secondary px-2 py-1 rounded-lg font-semibold shadow text-xs"
+                  onClick={() =>
+                    setNotifs((ns) =>
+                      ns.map((x) =>
+                        x.id === n.id ? { ...x, unread: true } : x
+                      )
+                    )
+                  }
+                >
+                  Mark Unread
+                </button>
               )}
-              <button className="btn btn-accent px-2 py-1 rounded-lg font-semibold shadow text-xs" onClick={() => setNotifs(ns => ns.filter(x => x.id !== n.id))}><X className="w-4 h-4" /></button>
+              <button
+                className="btn btn-accent px-2 py-1 rounded-lg font-semibold shadow text-xs"
+                onClick={() =>
+                  setNotifs((ns) => ns.filter((x) => x.id !== n.id))
+                }
+              >
+                <X className="w-4 h-4" />
+              </button>
             </li>
           ))}
         </ul>
       </div>
       <style jsx>{`
         .glassmorphism {
-          background: rgba(255,255,255,0.7);
-          box-shadow: 0 8px 32px 0 rgba(31,38,135,0.12);
+          background: rgba(255, 255, 255, 0.7);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
           backdrop-filter: blur(8px);
           border-radius: 1.5rem;
-          border: 1px solid rgba(255,255,255,0.18);
+          border: 1px solid rgba(255, 255, 255, 0.18);
         }
         .btn-primary {
           background: #34d399;
@@ -138,18 +246,28 @@ export default function NotificationsPage() {
           background: #f59e42;
         }
         .animate-fade-in {
-          animation: fadeIn 0.7s cubic-bezier(0.4,0,0.2,1);
+          animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .animate-fade-in-up {
-          animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1);
+          animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
         @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </section>

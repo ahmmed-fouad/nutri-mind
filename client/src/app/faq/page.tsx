@@ -122,33 +122,35 @@ export default function FAQPage() {
                 />
               ))}
             </div>
-            {formFields.slice(2).map((field) => (
-              field.type === "textarea" ? (
-                <textarea
-                  key={field.name}
-                  name={field.name}
-                  value={form[field.name as keyof typeof form]}
-                  onChange={handleChange}
-                  placeholder={field.placeholder}
-                  className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm`}
-                  required={field.required}
-                />
-              ) : (
-                <input
-                  key={field.name}
-                  name={field.name}
-                  type={field.type}
-                  value={form[field.name as keyof typeof form]}
-                  onChange={handleChange}
-                  placeholder={field.placeholder}
-                  className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm`}
-                  required={field.required}
-                />
-              )
-            ))}
+            {formFields
+              .slice(2)
+              .map((field) =>
+                field.type === "textarea" ? (
+                  <textarea
+                    key={field.name}
+                    name={field.name}
+                    value={form[field.name as keyof typeof form]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm`}
+                    required={field.required}
+                  />
+                ) : (
+                  <input
+                    key={field.name}
+                    name={field.name}
+                    type={field.type}
+                    value={form[field.name as keyof typeof form]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm`}
+                    required={field.required}
+                  />
+                )
+              )}
             <button
               type="submit"
-              className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
+              className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
             >
               Send
             </button>

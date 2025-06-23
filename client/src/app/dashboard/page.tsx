@@ -39,7 +39,7 @@ export default function DashboardPage() {
   });
 
   return (
-    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-50 py-10 px-2">
+    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900/60 py-10 px-2">
       <div className="max-w-7xl w-full glassmorphism p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
         {/* Greeting */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
@@ -50,7 +50,7 @@ export default function DashboardPage() {
               className="w-16 h-16 rounded-full object-cover border-2 border-primary shadow"
             />
             <div>
-              <div className="text-2xl font-bold text-primary">
+              <div className="text-2xl font-bold text-foreground">
                 Welcome, {user.name}!
               </div>
               <div className="text-zinc-500 text-sm mt-1">{quote}</div>
@@ -59,7 +59,7 @@ export default function DashboardPage() {
           <div className="flex gap-6">
             {counters.map((c, i) => (
               <div key={i} className="flex flex-col items-center">
-                <span className="text-3xl font-bold text-primary animate-counter">
+                <span className="text-3xl font-bold text-foreground animate-counter">
                   {counterAnim[i]}
                 </span>
                 <span className="text-zinc-500 text-sm font-semibold flex items-center gap-1">
@@ -72,7 +72,7 @@ export default function DashboardPage() {
         {/* Progress Rings & Chart */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4">
-            <div className="text-lg font-bold text-primary mb-2">
+            <div className="text-lg font-bold text-zinc-700 mb-2">
               Daily Progress
             </div>
             <div className="flex gap-6">
@@ -85,7 +85,7 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4 col-span-2">
-            <div className="text-lg font-bold text-primary mb-2">
+            <div className="text-lg font-bold text-zinc-700 mb-2">
               Weekly Progress
             </div>
             <ResponsiveContainer width="100%" height={180}>
@@ -117,14 +117,14 @@ export default function DashboardPage() {
         {/* Goals & Quick Actions */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
-            <div className="text-lg font-bold text-primary mb-2">
+            <div className="text-lg font-bold text-zinc-700 mb-2">
               Your Goals
             </div>
             {goalsDash.map((g, i) => (
               <div key={i} className="flex items-center gap-3 mb-2">
                 {g.icon}
                 <span className="font-semibold text-zinc-700">{g.label}:</span>
-                <span className="text-primary font-bold">{g.value}</span>
+                <span className="text-zinc-700 font-bold">{g.value}</span>
                 <span className="ml-auto text-xs text-zinc-400">
                   {g.progress}/{g.target}
                 </span>
@@ -132,7 +132,7 @@ export default function DashboardPage() {
             ))}
           </div>
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4 items-center">
-            <div className="text-lg font-bold text-primary mb-2">
+            <div className="text-lg font-bold text-zinc-700 mb-2">
               Quick Actions
             </div>
             <div className="flex flex-wrap gap-4">
@@ -148,7 +148,7 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
-            <div className="text-lg font-bold text-primary mb-2">
+            <div className="text-lg font-bold text-zinc-700 mb-2">
               Recent Activity
             </div>
             <ul className="flex flex-col gap-2">
@@ -165,14 +165,14 @@ export default function DashboardPage() {
         </div>
         {/* Recommendations & Insights */}
         <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4 items-center">
-          <div className="text-lg font-bold text-primary mb-2">
+          <div className="text-lg font-bold text-zinc-700 mb-2">
             Recommendations & Insights
           </div>
           <ul className="flex flex-wrap gap-4 justify-center">
             {recommendations.map((r, i) => (
               <li
                 key={i}
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 text-sm font-semibold shadow"
+                className="px-4 py-2 rounded-full text-zinc-700 bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 text-sm font-semibold shadow"
               >
                 {r}
               </li>

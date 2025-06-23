@@ -212,7 +212,7 @@ export const dietaryPrefs = [
       value: "68kg",
       progress: 70.8,
       target: 68,
-      icon: <User className="w-5 h-5 text-primary" />,
+      icon: <User className="w-5 h-5 text-green-400" />,
     },
     {
       label: "Habit Streak",

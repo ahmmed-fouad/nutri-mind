@@ -61,68 +61,128 @@ export default function GroceryListPage() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary flex items-center justify-center gap-2"><ShoppingBasket className="w-8 h-8" /> Grocery List</h1>
-          <p className="text-lg text-zinc-500 max-w-2xl mx-auto">Plan your healthy shopping and never miss an ingredient.</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary flex items-center justify-center gap-2">
+            <ShoppingBasket className="w-8 h-8" /> Grocery List
+          </h1>
+          <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
+            Plan your healthy shopping and never miss an ingredient.
+          </p>
         </div>
         {/* Add Item & Templates */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div className="flex gap-2 flex-1">
             <input
               value={input.name}
-              onChange={e => setInput(i => ({ ...i, name: e.target.value }))}
+              onChange={(e) =>
+                setInput((i) => ({ ...i, name: e.target.value }))
+              }
               placeholder="Item name"
               className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 text-base w-32"
             />
             <input
               value={input.qty}
-              onChange={e => setInput(i => ({ ...i, qty: e.target.value }))}
+              onChange={(e) => setInput((i) => ({ ...i, qty: e.target.value }))}
               placeholder="Qty"
               className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 text-base w-20"
             />
             <select
               value={input.category}
-              onChange={e => setInput(i => ({ ...i, category: e.target.value }))}
+              onChange={(e) =>
+                setInput((i) => ({ ...i, category: e.target.value }))
+              }
               className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 text-base"
             >
-              {categories.map(cat => <option key={cat.name}>{cat.name}</option>)}
+              {categories.map((cat) => (
+                <option key={cat.name}>{cat.name}</option>
+              ))}
             </select>
-            <button onClick={handleAdd} className="flex items-center gap-1 px-4 py-2 rounded-lg bg-primary text-white font-semibold shadow hover:bg-primary/90 transition"><Plus className="w-4 h-4" /> Add</button>
+            <button
+              onClick={handleAdd}
+              className="flex items-center gap-1 px-4 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition"
+            >
+              <Plus className="w-4 h-4" /> Add
+            </button>
           </div>
           <div className="flex gap-2 items-center">
             <BookOpen className="w-5 h-5 text-primary" />
             <span className="text-sm">Templates:</span>
-            <select value={templateIdx} onChange={e => setTemplateIdx(Number(e.target.value))} className="rounded-lg px-2 py-1 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800">
-              {demoTemplates.map((t, i) => <option key={t.name} value={i}>{t.name}</option>)}
+            <select
+              value={templateIdx}
+              onChange={(e) => setTemplateIdx(Number(e.target.value))}
+              className="rounded-lg px-2 py-1 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800"
+            >
+              {demoTemplates.map((t, i) => (
+                <option key={t.name} value={i}>
+                  {t.name}
+                </option>
+              ))}
             </select>
-            <button className="ml-2 px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-xs">Load</button>
+            <button className="ml-2 px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-xs">
+              Load
+            </button>
           </div>
         </div>
         {/* Grocery List */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
-          {categories.map(cat => (
+          {categories.map((cat) => (
             <div key={cat.name} className="mb-6">
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-3 h-3 rounded-full" style={{ background: cat.color }} />
-                <span className="font-semibold text-lg text-primary">{cat.name}</span>
+                <span
+                  className="w-3 h-3 rounded-full"
+                  style={{ background: cat.color }}
+                />
+                <span className="font-semibold text-lg text-primary">
+                  {cat.name}
+                </span>
               </div>
               <div className="flex flex-col gap-2">
-                {items.filter(item => item.category === cat.name).length === 0 && <div className="text-xs text-zinc-400">No items</div>}
-                {items.filter(item => item.category === cat.name).map(item => (
-                  <div key={item.id} className={`flex items-center gap-3 p-3 rounded-lg border ${item.bought ? 'bg-green-100 dark:bg-green-900 border-green-200 dark:border-green-800' : 'bg-zinc-50 dark:bg-zinc-800 border-zinc-100 dark:border-zinc-800'} shadow-sm`}>
-                    <input type="checkbox" checked={item.bought} onChange={() => handleCheck(item.id)} className="w-5 h-5 accent-primary" />
-                    <span className={`font-medium ${item.bought ? 'line-through text-zinc-400' : ''}`}>{item.name}</span>
-                    <span className="text-xs text-zinc-500">{item.qty}</span>
-                    <button className="ml-auto text-zinc-400 hover:text-primary"><Edit className="w-4 h-4" /></button>
-                    <button onClick={() => handleDelete(item.id)} className="text-zinc-400 hover:text-red-500"><Trash2 className="w-4 h-4" /></button>
-                  </div>
-                ))}
+                {items.filter((item) => item.category === cat.name).length ===
+                  0 && <div className="text-xs text-zinc-400">No items</div>}
+                {items
+                  .filter((item) => item.category === cat.name)
+                  .map((item) => (
+                    <div
+                      key={item.id}
+                      className={`flex items-center gap-3 p-3 rounded-lg border ${
+                        item.bought
+                          ? "bg-green-100 dark:bg-green-900 border-green-200 dark:border-green-800"
+                          : "bg-zinc-50 dark:bg-zinc-800 border-zinc-100 dark:border-zinc-800"
+                      } shadow-sm`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={item.bought}
+                        onChange={() => handleCheck(item.id)}
+                        className="w-5 h-5 accent-primary"
+                      />
+                      <span
+                        className={`font-medium ${
+                          item.bought ? "line-through text-zinc-400" : ""
+                        }`}
+                      >
+                        {item.name}
+                      </span>
+                      <span className="text-xs text-zinc-500">{item.qty}</span>
+                      <button className="ml-auto text-zinc-400 hover:text-primary">
+                        <Edit className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="text-zinc-400 hover:text-red-500"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
               </div>
             </div>
           ))}
         </div>
         {/* Dynamic Chart */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
-          <h2 className="text-xl font-bold text-primary mb-6 flex items-center gap-2"><PieChart className="w-5 h-5" /> Category Breakdown</h2>
+          <h2 className="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+            <PieChart className="w-5 h-5" /> Category Breakdown
+          </h2>
           <div className="w-full h-80 flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -137,7 +197,10 @@ export default function GroceryListPage() {
                   label
                 >
                   {categoryChartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={categories[index].color} />
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={categories[index].color}
+                    />
                   ))}
                 </Pie>
                 <Tooltip />
@@ -148,10 +211,17 @@ export default function GroceryListPage() {
         </div>
         {/* Smart Suggestions */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
-          <h2 className="text-xl font-bold text-primary mb-4 flex items-center gap-2"><Sparkles className="w-5 h-5" /> Smart Suggestions</h2>
+          <h2 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+            <Sparkles className="w-5 h-5" /> Smart Suggestions
+          </h2>
           <div className="flex flex-wrap gap-3">
             {smartSuggestions.map((s, i) => (
-              <span key={i} className="px-4 py-2 rounded-full bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 dark:from-green-900 dark:via-blue-900 dark:to-yellow-900 text-sm font-semibold shadow">{s}</span>
+              <span
+                key={i}
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 dark:from-green-900 dark:via-blue-900 dark:to-yellow-900 text-sm font-semibold shadow"
+              >
+                {s}
+              </span>
             ))}
           </div>
         </div>
@@ -159,19 +229,27 @@ export default function GroceryListPage() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Notes */}
           <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6 flex flex-col h-full">
-            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2"><FileText className="w-5 h-5" /> Notes</h3>
+            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5" /> Notes
+            </h3>
             <textarea
               className="w-full min-h-[100px] rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 p-3 text-base text-zinc-700 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary mb-4"
               placeholder="Add notes for this week or special instructions..."
               value={notes}
-              onChange={e => setNotes(e.target.value)}
+              onChange={(e) => setNotes(e.target.value)}
             />
-            <button className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-primary text-white font-semibold shadow hover:bg-primary/90 transition"><FileText className="w-5 h-5" /> Save Note</button>
+            <button className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition">
+              <FileText className="w-5 h-5" /> Save Note
+            </button>
           </div>
           {/* Share/Export */}
           <div className="flex flex-col items-center justify-center gap-6 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6">
-            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2"><Share2 className="w-5 h-5" /> Share / Export</h3>
-            <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-green-400 text-white font-bold shadow-lg hover:from-primary/90 hover:to-green-500 transition text-lg"><Share2 className="w-6 h-6" /> Export List</button>
+            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+              <Share2 className="w-5 h-5" /> Share / Export
+            </h3>
+            <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-green-400 text-[var(--darkcard)] font-bold shadow-lg hover:from-primary/90 hover:to-green-500 transition text-lg">
+              <Share2 className="w-6 h-6" /> Export List
+            </button>
           </div>
         </div>
       </div>

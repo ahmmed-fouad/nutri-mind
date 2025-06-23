@@ -126,7 +126,15 @@ export default function ProfilePage() {
               className="absolute bottom-0 right-0 bg-primary text-white rounded-full p-2 shadow hover:bg-primary/90 focus:outline-none"
               disabled={uploading}
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 16v-4m0 0V8m0 4h4m-4 0H8m12 4v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                <path
+                  d="M12 16v-4m0 0V8m0 4h4m-4 0H8m12 4v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             <input
               type="file"
@@ -137,10 +145,14 @@ export default function ProfilePage() {
               disabled={uploading}
             />
           </div>
-          <div className="text-zinc-600 dark:text-zinc-300 text-sm mt-1">Click photo to change</div>
+          <div className="text-zinc-600 dark:text-zinc-300 text-sm mt-1">
+            Click photo to change
+          </div>
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">Email</label>
+          <label className="font-medium text-zinc-700 dark:text-zinc-200">
+            Email
+          </label>
           <input
             type="email"
             value={user.email}
@@ -149,7 +161,9 @@ export default function ProfilePage() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">Password</label>
+          <label className="font-medium text-zinc-700 dark:text-zinc-200">
+            Password
+          </label>
           <input
             type="password"
             name="password"
@@ -160,7 +174,9 @@ export default function ProfilePage() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">Name</label>
+          <label className="font-medium text-zinc-700 dark:text-zinc-200">
+            Name
+          </label>
           <input
             type="text"
             name="name"
@@ -170,7 +186,9 @@ export default function ProfilePage() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">Age</label>
+          <label className="font-medium text-zinc-700 dark:text-zinc-200">
+            Age
+          </label>
           <input
             type="number"
             name="age"
@@ -180,7 +198,9 @@ export default function ProfilePage() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">Length (cm)</label>
+          <label className="font-medium text-zinc-700 dark:text-zinc-200">
+            Length (cm)
+          </label>
           <input
             type="number"
             name="length"
@@ -190,7 +210,9 @@ export default function ProfilePage() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">Weight (kg)</label>
+          <label className="font-medium text-zinc-700 dark:text-zinc-200">
+            Weight (kg)
+          </label>
           <input
             type="number"
             name="weight"
@@ -201,11 +223,13 @@ export default function ProfilePage() {
         </div>
         <button
           type="submit"
-          className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
+          className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
         >
           Update Profile
         </button>
-        {success && <div className="text-green-600 text-center mt-2">{success}</div>}
+        {success && (
+          <div className="text-green-600 text-center mt-2">{success}</div>
+        )}
         {error && <div className="text-red-500 text-center mt-2">{error}</div>}
       </form>
     </section>

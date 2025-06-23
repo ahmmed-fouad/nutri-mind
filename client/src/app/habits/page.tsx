@@ -58,32 +58,67 @@ export default function HabitTrackerPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary">Habit Tracker</h1>
-          <p className="text-lg text-zinc-500 max-w-2xl mx-auto">Build healthy routines and track your daily wins.</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary">
+            Habit Tracker
+          </h1>
+          <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
+            Build healthy routines and track your daily wins.
+          </p>
         </div>
         {/* Habit List */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-primary flex items-center gap-2"><CheckCircle className="w-5 h-5" /> Today's Habits</h2>
-            <button className="flex items-center gap-1 px-4 py-2 rounded-lg bg-primary text-white font-semibold shadow hover:bg-primary/90 transition"><Plus className="w-4 h-4" /> Add Habit</button>
+            <h2 className="text-xl font-bold text-primary flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" /> Today's Habits
+            </h2>
+            <button className="flex items-center gap-1 px-4 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition">
+              <Plus className="w-4 h-4" /> Add Habit
+            </button>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {habits.map((habit, i) => (
-              <div key={habit.id} className="flex flex-col gap-2 bg-zinc-50 dark:bg-zinc-800 rounded-xl p-4 shadow border border-zinc-100 dark:border-zinc-800">
+              <div
+                key={habit.id}
+                className="flex flex-col gap-2 bg-zinc-50 dark:bg-zinc-800 rounded-xl p-4 shadow border border-zinc-100 dark:border-zinc-800"
+              >
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="rounded-full p-2" style={{ background: habit.color + '22' }}>{habit.icon}</span>
+                  <span
+                    className="rounded-full p-2"
+                    style={{ background: habit.color + "22" }}
+                  >
+                    {habit.icon}
+                  </span>
                   <span className="font-semibold text-lg">{habit.name}</span>
-                  <button className="ml-auto text-zinc-400 hover:text-primary"><Edit className="w-4 h-4" /></button>
-                  <button className="text-zinc-400 hover:text-red-500"><Trash2 className="w-4 h-4" /></button>
+                  <button className="ml-auto text-zinc-400 hover:text-primary">
+                    <Edit className="w-4 h-4" />
+                  </button>
+                  <button className="text-zinc-400 hover:text-red-500">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" checked={checked[i]} onChange={() => setChecked(c => c.map((v, idx) => idx === i ? !v : v))} className="w-5 h-5 accent-primary" />
+                  <input
+                    type="checkbox"
+                    checked={checked[i]}
+                    onChange={() =>
+                      setChecked((c) => c.map((v, idx) => (idx === i ? !v : v)))
+                    }
+                    className="w-5 h-5 accent-primary"
+                  />
                   <span className="text-sm text-zinc-500">Mark as done</span>
                 </div>
                 <div className="w-full h-3 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden mt-2">
-                  <div className="h-full rounded-full" style={{ width: getHabitProgress(i) + '%', background: habit.color }} />
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: getHabitProgress(i) + "%",
+                      background: habit.color,
+                    }}
+                  />
                 </div>
-                <div className="text-xs text-zinc-400 mt-1">{getHabitProgress(i)}% this week</div>
+                <div className="text-xs text-zinc-400 mt-1">
+                  {getHabitProgress(i)}% this week
+                </div>
               </div>
             ))}
           </div>
@@ -91,16 +126,48 @@ export default function HabitTrackerPage() {
         {/* Dynamic Chart */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
-            <h2 className="text-xl font-bold text-primary flex items-center gap-2"><Award className="w-5 h-5" /> Habit Completion</h2>
+            <h2 className="text-xl font-bold text-primary flex items-center gap-2">
+              <Award className="w-5 h-5" /> Habit Completion
+            </h2>
             <div className="flex gap-2 flex-wrap">
-              <button onClick={() => setView('week')} className={`px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${view === 'week' ? 'bg-primary text-white border-primary' : 'bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300'}`}>Week</button>
-              <button onClick={() => setView('month')} className={`px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${view === 'month' ? 'bg-primary text-white border-primary' : 'bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300'}`}>Month</button>
-              <button onClick={() => setView('year')} className={`px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${view === 'year' ? 'bg-primary text-white border-primary' : 'bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300'}`}>Year</button>
+              <button
+                onClick={() => setView("week")}
+                className={`px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${
+                  view === "week"
+                    ? "bg-primary text-[var(--darkcard)] border-primary"
+                    : "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300"
+                }`}
+              >
+                Week
+              </button>
+              <button
+                onClick={() => setView("month")}
+                className={`px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${
+                  view === "month"
+                    ? "bg-primary text-[var(--darkcard)] border-primary"
+                    : "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300"
+                }`}
+              >
+                Month
+              </button>
+              <button
+                onClick={() => setView("year")}
+                className={`px-4 py-1 rounded-full font-medium border transition shadow-sm text-sm ${
+                  view === "year"
+                    ? "bg-primary text-[var(--darkcard)] border-primary"
+                    : "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300"
+                }`}
+              >
+                Year
+              </button>
             </div>
           </div>
           <div className="w-full h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={demoProgress} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <BarChart
+                data={demoProgress}
+                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" tick={{ fontSize: 12 }} />
                 <YAxis tick={{ fontSize: 12 }} />
@@ -117,41 +184,79 @@ export default function HabitTrackerPage() {
         </div>
         {/* Streaks & Achievements */}
         <div className="flex flex-wrap gap-4 mb-12 justify-center">
-          <div className="flex items-center gap-2 bg-gradient-to-r from-yellow-100 via-green-100 to-cyan-100 dark:from-yellow-900 dark:via-green-900 dark:to-cyan-900 rounded-full px-6 py-3 shadow text-lg font-semibold"><Award className="w-6 h-6 text-yellow-400" /> 7 days in a row!</div>
-          <div className="flex items-center gap-2 bg-gradient-to-r from-blue-100 via-green-50 to-cyan-100 dark:from-blue-900 dark:via-green-950 dark:to-cyan-950 rounded-full px-6 py-3 shadow text-lg font-semibold"><CheckCircle className="w-6 h-6 text-green-400" /> {streak} day streak!</div>
+          <div className="flex items-center gap-2 bg-gradient-to-r from-yellow-100 via-green-100 to-cyan-100 dark:from-yellow-900 dark:via-green-900 dark:to-cyan-900 rounded-full px-6 py-3 shadow text-lg font-semibold">
+            <Award className="w-6 h-6 text-yellow-400" /> 7 days in a row!
+          </div>
+          <div className="flex items-center gap-2 bg-gradient-to-r from-blue-100 via-green-50 to-cyan-100 dark:from-blue-900 dark:via-green-950 dark:to-cyan-950 rounded-full px-6 py-3 shadow text-lg font-semibold">
+            <CheckCircle className="w-6 h-6 text-green-400" /> {streak} day
+            streak!
+          </div>
         </div>
         {/* Motivational Quote & Progress Streak */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12 flex flex-col items-center gap-6">
-          <div className="text-lg italic text-zinc-600 dark:text-zinc-300 text-center">“{motivationalQuotes[quoteIdx]}”</div>
-          <button onClick={() => setQuoteIdx((q) => (q + 1) % motivationalQuotes.length)} className="px-4 py-1 rounded-full bg-primary text-white text-sm font-medium shadow hover:bg-primary/90 transition">New Quote</button>
+          <div className="text-lg italic text-zinc-600 dark:text-zinc-300 text-center">
+            “{motivationalQuotes[quoteIdx]}”
+          </div>
+          <button
+            onClick={() =>
+              setQuoteIdx((q) => (q + 1) % motivationalQuotes.length)
+            }
+            className="px-4 py-1 rounded-full bg-primary text-[var(--darkcard)] text-sm font-medium shadow hover:bg-primary/90 transition"
+          >
+            New Quote
+          </button>
         </div>
         {/* Calendar View & Notes */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Calendar View */}
           <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6">
-            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2"><Calendar className="w-5 h-5" /> Calendar View</h3>
+            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+              <Calendar className="w-5 h-5" /> Calendar View
+            </h3>
             <div className="grid grid-cols-7 gap-2">
-              {["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map((d) => <div key={d} className="text-xs text-center text-zinc-400 font-semibold">{d}</div>)}
+              {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
+                <div
+                  key={d}
+                  className="text-xs text-center text-zinc-400 font-semibold"
+                >
+                  {d}
+                </div>
+              ))}
               {calendarDemo.flat().map((v, i) => (
-                <div key={i} className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${v ? 'bg-primary text-white' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400'}`}>{v ? '✓' : ''}</div>
+                <div
+                  key={i}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                    v
+                      ? "bg-primary text-[var(--darkcard)]"
+                      : "bg-zinc-200 dark:bg-zinc-800 text-zinc-400"
+                  }`}
+                >
+                  {v ? "✓" : ""}
+                </div>
               ))}
             </div>
           </div>
           {/* Notes/Reflections */}
           <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6 flex flex-col h-full">
-            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2"><FileText className="w-5 h-5" /> Notes & Reflections</h3>
+            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5" /> Notes & Reflections
+            </h3>
             <textarea
               className="w-full min-h-[100px] rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 p-3 text-base text-zinc-700 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary mb-4"
               placeholder="Write your thoughts, reflections, or goals..."
               value={note}
               onChange={(e) => setNote(e.target.value)}
             />
-            <button className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-primary text-white font-semibold shadow hover:bg-primary/90 transition"><FileText className="w-5 h-5" /> Save Note</button>
+            <button className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition">
+              <FileText className="w-5 h-5" /> Save Note
+            </button>
           </div>
         </div>
         {/* Export Data */}
         <div className="flex justify-center mb-8">
-          <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-green-400 text-white font-bold shadow-lg hover:from-primary/90 hover:to-green-500 transition text-lg"><Download className="w-6 h-6" /> Export Data</button>
+          <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-green-400 text-white font-bold shadow-lg hover:from-primary/90 hover:to-green-500 transition text-lg">
+            <Download className="w-6 h-6" /> Export Data
+          </button>
         </div>
       </div>
     </div>
