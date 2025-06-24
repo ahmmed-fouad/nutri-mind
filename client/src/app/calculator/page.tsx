@@ -9,7 +9,7 @@ import {
   macroColors,
   tips,
   mealPlan,
-} from "@/data/homepageData";
+} from "@/data/calculatorPageData";
 
 
 function calculateBMR(gender: string, weight: number, height: number, age: number) {

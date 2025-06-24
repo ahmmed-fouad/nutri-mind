@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { faqs, chartDatFaq, COLORS, formFields } from "@/data/homepageData";
+import { faqs, chartDatFaq, COLORS, formFields } from "@/data/faqData";
 import Link from "next/link";
 
 export default function FAQPage() {

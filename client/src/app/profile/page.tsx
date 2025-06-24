@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUserForm, setUserForm } from "@/stores/userFormApi";
 import { RootState } from "@/stores";
+import profileFields from "@/data/profileFields";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<any>(null);
@@ -16,6 +17,11 @@ export default function ProfilePage() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    // Load local photo from localStorage if present
+    const localPhoto = localStorage.getItem("profile_photo_base64");
+    if (localPhoto) {
+      setPhotoUrl(localPhoto);
+    }
   }, []);
   const userId = user?.email || "";
   const userForm = useSelector((state: RootState) => selectUserForm(state.userForm, userId));
@@ -57,20 +63,21 @@ export default function ProfilePage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePhotoUpload = async (e: any) => {
+  const handlePhotoUpload = (e: any) => {
     const file = e.target.files[0];
-    if (!file || !user) return;
-    setUploading(true);
-    const filePath = `${user.id}/avatar.jpg`;
-    const { error } = await supabase.storage.from("avatars").upload(filePath, file, { upsert: true });
-    if (!error) {
-      const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
-      setPhotoUrl(data.publicUrl);
-      setSuccess("Photo updated!");
-    } else {
-      setError("Failed to upload photo.");
+    if (!file) return;
+    // Revoke previous object URL if any
+    if (photoUrl && photoUrl.startsWith("blob:")) {
+      URL.revokeObjectURL(photoUrl);
     }
-    setUploading(false);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result as string;
+      setPhotoUrl(base64);
+      localStorage.setItem("profile_photo_base64", base64);
+      setSuccess("Photo previewed locally!");
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e: any) => {
@@ -149,78 +156,27 @@ export default function ProfilePage() {
             Click photo to change
           </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">
-            Email
-          </label>
-          <input
-            type="email"
-            value={user.email}
-            readOnly
-            className="w-full px-4 py-2 rounded-lg border border-border bg-zinc-100 dark:bg-zinc-800 text-base text-zinc-500 cursor-not-allowed"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="Change password"
-            className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">
-            Age
-          </label>
-          <input
-            type="number"
-            name="age"
-            value={form.age}
-            onChange={handleChange}
-            className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">
-            Length (cm)
-          </label>
-          <input
-            type="number"
-            name="length"
-            value={form.length}
-            onChange={handleChange}
-            className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-zinc-700 dark:text-zinc-200">
-            Weight (kg)
-          </label>
-          <input
-            type="number"
-            name="weight"
-            value={form.weight}
-            onChange={handleChange}
-            className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
-          />
-        </div>
+        {/* Inputs */}
+        {profileFields.map((field) => (
+          <div className="flex flex-col gap-2" key={field.name}>
+            <label className="font-medium text-zinc-700 dark:text-zinc-200">
+              {field.label}
+            </label>
+            <input
+              type={field.type}
+              name={field.name}
+              value={
+                field.name === "email"
+                  ? user?.email || ""
+                  : form[field.name as keyof typeof form]
+              }
+              onChange={field.name === "email" ? undefined : handleChange}
+              placeholder={field.placeholder}
+              readOnly={field.readOnly}
+              className={field.className}
+            />
+          </div>
+        ))}
         <button
           type="submit"
           className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"

@@ -12,7 +12,7 @@ import {
   quote,
   user,
   accent,
-} from "@/data/homepageData";
+} from "@/data/dashBoardData";
 
 function ProgressRing({ value, goal, color }: { value: number; goal: number; color: string }) {
   const pct = Math.min(100, Math.round((value / goal) * 100));

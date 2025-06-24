@@ -25,6 +25,12 @@ export default function Navbar() {
   const userForm = useSelector((state: RootState) => selectUserForm(state.userForm, userId));
 
   useEffect(() => {
+    // Check for locally saved profile photo first
+    const localPhoto = typeof window !== 'undefined' ? localStorage.getItem("profile_photo_base64") : null;
+    if (localPhoto) {
+      setPhotoUrl(localPhoto);
+      return;
+    }
     if (user?.user_metadata?.avatar_url) {
       setPhotoUrl(user.user_metadata.avatar_url);
     } else if (user?.id) {

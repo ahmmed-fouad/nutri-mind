@@ -4,7 +4,6 @@ import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveCo
 
 const macroColors = ["#34d399", "#60a5fa", "#fbbf24"];
 const microColors = ["#fbbf24", "#60a5fa", "#34d399", "#f87171"];
-
 const sampleFood = {
   name: "Greek Yogurt Bowl",
   serving: "1 bowl (200g)",
