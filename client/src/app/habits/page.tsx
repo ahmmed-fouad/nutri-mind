@@ -29,8 +29,8 @@ export default function HabitTrackerPage() {
   };
 
   return (
-    <div className="min-h-[95vh] bg-gradient-to-br from-zinc-50 via-white to-green-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-green-950 py-10 px-2 md:px-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-[95vh] bg-gradient-to-br from-zinc-50 via-white to-green-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-green-950 py-8 px-2 sm:px-4 md:px-6">
+      <div className="max-w-6xl mx-auto flex flex-col gap-6">
         <HabitsHeader />
         <HabitsList
           habits={habits}
@@ -48,7 +48,7 @@ export default function HabitTrackerPage() {
           quote={motivationalQuotes[quoteIdx]}
           onNextQuote={() => setQuoteIdx((q) => (q + 1) % motivationalQuotes.length)}
         />
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">
           <CalendarView calendarDemo={calendarDemo} />
           <NotesSection note={note} setNote={setNote} />
         </div>

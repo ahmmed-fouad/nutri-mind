@@ -1,5 +1,6 @@
 import { Lock, User } from "lucide-react";
 import React from "react";
+import { usageData, COLORS, recentLogins, profileFields, preferenceOptions, notificationTypes, connectedAccounts, legalLinks } from "../../data/settingsData";
 
 type Profile = {
   name: string;
@@ -31,30 +32,30 @@ export default function ProfileCard({
   profileFields,
 }: ProfileCardProps) {
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 flex flex-col gap-6">
-      <h2 className="text-xl font-bold text-primary mb-2 flex items-center gap-2">
+    <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 flex flex-col gap-6">
+      <h2 className="text-lg sm:text-xl font-bold text-primary mb-2 flex items-center gap-2">
         <User className="w-5 h-5" /> Profile
       </h2>
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row items-center gap-4">
         <img
           src={photoPreview}
           alt="Profile"
           className="w-20 h-20 rounded-full object-cover border-2 border-primary shadow"
         />
-        <div>
-          <label className="block text-sm font-medium mb-1">Change Photo</label>
+        <div className="w-full">
+          <label className="block text-xs sm:text-sm font-medium mb-1">Change Photo</label>
           <input
             type="file"
             accept="image/*"
             onChange={handlePhoto}
-            className="block text-xs"
+            className="block text-xs sm:text-sm w-full"
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="flex flex-col gap-3">
         {profileFields.map((field) => (
           <div key={field.name}>
-            <label className="block text-xs mb-1">{field.label}</label>
+            <label className="block text-xs sm:text-sm mb-1">{field.label}</label>
             {field.type === "select" && field.options ? (
               <select
                 name={field.name}
@@ -79,7 +80,7 @@ export default function ProfileCard({
         ))}
       </div>
       <div>
-        <label className="block text-xs mb-1">Change Password</label>
+        <label className="block text-xs sm:text-sm mb-1">Change Password</label>
         <input
           type="password"
           placeholder="New password"

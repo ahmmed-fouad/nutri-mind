@@ -16,15 +16,18 @@ import {
 
 function ProgressRing({ value, goal, color }: { value: number; goal: number; color: string }) {
   const pct = Math.min(100, Math.round((value / goal) * 100));
-  const radius = 36;
-  const stroke = 8;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+  const radius = isMobile ? 24 : 36;
+  const stroke = isMobile ? 6 : 8;
   const circ = 2 * Math.PI * radius;
   const offset = circ - (pct / 100) * circ;
+  const size = isMobile ? 54 : 80;
+  const fontSize = isMobile ? 14 : 20;
   return (
-    <svg width={80} height={80}>
-      <circle cx={40} cy={40} r={radius} stroke="#e5e7eb" strokeWidth={stroke} fill="none" />
-      <circle cx={40} cy={40} r={radius} stroke={color} strokeWidth={stroke} fill="none" strokeDasharray={circ} strokeDashoffset={offset} style={{ transition: "stroke-dashoffset 0.7s" }} />
-      <text x={40} y={44} textAnchor="middle" fontSize={20} fontWeight={700} fill={color}>{pct}%</text>
+    <svg width={size} height={size}>
+      <circle cx={size/2} cy={size/2} r={radius} stroke="#e5e7eb" strokeWidth={stroke} fill="none" />
+      <circle cx={size/2} cy={size/2} r={radius} stroke={color} strokeWidth={stroke} fill="none" strokeDasharray={circ} strokeDashoffset={offset} style={{ transition: "stroke-dashoffset 0.7s" }} />
+      <text x={size/2} y={size/2+4} textAnchor="middle" fontSize={fontSize} fontWeight={700} fill={color}>{pct}%</text>
     </svg>
   );
 }
@@ -39,30 +42,31 @@ export default function DashboardPage() {
   });
 
   return (
-    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900/60 py-10 px-2">
-      <div className="max-w-7xl w-full glassmorphism p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
+    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900/60 py-6 sm:py-10 px-1 sm:px-2">
+      <div className="max-w-7xl w-full glassmorphism p-3 sm:p-8 rounded-3xl shadow-2xl mb-6 sm:mb-8 animate-fade-in">
         {/* Greeting */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4">
             <img
               src={user.avatar}
               alt={user.name}
-              className="w-16 h-16 rounded-full object-cover border-2 border-primary shadow"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-primary shadow"
             />
             <div>
-              <div className="text-2xl font-bold text-foreground">
+              <div className="text-xl sm:text-2xl font-bold text-foreground">
                 Welcome, {user.name}!
               </div>
-              <div className="text-zinc-500 text-sm mt-1">{quote}</div>
+              <div className="text-zinc-500 text-xs sm:text-sm mt-1">{quote}</div>
             </div>
           </div>
-          <div className="flex gap-6">
+          {/* Responsive counters row */}
+          <div className="grid grid-cols-2 sm:flex gap-2 sm:gap-6 w-full max-w-xs sm:max-w-none mx-auto">
             {counters.map((c, i) => (
               <div key={i} className="flex flex-col items-center">
-                <span className="text-3xl font-bold text-foreground animate-counter">
+                <span className="text-xl sm:text-3xl font-bold text-foreground animate-counter">
                   {counterAnim[i]}
                 </span>
-                <span className="text-zinc-500 text-sm font-semibold flex items-center gap-1">
+                <span className="text-zinc-500 text-xs sm:text-sm font-semibold flex items-center gap-1">
                   {c.icon} {c.label}
                 </span>
               </div>
@@ -70,25 +74,25 @@ export default function DashboardPage() {
           </div>
         </div>
         {/* Progress Rings & Chart */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4">
-            <div className="text-lg font-bold text-zinc-700 mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-8">
+          <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col items-center gap-3 sm:gap-4">
+            <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
               Daily Progress
             </div>
-            <div className="flex gap-6">
+            <div className="flex gap-3 sm:gap-6">
               {progressRings.map((p, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <ProgressRing value={p.value} goal={p.goal} color={p.color} />
-                  <span className="text-sm text-zinc-500 mt-2">{p.label}</span>
+                  <span className="text-xs sm:text-sm text-zinc-500 mt-1 sm:mt-2">{p.label}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4 col-span-2">
-            <div className="text-lg font-bold text-zinc-700 mb-2">
+          <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col items-center gap-3 sm:gap-4 col-span-1 md:col-span-2">
+            <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
               Weekly Progress
             </div>
-            <ResponsiveContainer width="100%" height={180}>
+            <ResponsiveContainer width="100%" height={120} className="sm:!h-[180px]">
               <AreaChart data={chartDataDash} margin={{ left: -20, right: 10 }}>
                 <XAxis dataKey="day" />
                 <YAxis hide />
@@ -115,47 +119,47 @@ export default function DashboardPage() {
           </div>
         </div>
         {/* Goals & Quick Actions */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
-            <div className="text-lg font-bold text-zinc-700 mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-8">
+          <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4">
+            <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
               Your Goals
             </div>
             {goalsDash.map((g, i) => (
-              <div key={i} className="flex items-center gap-3 mb-2">
+              <div key={i} className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                 {g.icon}
-                <span className="font-semibold text-zinc-700">{g.label}:</span>
-                <span className="text-zinc-700 font-bold">{g.value}</span>
-                <span className="ml-auto text-xs text-zinc-400">
+                <span className="font-semibold text-zinc-700 text-xs sm:text-base">{g.label}:</span>
+                <span className="text-zinc-700 font-bold text-xs sm:text-base">{g.value}</span>
+                <span className="ml-auto text-[10px] sm:text-xs text-zinc-400">
                   {g.progress}/{g.target}
                 </span>
               </div>
             ))}
           </div>
-          <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4 items-center">
-            <div className="text-lg font-bold text-zinc-700 mb-2">
+          <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4 items-center">
+            <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
               Quick Actions
             </div>
-            <div className="flex flex-wrap gap-4">
-              <button className="btn btn-primary flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow">
-                <Plus className="w-5 h-5" /> Log Meal
+            <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4">
+              <button className="btn btn-primary flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow w-full sm:w-auto text-xs sm:text-base">
+                <Plus className="w-4 h-4 sm:w-5 sm:h-5" /> Log Meal
               </button>
-              <button className="btn btn-accent flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow">
-                <Droplet className="w-5 h-5" /> Add Water
+              <button className="btn btn-accent flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow w-full sm:w-auto text-xs sm:text-base">
+                <Droplet className="w-4 h-4 sm:w-5 sm:h-5" /> Add Water
               </button>
-              <button className="btn btn-secondary flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow">
-                <Footprints className="w-5 h-5" /> Add Steps
+              <button className="btn btn-secondary flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow w-full sm:w-auto text-xs sm:text-base">
+                <Footprints className="w-4 h-4 sm:w-5 sm:h-5" /> Add Steps
               </button>
             </div>
           </div>
-          <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
-            <div className="text-lg font-bold text-zinc-700 mb-2">
+          <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4">
+            <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
               Recent Activity
             </div>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1 sm:gap-2">
               {activityFeed.map((a, i) => (
-                <li key={i} className="flex items-center gap-2 text-zinc-700">
-                  <span className="text-primary">•</span> {a.desc}{" "}
-                  <span className="ml-auto text-xs text-zinc-400">
+                <li key={i} className="flex items-center gap-2 text-zinc-700 text-xs sm:text-base">
+                  <span className="text-primary">•</span> {a.desc} {" "}
+                  <span className="ml-auto text-[10px] sm:text-xs text-zinc-400">
                     {a.time}
                   </span>
                 </li>
@@ -164,15 +168,15 @@ export default function DashboardPage() {
           </div>
         </div>
         {/* Recommendations & Insights */}
-        <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4 items-center">
-          <div className="text-lg font-bold text-zinc-700 mb-2">
+        <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4 items-center">
+          <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
             Recommendations & Insights
           </div>
-          <ul className="flex flex-wrap gap-4 justify-center">
+          <ul className="flex flex-wrap gap-2 sm:gap-4 justify-center">
             {recommendations.map((r, i) => (
               <li
                 key={i}
-                className="px-4 py-2 rounded-full text-zinc-700 bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 text-sm font-semibold shadow"
+                className="px-3 sm:px-4 py-1 sm:py-2 rounded-full text-zinc-700 bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 text-xs sm:text-sm font-semibold shadow"
               >
                 {r}
               </li>

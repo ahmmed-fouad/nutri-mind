@@ -14,9 +14,9 @@ type NotificationsBulkActionsProps = {
 
 export default function NotificationsBulkActions({ bulkActions }: NotificationsBulkActionsProps) {
   return (
-    <div className="flex gap-2 flex-wrap">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-2 w-full sm:w-auto">
       {bulkActions.filter(a => a.show).map(a => (
-        <button key={a.label} className={a.className} onClick={a.onClick}>
+        <button key={a.label} className={a.className + ' w-full sm:w-auto text-xs sm:text-base'} onClick={a.onClick}>
           {a.icon} {a.label}
         </button>
       ))}

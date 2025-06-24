@@ -10,11 +10,11 @@ type NotificationsTabsProps = {
 
 export default function NotificationsTabs({ tab, setTab, tabOptions }: NotificationsTabsProps) {
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-2 w-full sm:w-auto">
       {tabOptions.map(opt => (
         <button
           key={opt.key}
-          className={`px-4 py-2 rounded-lg font-semibold transition ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold transition text-xs sm:text-base w-full sm:w-auto ${
             tab === opt.key
               ? "bg-foreground text-[var(--darkcard)]"
               : "bg-zinc-400 text-[var(--darkcard)] hover:bg-primary/10"

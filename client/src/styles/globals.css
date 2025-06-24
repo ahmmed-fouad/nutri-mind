@@ -77,6 +77,9 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --darkcard: #fff;
+  --tw-breakpoint-mobile: 640px;
+  --tw-breakpoint-tablet: 1024px;
+  --tw-breakpoint-desktop: 1280px;
 }
 
 .dark {

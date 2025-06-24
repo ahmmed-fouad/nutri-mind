@@ -13,7 +13,7 @@ export default function CategoryChart({ categoryChartData, categories }: Categor
         <PieChart className="w-5 h-5" /> Category Breakdown
       </h2>
       <div className="w-full h-80 flex items-center justify-center">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer className="">
           <PieChart>
             <Pie
               data={categoryChartData}
@@ -21,7 +21,7 @@ export default function CategoryChart({ categoryChartData, categories }: Categor
               nameKey="name"
               cx="50%"
               cy="50%"
-              outerRadius={100}
+              outerRadius={55}
               fill="#34d399"
               label
             >

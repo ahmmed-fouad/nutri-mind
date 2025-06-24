@@ -27,12 +27,12 @@ export default function RecipesPage() {
   const [selected, setSelected] = useState<any>(null);
 console.log(data)
   return (
-    <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-10 px-4">
+    <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-6 px-2 sm:px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center text-primary">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-primary">
           Healthy Recipes
         </h1>
-        <p className="text-center text-zinc-500 mb-12 max-w-2xl mx-auto text-lg">
+        <p className="text-center text-zinc-500 mb-12 max-w-2xl mx-auto text-base sm:text-lg">
           Discover delicious, healthy recipes with nutrition breakdowns. Click
           any recipe for details and a nutrition chart!
         </p>
@@ -44,7 +44,7 @@ console.log(data)
             Failed to load recipes.
           </div>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
           {data?.meals?.map((recipe: any) => (
             <div
               key={recipe.idMeal}
@@ -54,12 +54,12 @@ console.log(data)
               <img
                 src={recipe.strMealThumb}
                 alt={recipe.strMeal}
-                className="w-40 h-40 object-cover rounded-xl mb-4 group-hover:shadow-xl"
+                className="w-full max-w-[10rem] h-40 object-cover rounded-xl mb-4 group-hover:shadow-xl"
               />
-              <h2 className="text-xl font-semibold mb-2 text-center text-primary group-hover:underline">
+              <h2 className="text-lg sm:text-xl font-semibold mb-2 text-center text-primary group-hover:underline">
                 {recipe.strMeal}
               </h2>
-              <div className="text-zinc-500 text-sm mb-2 text-center line-clamp-2">
+              <div className="text-zinc-500 text-xs sm:text-sm mb-2 text-center line-clamp-2">
                 {recipe.strCategory} | {recipe.strArea}
               </div>
               <div className="flex gap-2 flex-wrap justify-center mb-2">
@@ -86,11 +86,11 @@ console.log(data)
       {/* Modal for recipe details */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-2 sm:px-4"
           onClick={() => setSelected(null)}
         >
           <div
-            className="bg-white  dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 p-4 max-h-[35rem] max-w-[53rem] w-full relative animate-in fade-in"
+            className="bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-800 p-2 sm:p-4 max-h-[90vh] w-full max-w-2xl md:max-w-4xl relative animate-in fade-in overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -100,49 +100,51 @@ console.log(data)
             >
               ×
             </button>
-            <div className="flex gap-8">
-              <div className="flex flex-col gap-5">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+              <div className="flex flex-col gap-5 items-center md:items-start w-full md:w-auto">
                 <img
                   src={selected.strMealThumb}
                   alt={selected.strMeal}
-                  className="w-[12rem] h-[12rem] object-cover rounded-xl shadow mb-0"
+                  className="w-full max-w-[12rem] h-48 sm:h-[12rem] object-cover rounded-xl shadow mb-0"
                 />
-                <ResponsiveContainer className="w-[12rem] !h-[12rem] ">
-                  <PieChart>
-                    <Pie
-                      data={getNutritionData(selected)}
-                      dataKey="value"
-                      nameKey="name"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={55}
-                      fill="#8884d8"
-                      label
-                    >
-                      {getNutritionData(selected).map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={COLORS[index % COLORS.length]}
-                        />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend />
-                  </PieChart>
-                </ResponsiveContainer>
+                <div className="w-full max-w-[12rem] h-48 sm:h-[12rem]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={getNutritionData(selected)}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={55}
+                        fill="#8884d8"
+                        label
+                      >
+                        {getNutritionData(selected).map((entry, index) => (
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={COLORS[index % COLORS.length]}
+                          />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
 
               <div className="flex-1 flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-primary mb-2 text-center">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary mb-2 text-center md:text-left">
                   {selected.strMeal}
                 </h2>
-                <div className="flex gap-3">
+                <div className="flex flex-col md:flex-row gap-3">
                   <div>
-                    <div className="text-zinc-500 text-sm mb-2">
+                    <div className="text-zinc-500 text-xs sm:text-sm mb-2">
                       {selected.strCategory} | {selected.strArea}
                     </div>
                     {/* ingr */}
-                    <div className="mb-5 mx-2 w-[13rem] max-h-[20rem] overflow-y-auto">
+                    <div className="mb-5 mx-2 w-full md:w-[13rem] max-h-40 sm:max-h-[20rem] overflow-y-auto">
                       <span className="font-semibold">Ingredients:</span>
                       <ul className="list-disc ml-6 text-zinc-700 dark:text-zinc-200">
                         {Array.from({ length: 20 }).map((_, i) => {
@@ -150,11 +152,8 @@ console.log(data)
                           const measure = selected[`strMeasure${i + 1}`];
                           return ingredient && ingredient.trim() ? (
                             <li key={i}>
-                              {ingredient}{" "}
-                              {measure && (
-                                <span className="text-zinc-400">
-                                  ({measure})
-                                </span>
+                              {ingredient} {measure && (
+                                <span className="text-zinc-400">({measure})</span>
                               )}
                             </li>
                           ) : null;
@@ -162,16 +161,16 @@ console.log(data)
                       </ul>
                     </div>
                   </div>
-                  <div>
-                    <div className="mb-2 w-[22rem]">
+                  <div className="w-full md:w-[22rem]">
+                    <div className="mb-2">
                       <span className="font-bold">Instructions:</span>
-                      <p className="text-zinc-600 max-h-60 overflow-y-auto dark:text-zinc-300 whitespace-pre-line mt-1">
+                      <p className="text-zinc-600 max-h-32 sm:max-h-60 overflow-y-auto dark:text-zinc-300 whitespace-pre-line mt-1 text-xs sm:text-base">
                         {selected.strInstructions}
                       </p>
                     </div>
                     <div className="mb-2">
                       <span className="font-bold">Nutrition:</span>
-                      <p className="text-zinc-600 dark:text-zinc-300 whitespace-pre-line mt-1">
+                      <p className="text-zinc-600 dark:text-zinc-300 whitespace-pre-line mt-1 text-xs sm:text-base">
                         {selected.strTags}
                       </p>
                       <div className="w-full"></div>
@@ -183,6 +182,7 @@ console.log(data)
           </div>
         </div>
       )}
+      
     </div>
   );
 }

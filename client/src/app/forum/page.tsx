@@ -27,12 +27,18 @@ export default function ForumPage() {
 
   return (
     <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900/60 px-2">
-      <div className="max-w-7xl w-full bg-[var(--darkcard)] bg-white/70 backdrop-blur-lg border border-white/20 p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
+      <div className="max-w-7xl w-full bg-[var(--darkcard)] bg-white/70 backdrop-blur-lg border border-white/20 p-4 sm:p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
         <HeaderForum
           counterAnim={counterAnim}
         />
-
-        <div className="flex gap-8">
+        {/* Top New Post button for all screens */}
+        <button
+          className="w-full sm:max-w-xs md:max-w-sm mx-auto mb-6 bg-primary text-[var(--darkcard)] rounded-lg py-3 font-bold text-lg shadow-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
+          onClick={() => setShowModal(true)}
+        >
+          <Plus className="w-6 h-6" /> New Post
+        </button>
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
           {/* Sidebar */}
           <SidebarForum
             setSelectedCat={setSelectedCat}
@@ -54,14 +60,6 @@ export default function ForumPage() {
             </div>
           </main>
         </div>
-        {/* Floating New Post Button */}
-        <button
-          className="fixed bottom-10 right-10 z-50 bg-primary text-[var(--darkcard)] rounded-full p-5 shadow-lg hover:bg-primary/90 transition-all flex items-center gap-2"
-          onClick={() => setShowModal(true)}
-        >
-          <Plus className="w-6 h-6" />{" "}
-          <span className="hidden md:inline font-bold">New Post</span>
-        </button>
       </div>
       {/* Post Modal */}
       {showPost !== null && (

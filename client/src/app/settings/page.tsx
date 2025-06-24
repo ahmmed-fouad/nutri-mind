@@ -39,19 +39,19 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-[95vh] bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-blue-950 py-10 px-2 md:px-6">
+    <div className="min-h-[95vh] bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-blue-950 py-8 px-2 sm:px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="mb-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary">
+        <div className="mb-8 sm:mb-10 text-center">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-2 text-primary">
             Settings & Personalization
           </h1>
-          <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-500 max-w-2xl mx-auto">
             Manage your account, preferences, and app experience.
           </p>
         </div>
         {/* Profile & Preferences */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">
           <ProfileCard
             profile={profile}
             setProfile={setProfile}
@@ -73,14 +73,16 @@ export default function SettingsPage() {
           />
         </div>
         {/* Usage Chart */}
-        <UsageChart usageData={usageData} COLORS={COLORS} />
+        <div className="mb-10 md:mb-12">
+          <UsageChart usageData={usageData} COLORS={COLORS} />
+        </div>
         {/* Connected Accounts & Security */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">
           <ConnectedAccountsCard connectedAccounts={connectedAccounts} />
           <SecurityPrivacyCard recentLogins={recentLogins} twoFA={twoFA} setTwoFA={setTwoFA} />
         </div>
         {/* Feedback & Legal */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">
           <FeedbackCard feedback={feedback} setFeedback={setFeedback} />
           <AppInfoCard legalLinks={legalLinks} />
         </div>

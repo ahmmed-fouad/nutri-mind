@@ -27,32 +27,32 @@ export default function TestimonialsPage() {
   const prev = () => setCarousel((carousel - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-indigo-50 to-purple-50 py-10 px-2">
-      <div className="max-w-4xl w-full bg-white/70 shadow-lg backdrop-blur-lg rounded-2xl border border-white/20 p-8 mb-8 animate-fadeIn">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 text-primary">
+    <section className="min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-white via-indigo-50 to-purple-50 py-6 px-2 sm:px-4 md:px-8">
+      <div className="max-w-4xl w-full bg-white/70 shadow-lg backdrop-blur-lg rounded-2xl border border-white/20 p-4 sm:p-6 md:p-8 mb-8 animate-fadeIn">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2 text-primary">
           Testimonials
         </h1>
         <p className="text-center text-zinc-500 mb-6">
           See how NutriMind is transforming lives around the world.
         </p>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <div className="flex flex-col gap-6 items-center justify-center">
-            <h2 className="text-xl font-bold text-primary mb-2">
+            <h2 className="text-lg sm:text-xl font-bold text-primary mb-2">
               User Satisfaction
             </h2>
             <SatisfactionChart satisfactionData={satisfactionData} starColors={starColors} />
             <Counters counters={counters} counterAnim={counterAnim} />
           </div>
           <div className="flex flex-col gap-6 items-center justify-center">
-            <h2 className="text-xl font-bold text-primary mb-2">
+            <h2 className="text-lg sm:text-xl font-bold text-primary mb-2">
               What Our Users Say
             </h2>
             <TestimonialCarousel testimonials={testimonials} carousel={carousel} next={next} prev={prev} />
           </div>
         </div>
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-8">
           <button
-            className="btn bg-indigo-500 text-white hover:bg-indigo-700 px-6 py-3 rounded-xl font-bold text-lg shadow-lg"
+            className="w-full md:w-auto bg-indigo-500 text-white hover:bg-indigo-700 px-6 py-3 rounded-xl font-bold text-lg shadow-lg transition"
             onClick={() => setShowModal(true)}
           >
             Add Your Story

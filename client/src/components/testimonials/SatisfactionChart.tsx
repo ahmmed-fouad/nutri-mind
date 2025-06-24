@@ -8,7 +8,7 @@ type SatisfactionChartProps = {
 
 export default function SatisfactionChart({ satisfactionData, starColors }: SatisfactionChartProps) {
   return (
-    <ResponsiveContainer width="100%" height={180}>
+    <ResponsiveContainer className="!w-[14rem] !h-[15rem]">
       <PieChart>
         <Pie
           data={satisfactionData}

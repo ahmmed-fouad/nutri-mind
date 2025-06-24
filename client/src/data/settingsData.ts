@@ -13,13 +13,31 @@ export const recentLogins = [
   { device: "Mobile App", time: "2024-06-24 21:03" },
 ];
 
-export const profileFields = [
+export type Profile = {
+  name: string;
+  email: string;
+  age: number;
+  gender: string;
+  height: number;
+  weight: number;
+  photo: string;
+};
+
+export type Notifications = { email: boolean; push: boolean; inApp: boolean };
+
+export const profileFields: { label: string; name: keyof Profile; type: string; options?: string[] }[] = [
   { label: "Name", name: "name", type: "text" },
   { label: "Email", name: "email", type: "text" },
   { label: "Age", name: "age", type: "number" },
   { label: "Gender", name: "gender", type: "select", options: ["Female", "Male", "Other"] },
   { label: "Height (cm)", name: "height", type: "number" },
   { label: "Weight (kg)", name: "weight", type: "number" },
+];
+
+export const notificationTypes: { key: keyof Notifications; label: string }[] = [
+  { key: "email", label: "Email" },
+  { key: "push", label: "Push" },
+  { key: "inApp", label: "In-App" },
 ];
 
 export const preferenceOptions = [
@@ -43,12 +61,6 @@ export const preferenceOptions = [
       { value: "fr", label: "French" },
     ]
   },
-];
-
-export const notificationTypes = [
-  { key: "email", label: "Email" },
-  { key: "push", label: "Push" },
-  { key: "inApp", label: "In-App" },
 ];
 
 export const connectedAccounts = [

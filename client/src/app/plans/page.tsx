@@ -3,28 +3,28 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import { faqs, chartData, plans } from "@/data/planesData";
 export default function PlansPage() {
   return (
-    <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-10 px-4">
+    <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-6 px-2 sm:px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center text-primary">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-primary">
           Plans & Pricing
         </h1>
-        <p className="text-center text-zinc-500 mb-12 max-w-2xl mx-auto text-lg">
+        <p className="text-center text-zinc-500 mb-12 max-w-2xl mx-auto text-base sm:text-lg">
           Choose the plan that fits your lifestyle. Upgrade anytime for more
           features and flexibility.
         </p>
         {/* Plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`flex flex-col items-center bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 transition-transform hover:scale-105 ${
+              className={`flex flex-col items-center bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 transition-transform hover:scale-105 ${
                 plan.highlight ? "ring-2 ring-primary scale-105" : ""
               }`}
             >
-              <h2 className="text-2xl font-bold mb-2 text-primary">
+              <h2 className="text-xl sm:text-2xl font-bold mb-2 text-primary">
                 {plan.name}
               </h2>
-              <div className="text-4xl font-extrabold mb-2">
+              <div className="text-3xl sm:text-4xl font-extrabold mb-2">
                 {plan.price === 0 ? "Free" : `$${plan.price}`}
               </div>
               <div className="text-zinc-400 mb-4">
@@ -42,7 +42,7 @@ export default function PlansPage() {
                 ))}
               </ul>
               <button
-                className={`w-full py-2 rounded-lg font-semibold text-lg shadow-md transition ${
+                className={`w-full py-2 rounded-lg font-semibold text-base sm:text-lg shadow-md transition ${
                   plan.highlight
                     ? "bg-primary text-[var(--darkcard)] hover:bg-primary/90"
                     : "bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700"
@@ -54,11 +54,11 @@ export default function PlansPage() {
           ))}
         </div>
         {/* Comparison chart */}
-        <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-16">
-          <h3 className="text-2xl font-bold mb-6 text-center text-primary">
+        <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 mb-12 md:mb-16">
+          <h3 className="text-lg sm:text-2xl font-bold mb-6 text-center text-primary">
             Compare Features
           </h3>
-          <div className="w-full h-96">
+          <div className="w-full h-64 sm:h-96">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
                 <PolarGrid />
@@ -92,8 +92,8 @@ export default function PlansPage() {
           </div>
         </div>
         {/* FAQ */}
-        <div className="max-w-2xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8">
-          <h3 className="text-2xl font-bold mb-6 text-center text-primary">
+        <div className="max-w-2xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8">
+          <h3 className="text-lg sm:text-2xl font-bold mb-6 text-center text-primary">
             Frequently Asked Questions
           </h3>
           <ul className="space-y-6">
@@ -102,7 +102,7 @@ export default function PlansPage() {
                 <div className="font-semibold text-zinc-700 dark:text-zinc-200 mb-1">
                   {faq.q}
                 </div>
-                <div className="text-zinc-500 dark:text-zinc-400">{faq.a}</div>
+                <div className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-base">{faq.a}</div>
               </li>
             ))}
           </ul>

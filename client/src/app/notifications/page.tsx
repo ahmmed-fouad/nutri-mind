@@ -120,10 +120,10 @@ export default function NotificationsPage() {
   }
 
   return (
-    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-300/60 py-10 px-2">
-      <div className="max-w-5xl w-full bg-white/70 backdrop-blur-lg border border-white/20 p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
+    <section className="min-h-[90vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-300/60 py-6 sm:py-10 px-1 sm:px-2">
+      <div className="max-w-5xl w-full bg-white/70 backdrop-blur-lg border border-white/20 p-3 sm:p-8 rounded-3xl shadow-2xl mb-6 sm:mb-8 animate-fade-in">
         <NotificationsHeader chartData={chartData} typeColors={typeColors} />
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
           <NotificationsTabs tab={tab} setTab={setTab} tabOptions={tabOptions} />
           <NotificationsBulkActions bulkActions={bulkActions} />
         </div>
@@ -131,7 +131,11 @@ export default function NotificationsPage() {
           notifications={filtered}
           selected={selected}
           onSelect={toggleSelect}
-          renderNotifAction={renderNotifAction}
+          renderNotifAction={(n) => (
+            <div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-4">
+              {renderNotifAction(n)}
+            </div>
+          )}
           getTypeIcon={getTypeIcon}
           onDelete={handleDeleteNotif}
         />

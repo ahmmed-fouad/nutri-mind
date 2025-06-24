@@ -1,7 +1,7 @@
 import { User, BarChart2, Settings, Bot, ListTodo, UserPlus, ShoppingBasket, Calculator, LayoutDashboard, ShieldUser, UserRound } from "lucide-react";
 
 export const navbarLinks = [
-  { href: "/", label: "Home" },
+
   { href: "/recipes", label: "Recipes" },
   { href: "/food-scanner", label: "Food Scanner" },
   { href: "/plans", label: "Plans" },

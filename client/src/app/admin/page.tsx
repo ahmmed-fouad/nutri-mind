@@ -174,77 +174,107 @@ export default function AdminDashboard() {
         {/* User Management & Content Management */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* User Management */}
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6">
-            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2">
               <Users className="w-5 h-5" /> User Management
             </h3>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-zinc-400">
-                  <th className="text-left py-2">Name</th>
-                  <th className="text-left py-2">Email</th>
-                  <th className="text-left py-2">Signup</th>
-                  <th className="text-left py-2">Status</th>
-                  <th className="text-left py-2">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {demoUsers.map((u, i) => (
-                  <tr
-                    key={i}
-                    className="border-t border-zinc-100 dark:border-zinc-800"
-                  >
-                    <td className="py-2 font-medium">{u.name}</td>
-                    <td className="py-2">{u.email}</td>
-                    <td className="py-2">{u.date}</td>
-                    <td className="py-2">
-                      {u.status === "active" ? (
-                        <span className="text-green-500 font-semibold">
-                          Active
-                        </span>
-                      ) : (
-                        <span className="text-red-500 font-semibold">
-                          Banned
-                        </span>
-                      )}
-                    </td>
-                    <td className="py-2 flex gap-2">
-                      <button className="p-1 rounded hover:bg-accent">
-                        <Edit className="w-4 h-4" />
-                      </button>
-                      {u.status === "active" ? (
-                        <button className="p-1 rounded hover:bg-accent">
-                          <Ban className="w-4 h-4 text-red-500" />
-                        </button>
-                      ) : (
-                        <button className="p-1 rounded hover:bg-accent">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                        </button>
-                      )}
-                      <button className="p-1 rounded hover:bg-accent">
-                        <Trash2 className="w-4 h-4 text-red-500" />
-                      </button>
-                    </td>
+            {/* Table for md+, cards for mobile */}
+            <div className="hidden md:block">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-zinc-400">
+                    <th className="text-left py-2">Name</th>
+                    <th className="text-left py-2">Email</th>
+                    <th className="text-left py-2">Signup</th>
+                    <th className="text-left py-2">Status</th>
+                    <th className="text-left py-2">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {demoUsers.map((u, i) => (
+                    <tr
+                      key={i}
+                      className="border-t border-zinc-100 dark:border-zinc-800"
+                    >
+                      <td className="py-2 font-medium">{u.name}</td>
+                      <td className="py-2">{u.email}</td>
+                      <td className="py-2">{u.date}</td>
+                      <td className="py-2">
+                        {u.status === "active" ? (
+                          <span className="text-green-500 font-semibold">
+                            Active
+                          </span>
+                        ) : (
+                          <span className="text-red-500 font-semibold">
+                            Banned
+                          </span>
+                        )}
+                      </td>
+                      <td className="py-2 flex gap-2">
+                        <button className="p-1 rounded hover:bg-accent">
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        {u.status === "active" ? (
+                          <button className="p-1 rounded hover:bg-accent">
+                            <Ban className="w-4 h-4 text-red-500" />
+                          </button>
+                        ) : (
+                          <button className="p-1 rounded hover:bg-accent">
+                            <CheckCircle className="w-4 h-4 text-green-500" />
+                          </button>
+                        )}
+                        <button className="p-1 rounded hover:bg-accent">
+                          <Trash2 className="w-4 h-4 text-red-500" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="md:hidden flex flex-col gap-3">
+              {demoUsers.map((u, i) => (
+                <div key={i} className="rounded-xl border border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 p-3 flex flex-col gap-2 shadow">
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-base">{u.name}</span>
+                    <span className={`text-xs font-semibold ${u.status === 'active' ? 'text-green-500' : 'text-red-500'}`}>{u.status === 'active' ? 'Active' : 'Banned'}</span>
+                  </div>
+                  <div className="text-xs text-zinc-500 break-all">{u.email}</div>
+                  <div className="text-xs text-zinc-400">Signed up: {u.date}</div>
+                  <div className="flex gap-2 mt-2">
+                    <button className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 hover:bg-accent flex-1 flex items-center justify-center">
+                      <Edit className="w-4 h-4" />
+                    </button>
+                    {u.status === "active" ? (
+                      <button className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 hover:bg-accent flex-1 flex items-center justify-center">
+                        <Ban className="w-4 h-4 text-red-500" />
+                      </button>
+                    ) : (
+                      <button className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 hover:bg-accent flex-1 flex items-center justify-center">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                      </button>
+                    )}
+                    <button className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 hover:bg-accent flex-1 flex items-center justify-center">
+                      <Trash2 className="w-4 h-4 text-red-500" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           {/* Content Management */}
-          <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 mt-6">
             {contentCards.map((c, i) => (
               <div
                 key={i}
-                className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6 flex items-center gap-4"
+                className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4"
               >
-                {c.icon}
-                <div>
-                  <div className="text-lg font-bold text-primary">
-                    {c.label}
-                  </div>
-                  <div className="text-2xl font-bold mt-1">{c.count}</div>
+                <div className="mb-2 sm:mb-0">{c.icon}</div>
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="text-base sm:text-lg font-bold text-primary">{c.label}</div>
+                  <div className="text-xl sm:text-2xl font-bold mt-1">{c.count}</div>
                 </div>
-                <button className="ml-auto px-4 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition">
+                <button className="w-full sm:w-auto mt-2 sm:mt-0 px-3 sm:px-4 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition text-sm sm:text-base">
                   Manage
                 </button>
               </div>
