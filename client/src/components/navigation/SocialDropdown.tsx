@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface SocialDropdownProps {
   socialLinks: { href: string; label: string }[];
@@ -9,6 +10,7 @@ interface SocialDropdownProps {
 }
 
 export default function SocialDropdown({ socialLinks, open, onMouseEnter, onMouseLeave }: SocialDropdownProps) {
+  const { t } = useTranslation("navbar");
   return (
     <li
       className="relative"
@@ -16,7 +18,7 @@ export default function SocialDropdown({ socialLinks, open, onMouseEnter, onMous
       onMouseLeave={onMouseLeave}
     >
       <button className="flex items-center cursor-pointer gap-1 px-2 py-1 rounded hover:bg-accent transition-colors focus:outline-none">
-        Social <ChevronDown className="w-4 h-4" />
+        {t("social_dropdown", "Social")} <ChevronDown className="w-4 h-4" />
       </button>
       {open && (
         <div className="absolute left-1/2 -translate-x-1/2 z-20">
@@ -27,7 +29,7 @@ export default function SocialDropdown({ socialLinks, open, onMouseEnter, onMous
                   href={slink.href}
                   className="block px-4 py-2 hover:bg-accent/30 transition-colors rounded-lg"
                 >
-                  {slink.label}
+                  {t(`links.${slink.label}`, slink.label)}
                 </Link>
               </li>
             ))}

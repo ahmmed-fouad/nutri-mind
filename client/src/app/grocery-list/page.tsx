@@ -1,8 +1,29 @@
 "use client";
 import { useState } from "react";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { Plus, Edit, Trash2, ShoppingBasket, BookOpen, Sparkles, Share2, FileText } from "lucide-react";
-import { categories, demoItems, demoTemplates, smartSuggestions } from "@/data/groceryListData";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import {
+  Plus,
+  Edit,
+  Trash2,
+  ShoppingBasket,
+  BookOpen,
+  Sparkles,
+  Share2,
+  FileText,
+} from "lucide-react";
+import {
+  categories as rawCategories,
+  demoItems,
+  demoTemplates,
+  smartSuggestions as rawSmartSuggestions,
+} from "@/data/groceryListData";
 import GroceryHeader from "@/components/grocery-list/GroceryHeader";
 import AddItemForm from "@/components/grocery-list/AddItemForm";
 import GroceryList from "@/components/grocery-list/GroceryList";
@@ -10,31 +31,53 @@ import CategoryChart from "@/components/grocery-list/CategoryChart";
 import SmartSuggestions from "@/components/grocery-list/SmartSuggestions";
 import NotesSection from "@/components/grocery-list/NotesSection";
 import ShareExportSection from "@/components/grocery-list/ShareExportSection";
+import { useTranslation } from "react-i18next";
 
 export default function GroceryListPage() {
+  const { t } = useTranslation("grocery-list");
+  // Use rawCategories for all logic and state
+  const categories = rawCategories;
+  // Pass demoTemplates as-is (untranslated)
+  const smartSuggestions = rawSmartSuggestions.map((s) => t(`smartSuggestions.${s}`, s));
+
   const [items, setItems] = useState(demoItems);
-  const [input, setInput] = useState({ name: "", qty: "", category: categories[0].name });
+  const [input, setInput] = useState({
+    name: "",
+    qty: "",
+    category: categories[0].name, // always the original key
+  });
   const [notes, setNotes] = useState("");
   const [templateIdx, setTemplateIdx] = useState(0);
 
   const handleAdd = () => {
     if (!input.name) return;
-    setItems(prev => [
+    setItems((prev) => [
       ...prev,
-      { id: Date.now(), name: input.name, qty: input.qty, category: input.category, bought: false },
+      {
+        id: Date.now(),
+        name: input.name,
+        qty: input.qty,
+        category: input.category,
+        bought: false,
+      },
     ]);
     setInput({ name: "", qty: "", category: categories[0].name });
   };
   const handleCheck = (id: number) => {
-    setItems(prev => prev.map(item => item.id === id ? { ...item, bought: !item.bought } : item));
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, bought: !item.bought } : item
+      )
+    );
   };
   const handleDelete = (id: number) => {
-    setItems(prev => prev.filter(item => item.id !== id));
+    setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const categoryChartData = categories.map(cat => ({
+  // Use rawCategories for chart data and color mapping
+  const categoryChartData = rawCategories.map((cat) => ({
     name: cat.name,
-    value: items.filter(item => item.category === cat.name).length,
+    value: items.filter((item) => item.category === cat.name).length,
   }));
 
   return (
@@ -48,18 +91,18 @@ export default function GroceryListPage() {
           templateIdx={templateIdx}
           setTemplateIdx={setTemplateIdx}
           demoTemplates={demoTemplates}
-          categories={categories}
+          categories={categories} // pass raw
         />
         <GroceryList
           items={items}
-          categories={categories}
+          categories={categories} // pass raw
           handleCheck={handleCheck}
           handleDelete={handleDelete}
         />
         <div className="my-6 sm:my-8">
           <CategoryChart
             categoryChartData={categoryChartData}
-            categories={categories}
+            categories={categories} // pass raw
           />
         </div>
         <div className="mb-6 sm:mb-8">

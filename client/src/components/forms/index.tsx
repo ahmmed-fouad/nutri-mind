@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setUserForm } from "@/stores/userFormApi";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
   name: "",
@@ -36,6 +37,7 @@ const sportOptions = ["Running", "Swimming", "Cycling", "Other"];
 const pregnancyMonths = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 export function UserForm({ userId, initialValues }: { userId: string; initialValues?: any }) {
+  const { t } = useTranslation("form");
   const [form, setForm] = useState(initialValues || initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -92,11 +94,10 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
             className="mb-8 drop-shadow-xl animate-fade-in"
           />
           <h2 className="text-3xl font-bold text-primary mb-2 text-center animate-fade-in-up">
-            Welcome to NutriMind
+            {t("welcome_to_nutrimind")}
           </h2>
           <p className="text-zinc-500 dark:text-zinc-300 text-lg text-center max-w-xs animate-fade-in-up">
-            Personalize your nutrition journey. Fill out the form to get
-            tailored plans and insights!
+            {t("personalize_your_nutrition_journey")}
           </p>
         </div>
         {/* Form */}
@@ -106,19 +107,19 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
         >
           {/* Name */}
           <div className="col-span-1">
-            <label className={labelClass}>Name *</label>
+            <label className={labelClass}>{t("name")} *</label>
             <input
               name="name"
               value={form.name}
               onChange={handleChange}
               required
               className={inputClass}
-              placeholder="Enter your name"
+              placeholder={t("name_placeholder")}
             />
           </div>
           {/* Age */}
           <div className="col-span-1">
-            <label className={labelClass}>Age *</label>
+            <label className={labelClass}>{t("age")} *</label>
             <input
               name="age"
               type="number"
@@ -126,12 +127,12 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
               onChange={handleChange}
               required
               className={inputClass}
-              placeholder="Your age"
+              placeholder={t("age_placeholder")}
             />
           </div>
           {/* Gender */}
           <div className="col-span-1">
-            <label className={labelClass}>Gender *</label>
+            <label className={labelClass}>{t("gender")} *</label>
             <select
               name="gender"
               value={form.gender}
@@ -139,9 +140,9 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
               required
               className={inputClass}
             >
-              <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="">{t("select")}</option>
+              <option value="male">{t("male")}</option>
+              <option value="female">{t("female")}</option>
             </select>
           </div>
           {/* Pregnant */}
@@ -155,14 +156,14 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
                   onChange={handleChange}
                   className="accent-primary scale-110"
                 />
-                Pregnant?
+                {t("pregnant")}
               </label>
             </div>
           )}
           {/* Pregnancy Month */}
           {form.gender === "female" && form.pregnant && (
             <div className="col-span-1">
-              <label className={labelClass}>Pregnancy Month *</label>
+              <label className={labelClass}>{t("pregnancy_month")} *</label>
               <select
                 name="pregnancyMonth"
                 value={form.pregnancyMonth}
@@ -170,7 +171,7 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
                 required
                 className={inputClass}
               >
-                <option value="">Select</option>
+                <option value="">{t("select")}</option>
                 {pregnancyMonths.map((m) => (
                   <option key={m} value={m}>
                     {m}
@@ -181,7 +182,7 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           )}
           {/* Length */}
           <div className="col-span-1">
-            <label className={labelClass}>Length (cm) *</label>
+            <label className={labelClass}>{t("length")} (cm) *</label>
             <input
               name="length"
               type="number"
@@ -189,12 +190,12 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
               onChange={handleChange}
               required
               className={inputClass}
-              placeholder="Your height in cm"
+              placeholder={t("length_placeholder")}
             />
           </div>
           {/* Weight */}
           <div className="col-span-1">
-            <label className={labelClass}>Weight (kg) *</label>
+            <label className={labelClass}>{t("weight")} (kg) *</label>
             <input
               name="weight"
               type="number"
@@ -202,12 +203,12 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
               onChange={handleChange}
               required
               className={inputClass}
-              placeholder="Your weight in kg"
+              placeholder={t("weight_placeholder")}
             />
           </div>
           {/* Water per day */}
           <div className="col-span-1">
-            <label className={labelClass}>Water drunk/day (L) *</label>
+            <label className={labelClass}>{t("water_drunk_day")} (L) *</label>
             <input
               name="waterPerDay"
               type="number"
@@ -215,41 +216,45 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
               onChange={handleChange}
               required
               className={inputClass}
-              placeholder="Liters per day"
+              placeholder={t("water_drunk_day_placeholder")}
             />
           </div>
           {/* Meals per day */}
           <div className="col-span-1">
-            <label className={labelClass}>Number of meals/day (optional)</label>
+            <label className={labelClass}>
+              {t("number_of_meals_day")} {t("optional")}
+            </label>
             <input
               name="mealsPerDay"
               type="number"
               value={form.mealsPerDay}
               onChange={handleChange}
               className={inputClass}
-              placeholder="Meals per day"
+              placeholder={t("number_of_meals_day_placeholder")}
             />
           </div>
           {/* Favorite meal */}
           <div className="col-span-1">
-            <label className={labelClass}>Favorite meal (optional)</label>
+            <label className={labelClass}>
+              {t("favorite_meal")} {t("optional")}
+            </label>
             <select
               name="favoriteMeal"
               value={form.favoriteMeal}
               onChange={handleChange}
               className={inputClass}
             >
-              <option value="">Select</option>
+              <option value="">{t("select")}</option>
               {mealOptions.map((m) => (
                 <option key={m} value={m}>
-                  {m}
+                  {t("mealOptions." + m)}
                 </option>
               ))}
             </select>
             {form.favoriteMeal === "Other" && (
               <input
                 name="favoriteMealOther"
-                placeholder="Other"
+                placeholder={t("other_placeholder")}
                 value={form.favoriteMealOther}
                 onChange={handleChange}
                 className={inputClass + " mt-2"}
@@ -258,24 +263,24 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           </div>
           {/* Common meals */}
           <div className="col-span-1">
-            <label className={labelClass}>Common meals (optional)</label>
+            <label className={labelClass}>{t("common_meals")} {t("optional")}</label>
             <select
               name="commonMeals"
               value={form.commonMeals}
               onChange={handleChange}
               className={inputClass}
             >
-              <option value="">Select</option>
+              <option value="">{t("select")}</option>
               {commonMealOptions.map((m) => (
                 <option key={m} value={m}>
-                  {m}
+                  {t("commonMealOptions." + m)}
                 </option>
               ))}
             </select>
             {form.commonMeals === "Other" && (
               <input
                 name="commonMealsOther"
-                placeholder="Other"
+                placeholder={t("other_placeholder")}
                 value={form.commonMealsOther}
                 onChange={handleChange}
                 className={inputClass + " mt-2"}
@@ -284,24 +289,26 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           </div>
           {/* Favorite fruit */}
           <div className="col-span-1">
-            <label className={labelClass}>Favorite fruit (optional)</label>
+            <label className={labelClass}>
+              {t("favorite_fruit")} {t("optional")}
+            </label>
             <select
               name="favoriteFruit"
               value={form.favoriteFruit}
               onChange={handleChange}
               className={inputClass}
             >
-              <option value="">Select</option>
+              <option value="">{t("select")}</option>
               {fruitOptions.map((m) => (
                 <option key={m} value={m}>
-                  {m}
+                  {t("fruitOptions." + m)}
                 </option>
               ))}
             </select>
             {form.favoriteFruit === "Other" && (
               <input
                 name="favoriteFruitOther"
-                placeholder="Other"
+                placeholder={t("other_placeholder")}
                 value={form.favoriteFruitOther}
                 onChange={handleChange}
                 className={inputClass + " mt-2"}
@@ -310,24 +317,26 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           </div>
           {/* Favorite vegetables */}
           <div className="col-span-1">
-            <label className={labelClass}>Favorite vegetables (optional)</label>
+            <label className={labelClass}>
+              {t("favorite_vegetables")} {t("optional")}
+            </label>
             <select
               name="favoriteVegetables"
               value={form.favoriteVegetables}
               onChange={handleChange}
               className={inputClass}
             >
-              <option value="">Select</option>
+              <option value="">{t("select")}</option>
               {vegetableOptions.map((m) => (
                 <option key={m} value={m}>
-                  {m}
+                  {t("vegetableOptions." + m)}
                 </option>
               ))}
             </select>
             {form.favoriteVegetables === "Other" && (
               <input
                 name="favoriteVegetablesOther"
-                placeholder="Other"
+                placeholder={t("other_placeholder")}
                 value={form.favoriteVegetablesOther}
                 onChange={handleChange}
                 className={inputClass + " mt-2"}
@@ -336,24 +345,26 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           </div>
           {/* Favorite sport */}
           <div className="col-span-1">
-            <label className={labelClass}>Favorite sport (optional)</label>
+            <label className={labelClass}>
+              {t("favorite_sport")} {t("optional")}
+            </label>
             <select
               name="favoriteSport"
               value={form.favoriteSport}
               onChange={handleChange}
               className={inputClass}
             >
-              <option value="">Select</option>
+              <option value="">{t("select")}</option>
               {sportOptions.map((m) => (
                 <option key={m} value={m}>
-                  {m}
+                  {t("sportOptions." + m)}
                 </option>
               ))}
             </select>
             {form.favoriteSport === "Other" && (
               <input
                 name="favoriteSportOther"
-                placeholder="Other"
+                placeholder={t("other_placeholder")}
                 value={form.favoriteSportOther}
                 onChange={handleChange}
                 className={inputClass + " mt-2"}
@@ -362,14 +373,16 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
           </div>
           {/* Exercise hours */}
           <div className="col-span-1">
-            <label className={labelClass}>Hrs of exercise/day (optional)</label>
+            <label className={labelClass}>
+              {t("hrs_of_exercise_day")} {t("optional")}
+            </label>
             <input
               name="exerciseHoursPerDay"
               type="number"
               value={form.exerciseHoursPerDay}
               onChange={handleChange}
               className={inputClass}
-              placeholder="Hours per day"
+              placeholder={t("hrs_of_exercise_day_placeholder")}
             />
           </div>
           {/* Submit button */}
@@ -379,11 +392,11 @@ export function UserForm({ userId, initialValues }: { userId: string; initialVal
               className="btn btn-primary w-full md:w-1/2 py-3 rounded-xl font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 animate-fade-in"
               disabled={isLoading}
             >
-              {isLoading ? "Saving..." : "Save"}
+              {isLoading ? t("saving") : t("save")}
             </button>
             {isSuccess && (
               <div className="text-green-600 mt-2 animate-fade-in">
-                Saved! Redirecting...
+                {t("saved")}
               </div>
             )}
           </div>

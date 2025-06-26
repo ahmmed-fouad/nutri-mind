@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type TabOption = { key: string; label: string };
 
@@ -9,6 +10,7 @@ type NotificationsTabsProps = {
 };
 
 export default function NotificationsTabs({ tab, setTab, tabOptions }: NotificationsTabsProps) {
+  const { t } = useTranslation("notifications");
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-2 w-full sm:w-auto">
       {tabOptions.map(opt => (
@@ -21,7 +23,7 @@ export default function NotificationsTabs({ tab, setTab, tabOptions }: Notificat
           }`}
           onClick={() => setTab(opt.key)}
         >
-          {opt.label}
+          {t(`tabs.${opt.key}`, opt.label)}
         </button>
       ))}
     </div>

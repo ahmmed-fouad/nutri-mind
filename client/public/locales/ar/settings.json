@@ -1,0 +1,64 @@
+{
+  "title": "الإعدادات والتخصيص",
+  "subtitle": "إدارة حسابك وتفضيلاتك وتجربة التطبيق.",
+  "profile": "الملف الشخصي",
+  "change_photo": "تغيير الصورة",
+  "change_password": "تغيير كلمة المرور",
+  "new_password": "كلمة مرور جديدة",
+  "save_changes": "حفظ التغييرات",
+  "preferences": "التفضيلات",
+  "theme": "المظهر",
+  "language": "اللغة",
+  "notifications": "الإشعارات:",
+  "privacy": "الخصوصية:",
+  "export_data": "تصدير البيانات",
+  "delete_account": "حذف الحساب",
+  "usage_chart": "تفصيل استخدام التطبيق",
+  "connected_accounts": "الحسابات المرتبطة",
+  "connect_new_account": "ربط حساب جديد",
+  "security_privacy": "الأمان والخصوصية",
+  "recent_logins": "تسجيلات الدخول الأخيرة",
+  "two_factor_auth": "المصادقة الثنائية:",
+  "enabled": "مفعل",
+  "disabled": "معطل",
+  "feedback": "ملاحظات",
+  "feedback_placeholder": "شاركنا ملاحظاتك أو اقتراحاتك...",
+  "send_feedback": "إرسال الملاحظات",
+  "app_info": "معلومات التطبيق",
+  "version": "الإصدار 1.0.0",
+  "legal": "قانوني",
+  "save": "حفظ",
+  "saved": "تم الحفظ!",
+  "profile_fields": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "age": "العمر",
+    "gender": "الجنس",
+    "height": "الطول (سم)",
+    "weight": "الوزن (كجم)"
+  },
+  "preference_options": {
+    "theme": "المظهر",
+    "language": "اللغة",
+    "auto": "تلقائي",
+    "light": "فاتح",
+    "dark": "داكن",
+    "en": "الإنجليزية",
+    "es": "الإسبانية",
+    "fr": "الفرنسية"
+  },
+  "notification_types": {
+    "email": "البريد الإلكتروني",
+    "push": "دفع",
+    "inApp": "داخل التطبيق"
+  },
+  "legal_links": {
+    "privacy_policy": "سياسة الخصوصية",
+    "terms_of_service": "شروط الخدمة"
+  },
+  "gender_options": {
+    "Female": "أنثى",
+    "Male": "ذكر",
+    "Other": "آخر"
+  }
+} 

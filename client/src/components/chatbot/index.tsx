@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import { streamChat } from "../../services/streamApi";
 import { ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 const ChatBot: React.FC = () => {
+  const { t } = useTranslation("chatbot");
   const [input, setInput] = useState<string>("");
   const [response, setResponse] = useState<string>("");
   const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -43,10 +45,10 @@ const ChatBot: React.FC = () => {
     >
       <div className="mt-4">
         <p className="text-xl sm:text-2xl md:text-3xl p-2 font-bold text-green-700 text-center">
-          welcome, user ... chat with AI
+          {t("welcome")}
         </p>
         <div className="min-h-[12rem] h-64 sm:h-80 border-2 border-green-700 rounded-xl text-left overflow-y-auto w-full z-[50] p-3 sm:p-5 bg-green-200 text-base sm:text-lg md:text-xl mb-4">
-          <strong>AI:</strong> {isFetching ? "  thinking..." : ""}{response}
+          <strong>{t("ai_label")}</strong> {isFetching ? "  " + t("thinking") : ""}{response}
         </div>
       </div>
       <div className="flex flex-row items-end gap-2 w-full mt-2">
@@ -54,13 +56,14 @@ const ChatBot: React.FC = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           rows={3}
-          placeholder="Talk to GPT..."
+          placeholder={t("input_placeholder")}
           className="border-2 border-green-700 resize-none rounded-xl w-full p-3 sm:p-5 bg-green-200 text-base sm:text-lg md:text-xl outline-none"
         />
         <button
           onClick={handleSend}
           disabled={isFetching}
           className="bg-green-600 p-2 sm:p-3 rounded-full text-gray-200 hover:bg-green-700 cursor-pointer shrink-0 mb-1"
+          aria-label={t("send")}
         >
           <ArrowUp />
         </button>

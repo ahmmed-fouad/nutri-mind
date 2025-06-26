@@ -1,5 +1,6 @@
 import React from 'react'
 import { categories } from '@/data/forumData';
+import { useTranslation } from "react-i18next";
 
 type SidebarForumProps = {
   setSelectedCat: (cat: string) => void;
@@ -7,6 +8,7 @@ type SidebarForumProps = {
 };
 
 const SidebarForum: React.FC<SidebarForumProps> = ({ setSelectedCat, selectedCat }) => {
+  const { t } = useTranslation("forum");
   return (
     <>
       {/* Mobile: dropdown select */}
@@ -18,7 +20,7 @@ const SidebarForum: React.FC<SidebarForumProps> = ({ setSelectedCat, selectedCat
         >
           {categories.map((cat) => (
             <option key={cat.name} value={cat.name}>
-              {cat.name}
+              {t(`categories.${cat.name}`, cat.name)}
             </option>
           ))}
         </select>
@@ -36,7 +38,7 @@ const SidebarForum: React.FC<SidebarForumProps> = ({ setSelectedCat, selectedCat
                   : "bg-white/70 text-foreground hover:bg-primary/10"
               }`}
             >
-              <cat.icon className="w-5 h-5" /> {cat.name}
+              <cat.icon className="w-5 h-5" /> {t(`categories.${cat.name}`, cat.name)}
             </button>
           ))}
         </div>

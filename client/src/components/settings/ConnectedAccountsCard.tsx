@@ -1,14 +1,16 @@
 import { Link, CheckCircle, XCircle } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type ConnectedAccount = { icon: string; name: string; status: string };
 type ConnectedAccountsCardProps = { connectedAccounts: ConnectedAccount[] };
 
 export default function ConnectedAccountsCard({ connectedAccounts }: ConnectedAccountsCardProps) {
+  const { t } = useTranslation("settings");
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 flex flex-col gap-6">
       <h2 className="text-lg sm:text-xl font-bold text-primary mb-2 flex items-center gap-2">
-        <Link className="w-5 h-5" /> Connected Accounts
+        <Link className="w-5 h-5" /> {t("connected_accounts")}
       </h2>
       <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full">
         {connectedAccounts.map((acc) => (
@@ -24,7 +26,7 @@ export default function ConnectedAccountsCard({ connectedAccounts }: ConnectedAc
         ))}
       </div>
       <button className="w-full py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition mt-2">
-        Connect New Account
+        {t("connect_new_account")}
       </button>
     </div>
   );

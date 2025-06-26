@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type ModalField = { type: string; placeholder: string; key: string };
 type ModalFormProps = {
@@ -7,6 +8,7 @@ type ModalFormProps = {
 };
 
 export default function ModalForm({ modalFields, setShowModal }: ModalFormProps) {
+  const { t } = useTranslation("testimonials");
   return (
     <form className="flex flex-col gap-4">
       {modalFields.map((field) =>
@@ -30,7 +32,7 @@ export default function ModalForm({ modalFields, setShowModal }: ModalFormProps)
         className="btn bg-indigo-500 text-white hover:bg-indigo-700 py-2 rounded-lg font-semibold shadow"
         onClick={() => setShowModal(false)}
       >
-        Submit
+        {t("modal.submit")}
       </button>
     </form>
   );

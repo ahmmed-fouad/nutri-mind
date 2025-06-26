@@ -1,0 +1,41 @@
+{
+  "notifications": "الإشعارات",
+  "tabs": {
+    "all": "الكل",
+    "current": "الحالية",
+    "old": "القديمة"
+  },
+  "bulk_actions": {
+    "mark_all_read": "تحديد الكل كمقروء",
+    "delete_all": "حذف الكل",
+    "mark_selected_read": "تحديد المحدد كمقروء",
+    "delete_selected": "حذف المحدد"
+  },
+  "types": {
+    "Achievements": "الإنجازات",
+    "Community": "المجتمع",
+    "Features": "الميزات",
+    "Reminders": "التذكيرات",
+    "Streaks": "سلاسل الإنجاز"
+  },
+  "sample": {
+    "Goal Reached!": "تم تحقيق الهدف!",
+    "You hit your water goal today.": "لقد حققت هدفك في شرب الماء اليوم.",
+    "Forum Reply": "رد في المنتدى",
+    "Alice replied to your post.": "أليس ردت على منشورك.",
+    "New Feature": "ميزة جديدة",
+    "Food Scanner is now live!": "ميزة ماسح الطعام أصبحت متاحة!",
+    "Streak!": "سلسلة!",
+    "7 days logged in a row.": "7 أيام متتالية من تسجيل الدخول.",
+    "Hydration Reminder": "تذكير بالترطيب",
+    "Time to drink water.": "حان وقت شرب الماء.",
+    "Mention": "إشارة",
+    "Bob mentioned you in a comment.": "بوب أشار إليك في تعليق.",
+    "Protein Goal!": "هدف البروتين!",
+    "You reached your protein target.": "لقد وصلت لهدفك في البروتين."
+  },
+  "actions": {
+    "mark_read": "تحديد كمقروء",
+    "mark_unread": "تحديد كغير مقروء"
+  }
+} 

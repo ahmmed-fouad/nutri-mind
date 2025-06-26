@@ -1,0 +1,34 @@
+{
+  "page_title": "FAQ & Support",
+  "page_subtitle": "Find answers to common questions or contact our support team for help.",
+  "frequently_asked": "Frequently Asked Questions",
+  "most_asked_topics": "Most Asked Topics",
+  "contact_support": "Contact Support",
+  "contact_subtitle": "Didn't find your answer? Fill out the form below and our team will get back to you soon.",
+  "send": "Send",
+  "sent": "Your message has been sent!",
+  "support_hours": "Support hours: Mon–Fri, 9am–5pm | Email:",
+  "form": {
+    "name": "Your Name",
+    "email": "Your Email",
+    "subject": "Subject",
+    "message": "Message"
+  },
+  "faqs": [
+    { "q": "How do I reset my password?", "a": "Go to your profile page, click 'Change password', and follow the instructions." },
+    { "q": "How do I upgrade my plan?", "a": "Visit the Plans & Pricing page and click 'Upgrade' on your desired plan." },
+    { "q": "How do I use the AI Chatbot?", "a": "Go to the AI Chatbot page from the sidebar and start chatting!" },
+    { "q": "Can I share my progress with friends?", "a": "Yes! Use the social sharing options on your dashboard." },
+    { "q": "How do I contact support?", "a": "Fill out the support form below or email us at support@nutrimind.com." },
+    { "q": "Is my data private?", "a": "Yes, your data is securely stored and never shared without your consent." }
+  ],
+  "topics": {
+    "Account": "Account",
+    "Plans": "Plans",
+    "Features": "Features",
+    "Support": "Support"
+  },
+  "form_placeholders": {
+    "How can we help you?": "How can we help you?"
+  }
+} 

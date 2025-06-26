@@ -1,0 +1,20 @@
+{
+  "page_title": "ماسح الطعام",
+  "page_subtitle": "امسح طعامك أو الباركود للحصول فوراً على معلومات التغذية والمكونات.",
+  "upload_label": "رفع صورة الطعام",
+  "barcode_label": "أو أدخل الباركود",
+  "barcode_placeholder": "مثال: 1234567890123",
+  "scan": "مسح",
+  "add_to_diary": "أضف إلى اليوميات",
+  "serving": "الحصة: {{value}}",
+  "calories": "السعرات الحرارية:",
+  "protein": "بروتين:",
+  "carbs": "كربوهيدرات:",
+  "fat": "دهون:",
+  "macronutrient_breakdown": "تفصيل المغذيات الكبرى",
+  "micronutrients": "المغذيات الدقيقة",
+  "ingredients": "المكونات",
+  "allergen_warning": "تحذير من مسببات الحساسية:",
+  "no_allergens": "لا توجد مسببات حساسية.",
+  "ingredient_chip": "{{ingredient}}"
+} 

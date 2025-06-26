@@ -1,5 +1,6 @@
 "use client";
 import { metricOptions } from "@/data/homepageData";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   metric: string;
@@ -7,6 +8,7 @@ type Props = {
 };
 
 export default function MetricSelector({ metric, setMetric }: Props) {
+  const { t } = useTranslation("page");
   return (
     <div className="flex gap-2 flex-wrap">
       {metricOptions.map((opt) => (
@@ -19,7 +21,7 @@ export default function MetricSelector({ metric, setMetric }: Props) {
               : "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300"
           }`}
         >
-          {opt.label}
+          {t(`metrics.${opt.key}`, opt.label)}
         </button>
       ))}
     </div>

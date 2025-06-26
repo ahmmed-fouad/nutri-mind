@@ -5,6 +5,7 @@ import { Twitter, Facebook, Instagram, Linkedin, Github } from "lucide-react";
 import { navbarLinks } from "./navigationData";
 import { allPages } from "./navigationData";
 import Logo from "./Logo";
+import { useTranslation } from "react-i18next";
 
 const moreLinks = allPages.filter(p => !navbarLinks.some(n => n.href === p.href));
 const socialLinks = [
@@ -16,6 +17,7 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation("footer");
   return (
     <footer className="w-full bg-background border-t border-border px-4 sm:px-8 py-8 flex flex-col gap-8 items-center glassmorphism-footer">
       {/* Footer search input */}
@@ -31,12 +33,12 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-3 flex-1">
             <Logo size={60} />
             <div className="text-zinc-500 text-sm text-center md:text-left">
-              Personalized nutrition, AI-powered wellness.
+              {t("branding")}
             </div>
           </div>
           {/* Social Icons */}
           <div className="flex flex-col items-center md:items-end gap-2 flex-1">
-            <p className="font-semibold text-primary mb-2">Follow Us</p>
+            <p className="font-semibold text-primary mb-2">{t("follow_us")}</p>
             <div className="flex flex-row gap-4">
               {socialLinks.map((s) => (
                 <Link
@@ -44,7 +46,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
+                  aria-label={t(`social.${s.label}`, s.label)}
                   className="text-zinc-500 hover:text-primary transition-colors hover:scale-110 duration-150"
                 >
                   {s.icon}
@@ -55,7 +57,7 @@ export default function Footer() {
         </div>
         {/* All Page Links */}
         <div className="w-full flex flex-col gap-2 items-center">
-          <h1 className="font-semibold text-primary mb-2">Pages</h1>
+          <h1 className="font-semibold text-primary mb-2">{t("pages")}</h1>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-2 w-full max-w-md">
             {navbarLinks.concat(moreLinks).map((link, i) => (
               <Link
@@ -63,7 +65,7 @@ export default function Footer() {
                 href={link.href}
                 className="text-zinc-600 hover:text-primary transition-colors text-base font-medium text-center"
               >
-                {link.label}
+                {t(`links.${link.label}`, link.label)}
               </Link>
             ))}
           </div>
@@ -72,13 +74,13 @@ export default function Footer() {
 
       {/* Legal & Info */}
       <div className="w-full max-w-7xl flex flex-col md:flex-row justify-center items-center gap-2 border-t border-zinc-200 pt-4 text-zinc-400">
-        <div>© {new Date().getFullYear()} NutriMind. All rights reserved.</div>
+        <div>© {new Date().getFullYear()} NutriMind. {t("all_rights")}</div>
         <div className="flex gap-2">
           <Link href="/privacy" className="hover:underline">
-            Privacy Policy
+            {t("privacy_policy")}
           </Link>
           <Link href="/terms" className="hover:underline">
-            Terms of Service
+            {t("terms_of_service")}
           </Link>
         </div>
       </div>

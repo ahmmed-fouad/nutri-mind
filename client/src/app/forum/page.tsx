@@ -7,9 +7,11 @@ import PostCardForum from "@/components/forum/postcard";
 import PostModalForum from "@/components/forum/postmodal";
 import NewPostForum from "@/components/forum/newpost";
 import { counters, posts } from "@/data/forumData";
+import { useTranslation } from "react-i18next";
 
 
 export default function ForumPage() {
+  const { t } = useTranslation("forum");
   const [selectedCat, setSelectedCat] = useState("All");
   const [showModal, setShowModal] = useState(false);
   const [showPost, setShowPost] = useState<null | number>(null);
@@ -36,7 +38,7 @@ export default function ForumPage() {
           className="w-full sm:max-w-xs md:max-w-sm mx-auto mb-6 bg-primary text-[var(--darkcard)] rounded-lg py-3 font-bold text-lg shadow-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
           onClick={() => setShowModal(true)}
         >
-          <Plus className="w-6 h-6" /> New Post
+          <Plus className="w-6 h-6" /> {t("new_post")}
         </button>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8">
           {/* Sidebar */}
@@ -54,7 +56,7 @@ export default function ForumPage() {
               {/* Pagination (UI only) */}
               <div className="flex justify-center mt-6">
                 <button className="px-6 py-2 rounded-xl font-bold text-lg shadow-lg bg-yellow-400 text-slate-800 hover:bg-yellow-300 transition-colors">
-                  Load More
+                  {t("load_more")}
                 </button>
               </div>
             </div>

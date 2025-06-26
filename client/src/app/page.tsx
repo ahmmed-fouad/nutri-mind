@@ -5,7 +5,7 @@ import MetricSelector from "@/components/home/MetricSelector";
 import FeatureCards from "@/components/home/FeatureCards";
 import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
-import { healthData, motivationalQuotes } from "@/data/homepageData";
+import { healthData } from "@/data/homepageData";
 import {
   AreaChart,
   Area,
@@ -16,9 +16,11 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import { useTranslation } from "react-i18next";
 
 
 export default function HomePage() {
+  const { t } = useTranslation("page");
   const [metric, setMetric] = useState("weight");
   const [quoteIdx, setQuoteIdx] = useState(0);
   const [newsletter, setNewsletter] = useState("");
@@ -33,7 +35,7 @@ export default function HomePage() {
         <div className="mb-16">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
             <h2 className="text-2xl font-bold text-primary mb-6">
-              Your Health at a Glance
+              {t("health_glance")}
             </h2>
             <MetricSelector metric={metric} setMetric={setMetric} />
           </div>

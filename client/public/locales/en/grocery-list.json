@@ -1,0 +1,71 @@
+{
+  "header": {
+    "title": "Grocery List",
+    "subtitle": "Plan your healthy shopping and never miss an ingredient."
+  },
+  "no_items": "No items",
+  "category_chart": {
+    "title": "Category Breakdown"
+  },
+  "smart_suggestions": {
+    "title": "Smart Suggestions",
+    "Bananas": "Bananas",
+    "Chicken Breast": "Chicken Breast",
+    "Oats": "Oats",
+    "Carrots": "Carrots"
+  },
+  "notes": {
+    "title": "Notes",
+    "placeholder": "Add notes for this week or special instructions...",
+    "save_button": "Save Note"
+  },
+  "share_export": {
+    "title": "Share / Export",
+    "button": "Export List"
+  },
+  "add_item": {
+    "name_placeholder": "Item name",
+    "qty_placeholder": "Qty",
+    "add_button": "Add",
+    "templates_label": "Templates:",
+    "load_button": "Load"
+  },
+  "categories": {
+    "Produce": "Produce",
+    "Dairy": "Dairy",
+    "Bakery": "Bakery",
+    "Meat": "Meat",
+    "Pantry": "Pantry",
+    "Frozen": "Frozen",
+    "Snacks": "Snacks",
+    "Beverages": "Beverages",
+    "Other": "Other",
+    "Protein": "Protein",
+    "Grains": "Grains"
+  },
+  "templates": {
+    "Weekly Essentials": "Weekly Essentials",
+    "Breakfast": "Breakfast",
+    "Vegan": "Vegan",
+    "Weekly Basics": "Weekly Basics",
+    "Meal Prep Week": "Meal Prep Week"
+  },
+  "template_items": {
+    "Milk": "Milk",
+    "Eggs": "Eggs",
+    "Bread": "Bread",
+    "Apples": "Apples",
+    "Bananas": "Bananas",
+    "Oats": "Oats",
+    "Almond Milk": "Almond Milk",
+    "Tofu": "Tofu",
+    "Spinach": "Spinach",
+    "Brown Rice": "Brown Rice",
+    "Chicken Breast": "Chicken Breast",
+    "Quinoa": "Quinoa",
+    "Broccoli": "Broccoli",
+    "Avocado": "Avocado",
+    "Greek Yogurt": "Greek Yogurt",
+    "Almonds": "Almonds"
+  }
+}

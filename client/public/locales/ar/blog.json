@@ -1,0 +1,28 @@
+{
+  "page_title": "مدونة التغذية",
+  "page_subtitle": "استكشف أحدث المقالات حول التغذية والأكل الصحي والعافية. اضغط على أي منشور لقراءة المزيد ومعرفة اتجاهات التغذية!",
+  "loading": "جاري تحميل المقالات...",
+  "error": "فشل في تحميل المقالات.",
+  "by": "بواسطة",
+  "unknown": "غير معروف",
+  "read_more": "اقرأ المزيد →",
+  "popular_topics": "مواضيع التغذية الشائعة",
+  "topics": {
+    "Protein": "بروتين",
+    "Carbs": "كربوهيدرات",
+    "Fat": "دهون",
+    "Vitamins": "فيتامينات",
+    "Hydration": "ترطيب"
+  },
+  "posts": {
+    "How to Eat Healthy": "كيف تأكل بشكل صحي",
+    "Simple tips for a balanced diet.": "نصائح بسيطة لنظام غذائي متوازن.",
+    "The Power of Hydration": "قوة الترطيب",
+    "Why drinking water matters for your health.": "لماذا شرب الماء مهم لصحتك."
+  },
+  "modal": {
+    "read_full": "اقرأ المقال كاملًا على Dev.to",
+    "nutrition_chart": "مخطط مواضيع التغذية",
+    "close": "إغلاق"
+  }
+} 

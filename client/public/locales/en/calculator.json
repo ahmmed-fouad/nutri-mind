@@ -1,0 +1,70 @@
+{
+  "title": "Advanced Diet Calculator",
+  "subtitle": "Personalize your nutrition plan with science-backed calculations and instant visual feedback.",
+  "age": "Age",
+  "gender": "Gender",
+  "female": "Female",
+  "male": "Male",
+  "height": "Height (cm)",
+  "weight": "Weight (kg)",
+  "activity_level": "Activity Level",
+  "goal": "Goal",
+  "dietary_preference": "Dietary Preference",
+  "body_fat": "Body Fat % (optional)",
+  "waist": "Waist (cm, optional)",
+  "hip": "Hip (cm, optional)",
+  "meals_per_day": "Meals per day",
+  "allergies": "Allergies (comma separated)",
+  "allergies_placeholder": "e.g. peanuts, gluten",
+  "calculate": "Calculate",
+  "your_results": "Your Results",
+  "calories": "Calories",
+  "protein": "Protein",
+  "carbs": "Carbs",
+  "fat": "Fat",
+  "water": "Water",
+  "download_pdf": "Download PDF",
+  "macronutrient_breakdown": "Macronutrient Breakdown",
+  "sample_meal_plan": "Sample Meal Plan",
+  "tips_for_success": "Tips for Success",
+  "share_results": "Share Results",
+  "activityLevels": {
+    "sedentary": "Sedentary",
+    "lightly_active": "Lightly active",
+    "moderately_active": "Moderately active",
+    "very_active": "Very active",
+    "extra_active": "Extra active"
+  },
+  "goals": {
+    "lose_weight": "Lose Weight",
+    "maintain_weight": "Maintain Weight",
+    "gain_weight": "Gain Weight"
+  },
+  "dietaryPrefs": {
+    "none": "None",
+    "vegan": "Vegan",
+    "vegetarian": "Vegetarian",
+    "keto": "Keto",
+    "paleo": "Paleo",
+    "low_carb": "Low-Carb",
+    "high_protein": "High-Protein"
+  },
+  "meals": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "snack": "Snack",
+    "dinner": "Dinner"
+  },
+  "meals_desc": {
+    "breakfast": "Oats with berries & nuts",
+    "lunch": "Grilled chicken salad",
+    "snack": "Greek yogurt & fruit",
+    "dinner": "Salmon, quinoa, veggies"
+  },
+  "tips": {
+    "fiber": "Aim for at least 25g fiber daily.",
+    "hydrated": "Stay hydrated: drink water throughout the day.",
+    "protein": "Include a protein source in every meal.",
+    "sugar": "Limit added sugars and processed foods."
+  }
+} 

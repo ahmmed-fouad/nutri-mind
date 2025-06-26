@@ -6,6 +6,7 @@ import NotificationsBulkActions from "@/components/notifications/NotificationsBu
 import NotificationsList from "@/components/notifications/NotificationsList";
 import { typeColors, notificationTypes, sampleNotifications } from "@/data/notificationsData";
 import { Bell, Flame, Droplet, MessageCircle, Star, CheckCircle, Trash2, Check } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const iconMap = {
   CheckCircle: <CheckCircle className="w-5 h-5 text-green-500" />,
@@ -24,6 +25,7 @@ function getTypeIcon(type: string) {
 }
 
 export default function NotificationsPage() {
+  const { t } = useTranslation("notifications");
   const [tab, setTab] = useState("all");
   const [notifs, setNotifs] = useState(sampleNotifications);
   const [selected, setSelected] = useState<number[]>([]);
@@ -49,36 +51,36 @@ export default function NotificationsPage() {
   const deleteSelected = () => setNotifs(ns => ns.filter(n => !selected.includes(n.id)));
 
   const tabOptions = [
-    { key: "all", label: "All" },
-    { key: "current", label: "Current" },
-    { key: "old", label: "Old" },
+    { key: "all", label: t("tabs.all") },
+    { key: "current", label: t("tabs.current") },
+    { key: "old", label: t("tabs.old") },
   ];
 
   const bulkActions = [
     {
       show: true,
-      label: "Mark All Read",
+      label: t("bulk_actions.mark_all_read"),
       icon: <Check className="w-4 h-4" />,
       onClick: markAllRead,
       className: "bg-green-400 text-white flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow hover:bg-green-500 transition",
     },
     {
       show: true,
-      label: "Delete All",
+      label: t("bulk_actions.delete_all"),
       icon: <Trash2 className="w-4 h-4" />,
       onClick: deleteAll,
       className: "bg-blue-400 text-white flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow hover:bg-blue-500 transition",
     },
     {
       show: selected.length > 0,
-      label: "Mark Selected Read",
+      label: t("bulk_actions.mark_selected_read"),
       icon: <Check className="w-4 h-4" />,
       onClick: markSelectedRead,
       className: "bg-green-400 text-white flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow hover:bg-green-500 transition",
     },
     {
       show: selected.length > 0,
-      label: "Delete Selected",
+      label: t("bulk_actions.delete_selected"),
       icon: <Trash2 className="w-4 h-4" />,
       onClick: deleteSelected,
       className: "bg-blue-400 text-white flex items-center gap-2 px-4 py-2 rounded-lg font-semibold shadow hover:bg-blue-500 transition",
@@ -96,7 +98,7 @@ export default function NotificationsPage() {
             )
           }
         >
-          Mark Read
+          {t("actions.mark_read")}
         </button>
       );
     } else {
@@ -109,7 +111,7 @@ export default function NotificationsPage() {
             )
           }
         >
-          Mark Unread
+          {t("actions.mark_unread")}
         </button>
       );
     }

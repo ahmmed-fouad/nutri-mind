@@ -1,0 +1,52 @@
+{
+  "page_title": "Community Forum",
+  "new_post": "New Post",
+  "load_more": "Load More",
+  "create_post": "Create New Post",
+  "post": "Post",
+  "write_reply": "Write a reply...",
+  "reply": "Reply",
+  "replies": "Replies",
+  "categories": {
+    "All": "All",
+    "Nutrition": "Nutrition",
+    "Recipes": "Recipes",
+    "Progress": "Progress",
+    "Q&A": "Q&A",
+    "Off-topic": "Off-topic"
+  },
+  "counters": {
+    "Posts": "Posts",
+    "Users": "Users",
+    "Topics": "Topics",
+    "Replies": "Replies"
+  },
+  "days": {
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat",
+    "Sun": "Sun"
+  },
+  "posts": {
+    "Best high-protein breakfast ideas?": "Best high-protein breakfast ideas?",
+    "What are your favorite quick, high-protein breakfasts?": "What are your favorite quick, high-protein breakfasts?",
+    "How do you stay motivated to track progress?": "How do you stay motivated to track progress?",
+    "I struggle to keep up with my progress tracker. Any tips?": "I struggle to keep up with my progress tracker. Any tips?",
+    "Favorite healthy snacks for work?": "Favorite healthy snacks for work?",
+    "Looking for snack ideas that are easy to bring to the office.": "Looking for snack ideas that are easy to bring to the office.",
+    "Share your transformation story!": "Share your transformation story!",
+    "Let's inspire each other. Post your before/after progress!": "Let's inspire each other. Post your before/after progress!"
+  },
+  "replies_content": {
+    "I love overnight oats with protein powder!": "I love overnight oats with protein powder!",
+    "Egg muffins are my go-to for busy mornings.": "Egg muffins are my go-to for busy mornings."
+  },
+  "form": {
+    "title_placeholder": "Title",
+    "content_placeholder": "What's on your mind?"
+  },
+  "close": "Close"
+} 

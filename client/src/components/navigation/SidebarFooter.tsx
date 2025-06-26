@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogIn, UserPlus, LogOut } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface SidebarFooterProps {
   user: any;
@@ -8,6 +9,7 @@ interface SidebarFooterProps {
 }
 
 export default function SidebarFooter({ user, expanded, setExpanded }: SidebarFooterProps) {
+  const { t } = useTranslation("sidebar");
   return (
     <div className={expanded ? "pb-5 border-t border-border flex flex-col gap-2 items-center" : "p-3 border-t border-border flex flex-col gap-2 items-center"}>
       {!user ? (
@@ -18,7 +20,7 @@ export default function SidebarFooter({ user, expanded, setExpanded }: SidebarFo
             onClick={() => setExpanded(false)}
           >
             <LogIn className="w-5 h-5" />
-            {expanded && <span>Login</span>}
+            {expanded && <span>{t("login")}</span>}
           </Link>
           <Link
             href="/auth"
@@ -26,7 +28,7 @@ export default function SidebarFooter({ user, expanded, setExpanded }: SidebarFo
             onClick={() => setExpanded(false)}
           >
             <UserPlus className="w-5 h-5" />
-            {expanded && <span>Sign Up</span>}
+            {expanded && <span>{t("signup")}</span>}
           </Link>
         </>
       ) : (
@@ -36,7 +38,7 @@ export default function SidebarFooter({ user, expanded, setExpanded }: SidebarFo
           onClick={() => setExpanded(false)}
         >
           <LogOut className="w-5 h-5" />
-          {expanded && <span>Logout</span>}
+          {expanded && <span>{t("logout")}</span>}
         </Link>
       )}
     </div>

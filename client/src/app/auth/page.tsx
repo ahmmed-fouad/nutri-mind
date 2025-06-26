@@ -7,6 +7,7 @@ import { selectUserForm } from "@/stores/userFormApi";
 import { RootState } from "@/stores";
 import { toast } from "sonner";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 // import {
 //   AlertDialog,
 //   AlertDialogAction,
@@ -22,6 +23,7 @@ import Link from "next/link";
 
 
 export default function AuthPage() {
+  const { t } = useTranslation("auth");
   const [tab, setTab] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -145,13 +147,13 @@ export default function AuthPage() {
     return (
       <section className="flex flex-col items-center justify-center min-h-[60vh]">
         <div className="bg-white dark:bg-zinc-900/80 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 p-8 w-full max-w-md flex flex-col items-center gap-4">
-          <div className="text-lg font-semibold">Goodbye, {user.email}</div>
+          <div className="text-lg font-semibold">{t("goodbye", { email: user.email })}</div>
           <button
             onClick={handleLogout}
             className="btn btn-primary w-full py-2 rounded-lg font-semibold text-center text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
             disabled={loading}
           >
-            Log Out
+            {t("logout")}
           </button>
         </div>
       </section>
@@ -163,12 +165,12 @@ export default function AuthPage() {
     return (
       <section className="flex flex-col items-center justify-center min-h-[60vh]">
         <div className="bg-white dark:bg-zinc-900/80 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 p-8 w-full max-w-md flex flex-col items-center gap-4">
-          <div className="text-lg font-semibold">{msg}</div>
+          <div className="text-lg font-semibold">{t("account_created")}</div>
           <button
             onClick={() => router.push(route)}
             className="btn btn-primary w-full py-2 rounded-lg font-semibold text-center text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
           >
-            Continue
+            {t("continue")}
           </button>
         </div>
       </section>
@@ -179,12 +181,12 @@ export default function AuthPage() {
     return (
       <section className="flex flex-col items-center justify-center min-h-[60vh]">
         <div className="bg-white dark:bg-zinc-900/80 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 p-8 w-full max-w-md flex flex-col items-center gap-4">
-          <div className="text-lg font-semibold">{msg}</div>
+          <div className="text-lg font-semibold">{t(msg === "Sorry, we lost your form information, so please fill it out again." ? "lost_form" : "not_first_time")}</div>
           <button
             onClick={() => router.push(route)}
             className="btn btn-primary w-full py-2 rounded-lg font-semibold text-center text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
           >
-            Continue
+            {t("continue")}
           </button>
         </div>
       </section>
@@ -203,7 +205,7 @@ export default function AuthPage() {
             }`}
             onClick={() => setTab("login")}
           >
-            Login
+            {t("login")}
           </button>
           <button
             className={`flex-1 py-2 rounded-lg font-semibold text-lg transition border-b-2 ${
@@ -213,14 +215,14 @@ export default function AuthPage() {
             }`}
             onClick={() => setTab("signup")}
           >
-            Sign Up
+            {t("signup")}
           </button>
         </div>
         {tab === "login" ? (
           <form className="space-y-4" onSubmit={handleLogin}>
             <input
               type="email"
-              placeholder="Email"
+              placeholder={t("placeholders.email")}
               className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -228,7 +230,7 @@ export default function AuthPage() {
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder={t("placeholders.password")}
               className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -239,9 +241,9 @@ export default function AuthPage() {
               className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
               disabled={loading}
             >
-              {loading ? "Loading..." : "Login"}
+              {loading ? t("loading") : t("login")}
             </button>
-            <div className="text-center text-zinc-400 text-sm">or</div>
+            <div className="text-center text-zinc-400 text-sm">{t("or")}</div>
             <button
               type="button"
               onClick={handleGoogle}
@@ -268,18 +270,18 @@ export default function AuthPage() {
                   />
                 </g>
               </svg>
-              Continue with Google
+              {t("continue_with_google")}
             </button>
-            {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+            {error && <div className="text-red-500 text-sm mt-2">{t("error")}</div>}
             {success && (
-              <div className="text-green-600 text-sm mt-2">{success}</div>
+              <div className="text-green-600 text-sm mt-2">{t("success")}</div>
             )}
           </form>
         ) : (
           <form className="space-y-4" onSubmit={handleSignup}>
             <input
               type="text"
-              placeholder="Name"
+              placeholder={t("placeholders.name")}
               className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -287,7 +289,7 @@ export default function AuthPage() {
             />
             <input
               type="email"
-              placeholder="Email"
+              placeholder={t("placeholders.email")}
               className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -295,7 +297,7 @@ export default function AuthPage() {
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder={t("placeholders.password")}
               className="w-full px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -306,9 +308,9 @@ export default function AuthPage() {
               className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-white shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
               disabled={loading}
             >
-              {loading ? "Loading..." : "Sign Up"}
+              {loading ? t("loading") : t("signup")}
             </button>
-            <div className="text-center text-zinc-400 text-sm">or</div>
+            <div className="text-center text-zinc-400 text-sm">{t("or")}</div>
             <button
               type="button"
               onClick={handleGoogle}
@@ -335,11 +337,11 @@ export default function AuthPage() {
                   />
                 </g>
               </svg>
-              Continue with Google
+              {t("continue_with_google")}
             </button>
-            {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+            {error && <div className="text-red-500 text-sm mt-2">{t("error")}</div>}
             {success && (
-              <div className="text-green-600 text-sm mt-2">{success}</div>
+              <div className="text-green-600 text-sm mt-2">{t("success")}</div>
             )}
           </form>
         )}

@@ -1,0 +1,27 @@
+{
+  "login": "تسجيل الدخول",
+  "signup": "إنشاء حساب",
+  "logout": "تسجيل الخروج",
+  "links": {
+    "Profile": "الملف الشخصي",
+    "Progress Tracker": "متتبع التقدم",
+    "Diet Calculator": "حاسبة النظام الغذائي",
+    "User Form": "نموذج المستخدم",
+    "Settings": "الإعدادات",
+    "AI Chatbot": "الدردشة الذكية",
+    "Habit Tracker": "متتبع العادات",
+    "Grocery List": "قائمة التسوق",
+    "Dashboard": "لوحة التحكم",
+    "Admin": "الإدارة",
+    "User Dashboard": "لوحة المستخدم",
+    "Recipes": "الوصفات",
+    "Food Scanner": "ماسح الطعام",
+    "Plans": "الخطط",
+    "Testimonials": "آراء المستخدمين",
+    "FAQ": "الأسئلة الشائعة",
+    "Blog": "المدونة",
+    "Forum": "المنتدى",
+    "Notifications": "الإشعارات",
+    "SocialHub": "المجتمع"
+  }
+} 

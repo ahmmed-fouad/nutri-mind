@@ -1,0 +1,28 @@
+{
+  "language_select": "اختر اللغة",
+  "toggle_theme": "تبديل الوضع الليلي/النهاري",
+  "social_dropdown": "روابط اجتماعية",
+  "links": {
+    "Home": "الرئيسية",
+    "Profile": "الملف الشخصي",
+    "Tracker": "متتبع التقدم",
+    "Calculator": "حاسبة النظام الغذائي",
+    "Form": "نموذج المستخدم",
+    "Settings": "الإعدادات",
+    "Chatbot": "الدردشة الذكية",
+    "Habits": "متتبع العادات",
+    "Grocery List": "قائمة التسوق",
+    "Admin": "الإدارة",
+    "Dashboard": "لوحة التحكم",
+    "Recipes": "الوصفات",
+    "Food Scanner": "ماسح الطعام",
+    "Plans": "الخطط",
+    "Testimonials": "آراء المستخدمين",
+    "FAQ": "الأسئلة الشائعة",
+    "Blog": "المدونة",
+    "Forum": "المنتدى",
+    "Notifications": "الإشعارات",
+    "SocialHub": "المجتمع ",
+    "User Dashboard": "لوحة المستخدم"
+  }
+} 

@@ -10,8 +10,10 @@ import DailyProgress from "../../components/tracker/DailyProgress";
 import MotivationalQuote from "../../components/tracker/MotivationalQuote";
 import PhotoGallery from "../../components/tracker/PhotoGallery";
 import NotesJournal from "../../components/tracker/NotesJournal";
+import { useTranslation } from "react-i18next";
 
 export default function TrackerPage() {
+  const { t } = useTranslation("tracker");
   const [metric, setMetric] = useState("weight");
   const [quoteIdx, setQuoteIdx] = useState(0);
   const [note, setNote] = useState("");
@@ -23,11 +25,10 @@ export default function TrackerPage() {
         {/* Header */}
         <div className="mb-10 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary">
-            Your Health Progress
+            {t("title")}
           </h1>
           <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
-            Track your journey, celebrate your wins, and stay motivated every
-            day!
+            {t("subtitle")}
           </p>
         </div>
         {/* Stat Cards & Badges */}
@@ -41,7 +42,7 @@ export default function TrackerPage() {
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
             <h2 className="text-2xl font-bold text-primary">
-              Progress Over Time
+              {t("progress_over_time")}
             </h2>
             <div className="flex gap-2 flex-wrap">
               {metricOptions.map((opt) => (
@@ -54,7 +55,7 @@ export default function TrackerPage() {
                   }`}
                   onClick={() => setMetric(opt.key)}
                 >
-                  {opt.label}
+                  {t(opt.label)}
                 </button>
               ))}
             </div>
@@ -101,7 +102,7 @@ export default function TrackerPage() {
         {/* Export Data */}
         <div className="flex justify-center mb-8">
           <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-blue-400 text-white font-bold shadow-lg hover:from-primary/90 hover:to-blue-500 transition text-lg">
-            <Download className="w-6 h-6" /> Export Data
+            <Download className="w-6 h-6" /> {t("export_data")}
           </button>
         </div>
       </div>

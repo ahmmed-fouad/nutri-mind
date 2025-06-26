@@ -1,0 +1,55 @@
+{
+  "page_title": "Plans & Pricing",
+  "page_subtitle": "Choose the plan that fits your lifestyle. Upgrade anytime for more features and flexibility.",
+  "free": "Free",
+  "forever": "Forever",
+  "per_month": "/month",
+  "get_started": "Get Started",
+  "upgrade": "Upgrade",
+  "compare_features": "Compare Features",
+  "frequently_asked": "Frequently Asked Questions",
+  "features": {
+    "Recipes": "Recipes",
+    "AI Chatbot": "AI Chatbot",
+    "Nutrition Analysis": "Nutrition Analysis",
+    "Family Accounts": "Family Accounts",
+    "Support": "Support"
+  },
+  "plans": {
+    "Free": "Free",
+    "Pro": "Pro",
+    "Family": "Family"
+  },
+  "plan_features": {
+    "10 recipes/month": "10 recipes/month",
+    "Basic nutrition info": "Basic nutrition info",
+    "Community forum": "Community forum",
+    "Email support": "Email support",
+    "Unlimited recipes": "Unlimited recipes",
+    "AI Chatbot": "AI Chatbot",
+    "Advanced nutrition analysis": "Advanced nutrition analysis",
+    "Priority support": "Priority support",
+    "Family accounts (up to 5)": "Family accounts (up to 5)"
+  },
+  "chart_features": {
+    "Recipes": "Recipes",
+    "AI Chatbot": "AI Chatbot",
+    "Nutrition Analysis": "Nutrition Analysis",
+    "Family Accounts": "Family Accounts",
+    "Support": "Support"
+  },
+  "faqs": [
+    {
+      "q": "Can I use NutriMind for free?",
+      "a": "Yes! The Free plan gives you access to basic features and 10 recipes per month."
+    },
+    {
+      "q": "What is included in the Pro plan?",
+      "a": "Pro unlocks unlimited recipes, AI chatbot, advanced nutrition analysis, and priority support."
+    },
+    {
+      "q": "How does the Family plan work?",
+      "a": "Family plan allows up to 5 accounts under one subscription, perfect for households."
+    }
+  ]
+} 

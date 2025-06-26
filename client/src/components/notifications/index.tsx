@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Bell, Flame, Droplet, MessageCircle, Star, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const notifications = [
   { id: 1, type: "achievement", icon: <CheckCircle className="w-5 h-5 text-green-500" />, title: "Goal Reached!", message: "You hit your water goal today.", time: "2m ago", unread: true },
@@ -14,6 +15,7 @@ export function NotificationsDropdown() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const unreadCount = notifications.filter(n => n.unread).length;
+  const { t } = useTranslation("notifications-dropdown");
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -42,7 +44,7 @@ export function NotificationsDropdown() {
       {open && (
         <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-zinc-900/90 glassmorphism rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 z-50 animate-fade-in">
           <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 font-bold text-zinc-700 text-lg flex items-center gap-2">
-            <Bell className="w-5 h-5" /> Notifications
+            <Bell className="w-5 h-5" /> {t("notifications")}
           </div>
           <ul className="max-h-80 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-800">
             {notifications.slice(0, 5).map((n) => (
@@ -55,13 +57,13 @@ export function NotificationsDropdown() {
                 <div>{n.icon}</div>
                 <div className="flex-1">
                   <div className="font-semibold text-zinc-800 dark:text-zinc-400 flex items-center gap-2">
-                    {n.title}
+                    {t(`sample.${n.title}`, n.title)}
                     {n.unread && (
                       <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full inline-block" />
                     )}
                   </div>
                   <div className="text-sm text-zinc-500 dark:text-zinc-400">
-                    {n.message}
+                    {t(`sample.${n.message}`, n.message)}
                   </div>
                   <div className="text-xs text-zinc-400 mt-1">{n.time}</div>
                 </div>
@@ -73,7 +75,7 @@ export function NotificationsDropdown() {
               href="/notifications"
               className="text-primary font-semibold hover:underline"
             >
-              See more →
+              {t("see_more")}
             </Link>
           </div>
         </div>

@@ -1,0 +1,28 @@
+{
+  "language_select": "Select language",
+  "toggle_theme": "Toggle theme",
+  "social_dropdown": "Social",
+  "links": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Tracker": "Progress Tracker",
+    "Calculator": "Diet Calculator",
+    "Form": "User Form",
+    "Settings": "Settings",
+    "Chatbot": "AI Chatbot",
+    "Habits": "Habit Tracker",
+    "Grocery List": "Grocery List",
+    "Admin": "Admin",
+    "Dashboard": "Dashboard",
+    "Recipes": "Recipes",
+    "Food Scanner": "Food Scanner",
+    "Plans": "Plans",
+    "Testimonials": "Testimonials",
+    "FAQ": "FAQ",
+    "Blog": "Blog",
+    "Forum": "Forum",
+    "Notifications": "Notifications",
+    "SocialHub": "Social Hub",
+    "User Dashboard": "User Dashboard"
+  }
+} 

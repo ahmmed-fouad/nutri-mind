@@ -1,0 +1,45 @@
+{
+  "greeting": "مرحباً، {{name}}!",
+  "quote": "خطوات صغيرة كل يوم تؤدي إلى نتائج كبيرة.",
+  "counters": {
+    "Calories": "السعرات الحرارية",
+    "Steps": "الخطوات",
+    "Water (L)": "الماء (لتر)",
+    "Streak": "سلسلة الإنجاز"
+  },
+  "progress": {
+    "Daily Progress": "التقدم اليومي",
+    "Weekly Progress": "التقدم الأسبوعي",
+    "Calories": "السعرات الحرارية",
+    "Protein": "البروتين",
+    "Water": "الماء"
+  },
+  "goals": {
+    "Your Goals": "أهدافك",
+    "Weight Goal": "هدف الوزن",
+    "Habit Streak": "سلسلة العادات"
+  },
+  "quick_actions": {
+    "Quick Actions": "إجراءات سريعة",
+    "Log Meal": "تسجيل وجبة",
+    "Add Water": "إضافة ماء",
+    "Add Steps": "إضافة خطوات"
+  },
+  "recent_activity": {
+    "Recent Activity": "النشاط الأخير",
+    "Logged Breakfast": "تم تسجيل الإفطار: الشوفان والتوت",
+    "Added Water": "تمت إضافة 250 مل ماء",
+    "Completed Workout": "تم إكمال 30 دقيقة يوجا",
+    "Logged Lunch": "تم تسجيل الغداء: سلطة الدجاج المشوي"
+  },
+  "recommendations": {
+    "title": "التوصيات والرؤى",
+    "TryRecipe": "جرّب وصفة غنية بالبروتين اليوم!",
+    "CloseToWaterGoal": "أنت قريب من هدف الماء. اشرب كوباً آخر!",
+    "KeepStreak": "حافظ على سلسلة الإنجاز—سجّل عشاءك الليلة."
+  },
+  "chart": {
+    "Weight (kg)": "الوزن (كجم)",
+    "Calories": "السعرات الحرارية"
+  }
+} 

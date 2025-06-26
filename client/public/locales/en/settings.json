@@ -1,0 +1,64 @@
+{
+  "title": "Settings & Personalization",
+  "subtitle": "Manage your account, preferences, and app experience.",
+  "profile": "Profile",
+  "change_photo": "Change Photo",
+  "change_password": "Change Password",
+  "new_password": "New password",
+  "save_changes": "Save Changes",
+  "preferences": "Preferences",
+  "theme": "Theme",
+  "language": "Language",
+  "notifications": "Notifications:",
+  "privacy": "Privacy:",
+  "export_data": "Export Data",
+  "delete_account": "Delete Account",
+  "usage_chart": "App Usage Breakdown",
+  "connected_accounts": "Connected Accounts",
+  "connect_new_account": "Connect New Account",
+  "security_privacy": "Security & Privacy",
+  "recent_logins": "Recent Logins",
+  "two_factor_auth": "Two-Factor Authentication:",
+  "enabled": "Enabled",
+  "disabled": "Disabled",
+  "feedback": "Feedback",
+  "feedback_placeholder": "Share your feedback or suggestions...",
+  "send_feedback": "Send Feedback",
+  "app_info": "App Info",
+  "version": "Version 1.0.0",
+  "legal": "Legal",
+  "save": "Save",
+  "saved": "Saved!",
+  "profile_fields": {
+    "name": "Name",
+    "email": "Email",
+    "age": "Age",
+    "gender": "Gender",
+    "height": "Height (cm)",
+    "weight": "Weight (kg)"
+  },
+  "preference_options": {
+    "theme": "Theme",
+    "language": "Language",
+    "auto": "Auto",
+    "light": "Light",
+    "dark": "Dark",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French"
+  },
+  "notification_types": {
+    "email": "Email",
+    "push": "Push",
+    "inApp": "In-App"
+  },
+  "legal_links": {
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service"
+  },
+  "gender_options": {
+    "Female": "Female",
+    "Male": "Male",
+    "Other": "Other"
+  }
+} 

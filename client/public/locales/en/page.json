@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "title": "Meet Your Diet AI Coach",
+    "subtitle": "Personalized meal planning, nutrition advice, and progress tracking — all in one chat.",
+    "start_chatting": "Start Chatting",
+    "plan_meals": "Plan My Meals",
+    "chatbot_name": "Diet AI",
+    "chatbot_greeting": "Hi! I'm your AI coach. How can I help you today?",
+    "ask_placeholder": "Ask me anything..."
+  },
+  "health_glance": "Your Health at a Glance",
+  "feature_cards": {
+    "Meal Planner": "Meal Planner",
+    "Progress Tracker": "Progress Tracker",
+    "Habit Tracker": "Habit Tracker",
+    "Grocery List": "Grocery List",
+    "Recipes": "Recipes",
+    "Blog": "Blog",
+    "Support / FAQ": "Support / FAQ",
+    "desc": {
+      "Meal Planner": "Get AI-powered meal plans tailored to your goals.",
+      "Progress Tracker": "Visualize your journey and celebrate your wins.",
+      "Habit Tracker": "Build healthy routines and stay consistent.",
+      "Grocery List": "Smart, categorized shopping lists from your meal plan.",
+      "Recipes": "Discover healthy recipes and nutrition info.",
+      "Blog": "Read expert articles and nutrition tips.",
+      "Support / FAQ": "Get help and answers anytime."
+    },
+    "preview": {
+      "Meal Planner": "Try a 7-day plan",
+      "Progress Tracker": "Weight: 72kg",
+      "Habit Tracker": "Streak: 9 days",
+      "Grocery List": "6 items",
+      "Recipes": "E.g. Greek Yogurt Bowl",
+      "Blog": "Latest: 5 Nutrition Myths",
+      "Support / FAQ": "24/7 support"
+    },
+    "go_to": "Go to"
+  },
+  "how_it_works": {
+    "Chat with AI": "Chat with AI",
+    "Get Meal Plan": "Get Meal Plan",
+    "Track Progress": "Track Progress",
+    "Shop Smart": "Shop Smart"
+  },
+  "testimonials": {
+    "title": "What Our Users Say",
+    "Alice": "Alice",
+    "Bob": "Bob",
+    "Jane": "Jane",
+    "The AI meal planner changed my life!": "The AI meal planner changed my life!",
+    "Tracking my progress is so easy now.": "Tracking my progress is so easy now.",
+    "Love the healthy recipes and grocery list!": "Love the healthy recipes and grocery list!"
+  },
+  "metrics": {
+    "weight": "Weight",
+    "calories": "Calories",
+    "steps": "Steps",
+    "water": "Water"
+  },
+  "days": {
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat",
+    "Sun": "Sun"
+  },
+  "quotes": {
+    "Your journey starts today!": "Your journey starts today!",
+    "Small steps, big results.": "Small steps, big results.",
+    "You are stronger than you think!": "You are stronger than you think!",
+    "Healthy habits, happy life.": "Healthy habits, happy life."
+  }
+} 

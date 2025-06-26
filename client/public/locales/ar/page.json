@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "title": "قابل مدرب الذكاء الاصطناعي الغذائي الخاص بك",
+    "subtitle": "تخطيط وجبات مخصص، ونصائح تغذية، وتتبع التقدم — كل ذلك في محادثة واحدة.",
+    "start_chatting": "ابدأ الدردشة",
+    "plan_meals": "خطط وجباتي",
+    "chatbot_name": "مدرب الذكاء الغذائي",
+    "chatbot_greeting": "مرحباً! أنا مدربك الذكي. كيف يمكنني مساعدتك اليوم؟",
+    "ask_placeholder": "اسألني أي شيء..."
+  },
+  "health_glance": "صحتك في لمحة",
+  "feature_cards": {
+    "Meal Planner": "مخطط الوجبات",
+    "Progress Tracker": "متتبع التقدم",
+    "Habit Tracker": "متتبع العادات",
+    "Grocery List": "قائمة التسوق",
+    "Recipes": "وصفات",
+    "Blog": "مدونة",
+    "Support / FAQ": "الدعم / الأسئلة الشائعة",
+    "desc": {
+      "Meal Planner": "احصل على خطط وجبات مدعومة بالذكاء الاصطناعي حسب أهدافك.",
+      "Progress Tracker": "تتبع رحلتك واحتفل بإنجازاتك.",
+      "Habit Tracker": "ابنِ عادات صحية وكن ثابتاً.",
+      "Grocery List": "قوائم تسوق ذكية ومصنفة من خطة وجباتك.",
+      "Recipes": "اكتشف وصفات صحية ومعلومات غذائية.",
+      "Blog": "اقرأ مقالات ونصائح غذائية من الخبراء.",
+      "Support / FAQ": "احصل على المساعدة والإجابات في أي وقت."
+    },
+    "preview": {
+      "Meal Planner": "جرّب خطة 7 أيام",
+      "Progress Tracker": "الوزن: 72 كجم",
+      "Habit Tracker": "سلسلة: 9 أيام",
+      "Grocery List": "6 عناصر",
+      "Recipes": "مثال: زبادي يوناني",
+      "Blog": "الأحدث: 5 خرافات غذائية",
+      "Support / FAQ": "دعم 24/7"
+    },
+    "go_to": "اذهب إلى"
+  },
+  "how_it_works": {
+    "Chat with AI": "تحدث مع الذكاء الاصطناعي",
+    "Get Meal Plan": "احصل على خطة وجبات",
+    "Track Progress": "تتبع التقدم",
+    "Shop Smart": "تسوق بذكاء"
+  },
+  "testimonials": {
+    "title": "ماذا يقول مستخدمونا",
+    "Alice": "أليس",
+    "Bob": "بوب",
+    "Jane": "جين",
+    "The AI meal planner changed my life!": "مخطط الوجبات الذكي غيّر حياتي!",
+    "Tracking my progress is so easy now.": "تتبع تقدمي أصبح سهلاً للغاية.",
+    "Love the healthy recipes and grocery list!": "أحب الوصفات الصحية وقائمة التسوق!"
+  },
+  "metrics": {
+    "weight": "الوزن",
+    "calories": "السعرات الحرارية",
+    "steps": "الخطوات",
+    "water": "الماء"
+  },
+  "days": {
+    "Mon": "الاثنين",
+    "Tue": "الثلاثاء",
+    "Wed": "الأربعاء",
+    "Thu": "الخميس",
+    "Fri": "الجمعة",
+    "Sat": "السبت",
+    "Sun": "الأحد"
+  },
+  "quotes": {
+    "Your journey starts today!": "رحلتك تبدأ اليوم!",
+    "Small steps, big results.": "خطوات صغيرة، نتائج كبيرة.",
+    "You are stronger than you think!": "أنت أقوى مما تعتقد!",
+    "Healthy habits, happy life.": "عادات صحية، حياة سعيدة."
+  }
+} 

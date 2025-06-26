@@ -1,0 +1,45 @@
+{
+  "greeting": "Welcome, {{name}}!",
+  "quote": "Small steps every day lead to big results.",
+  "counters": {
+    "Calories": "Calories",
+    "Steps": "Steps",
+    "Water (L)": "Water (L)",
+    "Streak": "Streak"
+  },
+  "progress": {
+    "Daily Progress": "Daily Progress",
+    "Weekly Progress": "Weekly Progress",
+    "Calories": "Calories",
+    "Protein": "Protein",
+    "Water": "Water"
+  },
+  "goals": {
+    "Your Goals": "Your Goals",
+    "Weight Goal": "Weight Goal",
+    "Habit Streak": "Habit Streak"
+  },
+  "quick_actions": {
+    "Quick Actions": "Quick Actions",
+    "Log Meal": "Log Meal",
+    "Add Water": "Add Water",
+    "Add Steps": "Add Steps"
+  },
+  "recent_activity": {
+    "Recent Activity": "Recent Activity",
+    "Logged Breakfast": "Logged Breakfast: Oats & Berries",
+    "Added Water": "Added 250ml water",
+    "Completed Workout": "Completed 30min Yoga",
+    "Logged Lunch": "Logged Lunch: Grilled Chicken Salad"
+  },
+  "recommendations": {
+    "title": "Recommendations & Insights",
+    "TryRecipe": "Try a new high-protein recipe today!",
+    "CloseToWaterGoal": "You're close to your water goal. Drink another glass!",
+    "KeepStreak": "Keep your streak going—log your dinner tonight."
+  },
+  "chart": {
+    "Weight (kg)": "Weight (kg)",
+    "Calories": "Calories"
+  }
+} 

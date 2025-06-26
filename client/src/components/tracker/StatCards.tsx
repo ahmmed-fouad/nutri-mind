@@ -1,5 +1,6 @@
 import { TrendingUp, Flame, Footprints, Droplet } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type Stat = {
   label: string;
@@ -30,6 +31,7 @@ function renderIcon(icon: string) {
 }
 
 export default function StatCards({ demoStats }: StatCardsProps) {
+  const { t } = useTranslation("tracker");
   return (
     <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
       {demoStats.map((stat, i) => (
@@ -42,7 +44,7 @@ export default function StatCards({ demoStats }: StatCardsProps) {
             {stat.value}
             <span className="text-base font-normal ml-1">{stat.unit}</span>
           </div>
-          <div className="text-xs text-zinc-400 mt-1">{stat.label}</div>
+          <div className="text-xs text-zinc-400 mt-1">{t(stat.label)}</div>
         </div>
       ))}
     </div>

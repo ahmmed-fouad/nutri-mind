@@ -1,0 +1,41 @@
+{
+  "notifications": "Notifications",
+  "tabs": {
+    "all": "All",
+    "current": "Current",
+    "old": "Old"
+  },
+  "bulk_actions": {
+    "mark_all_read": "Mark All Read",
+    "delete_all": "Delete All",
+    "mark_selected_read": "Mark Selected Read",
+    "delete_selected": "Delete Selected"
+  },
+  "types": {
+    "Achievements": "Achievements",
+    "Community": "Community",
+    "Features": "Features",
+    "Reminders": "Reminders",
+    "Streaks": "Streaks"
+  },
+  "sample": {
+    "Goal Reached!": "Goal Reached!",
+    "You hit your water goal today.": "You hit your water goal today.",
+    "Forum Reply": "Forum Reply",
+    "Alice replied to your post.": "Alice replied to your post.",
+    "New Feature": "New Feature",
+    "Food Scanner is now live!": "Food Scanner is now live!",
+    "Streak!": "Streak!",
+    "7 days logged in a row.": "7 days logged in a row.",
+    "Hydration Reminder": "Hydration Reminder",
+    "Time to drink water.": "Time to drink water.",
+    "Mention": "Mention",
+    "Bob mentioned you in a comment.": "Bob mentioned you in a comment.",
+    "Protein Goal!": "Protein Goal!",
+    "You reached your protein target.": "You reached your protein target."
+  },
+  "actions": {
+    "mark_read": "Mark Read",
+    "mark_unread": "Mark Unread"
+  }
+} 

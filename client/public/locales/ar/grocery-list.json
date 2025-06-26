@@ -1,0 +1,71 @@
+{
+  "header": {
+    "title": "قائمة التسوق",
+    "subtitle": "خطط تسوقك الصحي ولا تنسَ أي مكون."
+  },
+  "no_items": "لا توجد عناصر",
+  "category_chart": {
+    "title": "تفصيل الفئات"
+  },
+  "smart_suggestions": {
+    "title": "اقتراحات ذكية",
+    "Bananas": "موز",
+    "Chicken Breast": "صدر دجاج",
+    "Oats": "شوفان",
+    "Carrots": "جزر"
+  },
+  "notes": {
+    "title": "ملاحظات",
+    "placeholder": "أضف ملاحظات لهذا الأسبوع أو تعليمات خاصة...",
+    "save_button": "حفظ الملاحظة"
+  },
+  "share_export": {
+    "title": "مشاركة / تصدير",
+    "button": "تصدير القائمة"
+  },
+  "add_item": {
+    "name_placeholder": "اسم العنصر",
+    "qty_placeholder": "الكمية",
+    "add_button": "إضافة",
+    "templates_label": ":قوالب",
+    "load_button": "تحميل"
+  },
+  "categories": {
+    "Produce": "منتجات طازجة",
+    "Dairy": "منتجات الألبان",
+    "Bakery": "مخبوزات",
+    "Meat": "لحوم",
+    "Pantry": "مخزن",
+    "Frozen": "مجمدات",
+    "Snacks": "وجبات خفيفة",
+    "Beverages": "مشروبات",
+    "Other": "أخرى",
+    "Protein": "بروتين",
+    "Grains": "حبوب"
+  },
+  "templates": {
+    "Weekly Essentials": "الأساسيات الأسبوعية",
+    "Breakfast": "وجبة الإفطار",
+    "Vegan": "نباتي",
+    "Weekly Basics": "الأساسيات الأسبوعية",
+    "Meal Prep Week": "أسبوع تجهيز الوجبات"
+  },
+  "template_items": {
+    "Milk": "حليب",
+    "Eggs": "بيض",
+    "Bread": "خبز",
+    "Apples": "تفاح",
+    "Bananas": "موز",
+    "Oats": "شوفان",
+    "Almond Milk": "حليب اللوز",
+    "Tofu": "توفو",
+    "Spinach": "سبانخ",
+    "Brown Rice": "أرز بني",
+    "Chicken Breast": "صدر دجاج",
+    "Quinoa": "كينوا",
+    "Broccoli": "بروكلي",
+    "Avocado": "أفوكادو",
+    "Greek Yogurt": "زبادي يوناني",
+    "Almonds": "لوز"
+  }
+}

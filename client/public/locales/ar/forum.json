@@ -1,0 +1,52 @@
+{
+  "page_title": "منتدى المجتمع",
+  "new_post": "منشور جديد",
+  "load_more": "تحميل المزيد",
+  "create_post": "إنشاء منشور جديد",
+  "post": "نشر",
+  "write_reply": "اكتب رداً...",
+  "reply": "رد",
+  "replies": "الردود",
+  "categories": {
+    "All": "الكل",
+    "Nutrition": "تغذية",
+    "Recipes": "وصفات",
+    "Progress": "تقدم",
+    "Q&A": "أسئلة وأجوبة",
+    "Off-topic": "خارج الموضوع"
+  },
+  "counters": {
+    "Posts": "المنشورات",
+    "Users": "المستخدمون",
+    "Topics": "المواضيع",
+    "Replies": "الردود"
+  },
+  "days": {
+    "Mon": "الاثنين",
+    "Tue": "الثلاثاء",
+    "Wed": "الأربعاء",
+    "Thu": "الخميس",
+    "Fri": "الجمعة",
+    "Sat": "السبت",
+    "Sun": "الأحد"
+  },
+  "posts": {
+    "Best high-protein breakfast ideas?": "ما هي أفضل أفكار الإفطار الغنية بالبروتين؟",
+    "What are your favorite quick, high-protein breakfasts?": "ما هي وجبات الإفطار السريعة والغنية بالبروتين المفضلة لديك؟",
+    "How do you stay motivated to track progress?": "كيف تحافظ على حماسك لتتبع التقدم؟",
+    "I struggle to keep up with my progress tracker. Any tips?": "أجد صعوبة في متابعة متتبع التقدم. أي نصائح؟",
+    "Favorite healthy snacks for work?": "ما هي الوجبات الخفيفة الصحية المفضلة للعمل؟",
+    "Looking for snack ideas that are easy to bring to the office.": "أبحث عن أفكار لوجبات خفيفة سهلة الحمل إلى المكتب.",
+    "Share your transformation story!": "شارك قصة تحولك!",
+    "Let's inspire each other. Post your before/after progress!": "لنلهم بعضنا البعض. شارك تقدمك قبل/بعد!"
+  },
+  "replies_content": {
+    "I love overnight oats with protein powder!": "أحب الشوفان المنقوع مع مسحوق البروتين!",
+    "Egg muffins are my go-to for busy mornings.": "مافن البيض هو خياري المفضل للصباح المزدحم."
+  },
+  "form": {
+    "title_placeholder": "العنوان",
+    "content_placeholder": "بماذا تفكر؟"
+  },
+  "close": "إغلاق"
+} 

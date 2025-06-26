@@ -1,0 +1,36 @@
+{
+  "branding": "تغذية مخصصة، وعافية مدعومة بالذكاء الاصطناعي.",
+  "follow_us": "تابعنا",
+  "pages": "الصفحات",
+  "all_rights": "جميع الحقوق محفوظة.",
+  "privacy_policy": "سياسة الخصوصية",
+  "terms_of_service": "شروط الخدمة",
+  "social": {
+    "Twitter": "تويتر",
+    "Facebook": "فيسبوك",
+    "Instagram": "إنستغرام",
+    "LinkedIn": "لينكدإن",
+    "GitHub": "جيت هب"
+  },
+  "links": {
+    "Home": "الرئيسية",
+    "Profile": "الملف الشخصي",
+    "Tracker": "المتابعة",
+    "Calculator": "الحاسبة",
+    "Form": "النموذج",
+    "Settings": "الإعدادات",
+    "Chatbot": "الدردشة الذكية",
+    "Habits": "العادات",
+    "Grocery List": "قائمة التسوق",
+    "Admin": "الإدارة",
+    "Dashboard": "لوحة التحكم",
+    "Recipes": "الوصفات",
+    "Food Scanner": "ماسح الطعام",
+    "Plans": "الخطط",
+    "Testimonials": "آراء المستخدمين",
+    "FAQ": "الأسئلة الشائعة",
+    "Blog": "المدونة",
+    "Forum": "المنتدى",
+    "Notifications": "الإشعارات"
+  }
+} 

@@ -1,0 +1,38 @@
+{
+  "page_title": "Testimonials",
+  "page_subtitle": "See how NutriMind is transforming lives around the world.",
+  "user_satisfaction": "User Satisfaction",
+  "what_users_say": "What Our Users Say",
+  "add_your_story": "Add Your Story",
+  "counters": {
+    "Users Helped": "Users Helped",
+    "Kilos Lost": "Kilos Lost",
+    "Meals Planned": "Meals Planned"
+  },
+  "modal": {
+    "title": "Share Your Experience",
+    "name": "Your Name",
+    "story": "Your Story",
+    "rating": "Your Rating",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "quotes": {
+    "The AI meal planner changed my life! I lost 12kg and feel amazing.": "The AI meal planner changed my life! I lost 12kg and feel amazing.",
+    "Tracking my progress is so easy now. The charts keep me motivated!": "Tracking my progress is so easy now. The charts keep me motivated!",
+    "Love the healthy recipes and grocery list! My family eats better now.": "Love the healthy recipes and grocery list! My family eats better now.",
+    "The food scanner is so cool! I always know what I'm eating.": "The food scanner is so cool! I always know what I'm eating."
+  },
+  "goals": {
+    "Lost 12kg": "Lost 12kg",
+    "Built healthy habits": "Built healthy habits",
+    "Family nutrition": "Family nutrition",
+    "Better food choices": "Better food choices"
+  },
+  "names": {
+    "Alice Smith": "Alice Smith",
+    "Bob Lee": "Bob Lee",
+    "Jane Doe": "Jane Doe",
+    "Sam Patel": "Sam Patel"
+  }
+} 

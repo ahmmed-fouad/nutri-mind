@@ -1,14 +1,27 @@
 import { Edit, Trash2 } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type GroceryListProps = {
-  items: { id: number; name: string; qty: string; category: string; bought: boolean }[];
+  items: {
+    id: number;
+    name: string;
+    qty: string;
+    category: string;
+    bought: boolean;
+  }[];
   categories: { name: string; color: string }[];
   handleCheck: (id: number) => void;
   handleDelete: (id: number) => void;
 };
 
-export default function GroceryList({ items, categories, handleCheck, handleDelete }: GroceryListProps) {
+export default function GroceryList({
+  items,
+  categories,
+  handleCheck,
+  handleDelete,
+}: GroceryListProps) {
+  const { t } = useTranslation("grocery-list");
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
       {categories.map((cat) => (
@@ -19,13 +32,12 @@ export default function GroceryList({ items, categories, handleCheck, handleDele
               style={{ background: cat.color }}
             />
             <span className="font-semibold text-lg text-primary">
-              {cat.name}
+              {t(`categories.${cat.name}`, cat.name)}
             </span>
           </div>
           <div className="flex flex-col gap-2">
-            {items.filter((item) => item.category === cat.name).length === 0 && (
-              <div className="text-xs text-zinc-400">No items</div>
-            )}
+            {items.filter((item) => item.category === cat.name).length ===
+              0 && <div className="text-xs text-zinc-400">{t("no_items", "No items")}</div>}
             {items
               .filter((item) => item.category === cat.name)
               .map((item) => (
@@ -44,9 +56,11 @@ export default function GroceryList({ items, categories, handleCheck, handleDele
                     className="w-5 h-5 accent-primary"
                   />
                   <span
-                    className={`font-medium ${item.bought ? "line-through text-zinc-400" : ""}`}
+                    className={`font-medium ${
+                      item.bought ? "line-through text-zinc-400" : ""
+                    }`}
                   >
-                    {item.name}
+                    {t(`template_items.${item.name}`, item.name)}
                   </span>
                   <span className="text-xs text-zinc-500">{item.qty}</span>
                   <button className="ml-auto text-zinc-400 hover:text-primary">
@@ -65,4 +79,4 @@ export default function GroceryList({ items, categories, handleCheck, handleDele
       ))}
     </div>
   );
-} 
+}

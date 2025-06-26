@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type Testimonial = {
   name: string;
@@ -16,6 +17,12 @@ type TestimonialCarouselProps = {
 };
 
 export default function TestimonialCarousel({ testimonials, carousel, next, prev }: TestimonialCarouselProps) {
+  const { t } = useTranslation("testimonials");
+
+  // Debug logs for translation keys and results
+  const quoteKey = `quotes.${testimonials[carousel].quote}`;
+  const goalKey = `goals.${testimonials[carousel].goal}`;
+
   return (
     <div className="w-full flex flex-col md:flex-row md:items-center md:justify-center relative">
       {/* Left arrow (md+) */}
@@ -34,7 +41,7 @@ export default function TestimonialCarousel({ testimonials, carousel, next, prev
           className="w-20 h-20 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-primary shadow"
         />
         <div className="text-lg font-bold text-primary text-center">
-          {testimonials[carousel].name}
+          {t(`names.${testimonials[carousel].name}`, testimonials[carousel].name)}
         </div>
         <div className="flex gap-1 mb-1">
           {[...Array(testimonials[carousel].rating)].map((_, i) => (
@@ -42,10 +49,10 @@ export default function TestimonialCarousel({ testimonials, carousel, next, prev
           ))}
         </div>
         <div className="italic text-zinc-700 text-center">
-          “{testimonials[carousel].quote}”
+          “{t(quoteKey, testimonials[carousel].quote)}”
         </div>
         <div className="text-xs text-zinc-400 text-center">
-          {testimonials[carousel].goal}
+          {t(goalKey, testimonials[carousel].goal)}
         </div>
       </div>
       {/* Right arrow (md+) */}

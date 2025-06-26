@@ -1,0 +1,36 @@
+{
+  "branding": "Personalized nutrition, AI-powered wellness.",
+  "follow_us": "Follow Us",
+  "pages": "Pages",
+  "all_rights": "All rights reserved.",
+  "privacy_policy": "Privacy Policy",
+  "terms_of_service": "Terms of Service",
+  "social": {
+    "Twitter": "Twitter",
+    "Facebook": "Facebook",
+    "Instagram": "Instagram",
+    "LinkedIn": "LinkedIn",
+    "GitHub": "GitHub"
+  },
+  "links": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Tracker": "Tracker",
+    "Calculator": "Calculator",
+    "Form": "Form",
+    "Settings": "Settings",
+    "Chatbot": "Chatbot",
+    "Habits": "Habits",
+    "Grocery List": "Grocery List",
+    "Admin": "Admin",
+    "Dashboard": "Dashboard",
+    "Recipes": "Recipes",
+    "Food Scanner": "Food Scanner",
+    "Plans": "Plans",
+    "Testimonials": "Testimonials",
+    "FAQ": "FAQ",
+    "Blog": "Blog",
+    "Forum": "Forum",
+    "Notifications": "Notifications"
+  }
+} 

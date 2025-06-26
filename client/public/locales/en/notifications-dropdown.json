@@ -1,0 +1,20 @@
+{
+  "notifications": "Notifications",
+  "see_more": "See more →",
+  "sample": {
+    "Goal Reached!": "Goal Reached!",
+    "You hit your water goal today.": "You hit your water goal today.",
+    "Forum Reply": "Forum Reply",
+    "Alice replied to your post.": "Alice replied to your post.",
+    "New Feature": "New Feature",
+    "Food Scanner is now live!": "Food Scanner is now live!",
+    "Streak!": "Streak!",
+    "7 days logged in a row.": "7 days logged in a row.",
+    "Hydration Reminder": "Hydration Reminder",
+    "Time to drink water.": "Time to drink water.",
+    "Mention": "Mention",
+    "Bob mentioned you in a comment.": "Bob mentioned you in a comment.",
+    "Protein Goal!": "Protein Goal!",
+    "You reached your protein target.": "You reached your protein target."
+  }
+} 

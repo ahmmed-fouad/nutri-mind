@@ -9,20 +9,22 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import { useTranslation } from "react-i18next";
 
 const COLORS = ["#34d399", "#60a5fa", "#fbbf24", "#f87171"];
 
-function getNutritionData(recipe: any) {
+function getNutritionData(recipe: any, t: any) {
   // Dummy nutrition data for demo
   return [
-    { name: "Protein", value: Math.floor(Math.random() * 20) + 10 },
-    { name: "Carbs", value: Math.floor(Math.random() * 40) + 30 },
-    { name: "Fat", value: Math.floor(Math.random() * 15) + 5 },
-    { name: "Fiber", value: Math.floor(Math.random() * 10) + 2 },
+    { name: t("protein"), value: Math.floor(Math.random() * 20) + 10 },
+    { name: t("carbs"), value: Math.floor(Math.random() * 40) + 30 },
+    { name: t("fat"), value: Math.floor(Math.random() * 15) + 5 },
+    { name: t("fiber"), value: Math.floor(Math.random() * 10) + 2 },
   ];
 }
 
 export default function RecipesPage() {
+  const { t } = useTranslation("recipes");
   const { data, isLoading, error } = useGetRecipesQuery();
   const [selected, setSelected] = useState<any>(null);
 console.log(data)
@@ -30,18 +32,17 @@ console.log(data)
     <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-6 px-2 sm:px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-primary">
-          Healthy Recipes
+          {t("page_title")}
         </h1>
         <p className="text-center text-zinc-500 mb-12 max-w-2xl mx-auto text-base sm:text-lg">
-          Discover delicious, healthy recipes with nutrition breakdowns. Click
-          any recipe for details and a nutrition chart!
+          {t("page_subtitle")}
         </p>
         {isLoading && (
-          <div className="text-center text-lg">Loading recipes...</div>
+          <div className="text-center text-lg">{t("loading")}</div>
         )}
         {error && (
           <div className="text-center text-red-500">
-            Failed to load recipes.
+            {t("error")}
           </div>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
@@ -60,7 +61,7 @@ console.log(data)
                 {recipe.strMeal}
               </h2>
               <div className="text-zinc-500 text-xs sm:text-sm mb-2 text-center line-clamp-2">
-                {recipe.strCategory} | {recipe.strArea}
+                {t(`categories.${recipe.strCategory}`, { defaultValue: recipe.strCategory })} | {t(`areas.${recipe.strArea}`, { defaultValue: recipe.strArea })}
               </div>
               <div className="flex gap-2 flex-wrap justify-center mb-2">
                 {recipe.strTags
@@ -76,7 +77,7 @@ console.log(data)
                   ))}
               </div>
               <div className="text-zinc-400 text-xs">
-                Calories: {Math.floor(Math.random() * 200) + 200} kcal
+                {t("calories", { count: Math.floor(Math.random() * 200) + 200 })}
               </div>
             </div>
           ))}
@@ -96,7 +97,7 @@ console.log(data)
             <button
               className="absolute top-4 right-4 cursor-pointer text-zinc-400 hover:text-red-500 text-xl font-bold"
               onClick={() => setSelected(null)}
-              aria-label="Close"
+              aria-label={t("close")}
             >
               ×
             </button>
@@ -111,7 +112,7 @@ console.log(data)
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
-                        data={getNutritionData(selected)}
+                        data={getNutritionData(selected, t)}
                         dataKey="value"
                         nameKey="name"
                         cx="50%"
@@ -120,7 +121,7 @@ console.log(data)
                         fill="#8884d8"
                         label
                       >
-                        {getNutritionData(selected).map((entry, index) => (
+                        {getNutritionData(selected, t).map((entry, index) => (
                           <Cell
                             key={`cell-${index}`}
                             fill={COLORS[index % COLORS.length]}
@@ -141,11 +142,11 @@ console.log(data)
                 <div className="flex flex-col md:flex-row gap-3">
                   <div>
                     <div className="text-zinc-500 text-xs sm:text-sm mb-2">
-                      {selected.strCategory} | {selected.strArea}
+                      {t(`categories.${selected.strCategory}`, { defaultValue: selected.strCategory })} | {t(`areas.${selected.strArea}`, { defaultValue: selected.strArea })}
                     </div>
                     {/* ingr */}
                     <div className="mb-5 mx-2 w-full md:w-[13rem] max-h-40 sm:max-h-[20rem] overflow-y-auto">
-                      <span className="font-semibold">Ingredients:</span>
+                      <span className="font-semibold">{t("ingredients")}</span>
                       <ul className="list-disc ml-6 text-zinc-700 dark:text-zinc-200">
                         {Array.from({ length: 20 }).map((_, i) => {
                           const ingredient = selected[`strIngredient${i + 1}`];
@@ -163,13 +164,13 @@ console.log(data)
                   </div>
                   <div className="w-full md:w-[22rem]">
                     <div className="mb-2">
-                      <span className="font-bold">Instructions:</span>
+                      <span className="font-bold">{t("instructions")}</span>
                       <p className="text-zinc-600 max-h-32 sm:max-h-60 overflow-y-auto dark:text-zinc-300 whitespace-pre-line mt-1 text-xs sm:text-base">
                         {selected.strInstructions}
                       </p>
                     </div>
                     <div className="mb-2">
-                      <span className="font-bold">Nutrition:</span>
+                      <span className="font-bold">{t("nutrition")}</span>
                       <p className="text-zinc-600 dark:text-zinc-300 whitespace-pre-line mt-1 text-xs sm:text-base">
                         {selected.strTags}
                       </p>

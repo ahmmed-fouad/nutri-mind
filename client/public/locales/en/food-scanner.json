@@ -1,0 +1,20 @@
+{
+  "page_title": "Food Scanner",
+  "page_subtitle": "Scan your food or barcode to instantly get nutrition facts and ingredient details.",
+  "upload_label": "Upload Food Image",
+  "barcode_label": "Or Enter Barcode",
+  "barcode_placeholder": "e.g. 1234567890123",
+  "scan": "Scan",
+  "add_to_diary": "Add to Diary",
+  "serving": "Serving: {{value}}",
+  "calories": "Calories:",
+  "protein": "Protein:",
+  "carbs": "Carbs:",
+  "fat": "Fat:",
+  "macronutrient_breakdown": "Macronutrient Breakdown",
+  "micronutrients": "Micronutrients",
+  "ingredients": "Ingredients",
+  "allergen_warning": "Allergen Warning:",
+  "no_allergens": "No allergens detected.",
+  "ingredient_chip": "{{ingredient}}"
+} 

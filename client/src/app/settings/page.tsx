@@ -8,8 +8,10 @@ import SecurityPrivacyCard from "../../components/settings/SecurityPrivacyCard";
 import FeedbackCard from "../../components/settings/FeedbackCard";
 import AppInfoCard from "../../components/settings/AppInfoCard";
 import { usageData, COLORS, recentLogins, profileFields, preferenceOptions, notificationTypes, connectedAccounts, legalLinks } from "../../data/settingsData";
+import { useTranslation } from "react-i18next";
 
 export default function SettingsPage() {
+  const { t } = useTranslation("settings");
   const [profile, setProfile] = useState({
     name: "Jane Doe",
     email: "jane@email.com",
@@ -44,10 +46,10 @@ export default function SettingsPage() {
         {/* Header */}
         <div className="mb-8 sm:mb-10 text-center">
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-2 text-primary">
-            Settings & Personalization
+            {t("title")}
           </h1>
           <p className="text-base sm:text-lg text-zinc-500 max-w-2xl mx-auto">
-            Manage your account, preferences, and app experience.
+            {t("subtitle")}
           </p>
         </div>
         {/* Profile & Preferences */}

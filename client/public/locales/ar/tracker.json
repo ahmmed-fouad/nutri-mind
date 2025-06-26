@@ -1,0 +1,28 @@
+{
+  "title": "تقدمك الصحي",
+  "subtitle": "تتبع رحلتك، واحتفل بإنجازاتك، وابقَ متحفزًا كل يوم!",
+  "progress_over_time": "التقدم مع الوقت",
+  "export_data": "تصدير البيانات",
+  "metrics": {
+    "weight": "الوزن",
+    "bmi": "مؤشر كتلة الجسم",
+    "calories": "السعرات الحرارية",
+    "steps": "الخطوات",
+    "water": "الماء",
+    "sleep": "النوم"
+  },
+  "badges": {
+    "5kg_lost": "خسارة 5 كجم",
+    "30_days_logged": "30 يومًا من التسجيل",
+    "hydration_hero": "بطل الترطيب"
+  },
+  "today_progress": "تقدم اليوم",
+  "log_today": "سجل اليوم",
+  "progress_photos": "صور التقدم",
+  "upload_photo": "رفع صورة",
+  "notes_journal": "ملاحظات ويوميات",
+  "notes_placeholder": "اكتب أفكارك أو تأملاتك أو أهدافك...",
+  "save_note": "حفظ الملاحظة",
+  "day_streak": "سلسلة من {{count}} يوم!",
+  "new_quote": "اقتباس جديد"
+} 

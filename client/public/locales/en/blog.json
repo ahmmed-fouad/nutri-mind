@@ -1,0 +1,28 @@
+{
+  "page_title": "Nutrition Blog",
+  "page_subtitle": "Explore the latest articles on nutrition, healthy eating, and wellness. Click any post to read more and see nutrition trends!",
+  "loading": "Loading blog posts...",
+  "error": "Failed to load blog posts.",
+  "by": "By",
+  "unknown": "Unknown",
+  "read_more": "Read More →",
+  "popular_topics": "Popular Nutrition Topics",
+  "topics": {
+    "Protein": "Protein",
+    "Carbs": "Carbs",
+    "Fat": "Fat",
+    "Vitamins": "Vitamins",
+    "Hydration": "Hydration"
+  },
+  "posts": {
+    "How to Eat Healthy": "How to Eat Healthy",
+    "Simple tips for a balanced diet.": "Simple tips for a balanced diet.",
+    "The Power of Hydration": "The Power of Hydration",
+    "Why drinking water matters for your health.": "Why drinking water matters for your health."
+  },
+  "modal": {
+    "read_full": "Read full article on Dev.to",
+    "nutrition_chart": "Nutrition Topic Chart",
+    "close": "Close"
+  }
+} 

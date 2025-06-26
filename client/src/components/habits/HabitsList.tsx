@@ -1,5 +1,6 @@
 import { Edit, Trash2, Leaf, Flame, Moon } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function DropletIcon() {
   return <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#38bdf8"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3C12 3 6 10.5 6 15a6 6 0 0 0 12 0c0-4.5-6-12-6-12z" /></svg>;
@@ -31,14 +32,15 @@ type HabitsListProps = {
 };
 
 export default function HabitsList({ habits, checked, setChecked, getHabitProgress }: HabitsListProps) {
+  const { t } = useTranslation("habits");
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-2 sm:p-8 mb-8 sm:mb-12">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-6 gap-1 sm:gap-2">
         <h2 className="text-base sm:text-xl font-bold text-primary flex items-center gap-2">
-          Today's Habits
+          {t("today_habits")}
         </h2>
         <button className="flex items-center gap-1 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition w-full sm:w-auto text-sm sm:text-base">
-          + Add Habit
+          {t("add_habit")}
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-6">
@@ -54,7 +56,7 @@ export default function HabitsList({ habits, checked, setChecked, getHabitProgre
               >
                 {iconMap[habit.icon]}
               </span>
-              <span className="font-semibold text-sm sm:text-lg">{habit.name}</span>
+              <span className="font-semibold text-sm sm:text-lg">{t(`demoHabits.${habit.name}`)}</span>
               <button className="ml-auto text-zinc-400 hover:text-primary">
                 <Edit className="w-4 h-4" />
               </button>
@@ -71,7 +73,7 @@ export default function HabitsList({ habits, checked, setChecked, getHabitProgre
                 }
                 className="w-4 h-4 sm:w-5 sm:h-5 accent-primary"
               />
-              <span className="text-xs sm:text-sm text-zinc-500">Mark as done</span>
+              <span className="text-xs sm:text-sm text-zinc-500">{t("mark_as_done")}</span>
             </div>
             <div className="w-full h-2 sm:h-3 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden mt-1 sm:mt-2">
               <div
@@ -83,7 +85,7 @@ export default function HabitsList({ habits, checked, setChecked, getHabitProgre
               />
             </div>
             <div className="text-xs text-zinc-400 mt-1">
-              {getHabitProgress(i)}% this week
+              {getHabitProgress(i)}{t("progress_this_week")}
             </div>
           </div>
         ))}

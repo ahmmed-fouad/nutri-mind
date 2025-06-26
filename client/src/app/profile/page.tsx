@@ -5,8 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUserForm, setUserForm } from "@/stores/userFormApi";
 import { RootState } from "@/stores";
 import profileFields from "@/data/profileFields";
+import { useTranslation } from "react-i18next";
 
 export default function ProfilePage() {
+  const { t } = useTranslation("profile");
   const [user, setUser] = useState<any>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -75,7 +77,7 @@ export default function ProfilePage() {
       const base64 = reader.result as string;
       setPhotoUrl(base64);
       localStorage.setItem("profile_photo_base64", base64);
-      setSuccess("Photo previewed locally!");
+      setSuccess(t("photo_previewed"));
     };
     reader.readAsDataURL(file);
   };
@@ -107,11 +109,11 @@ export default function ProfilePage() {
         weight: Number(form.weight),
       },
     }));
-    setSuccess("Profile updated!");
+    setSuccess(t("profile_updated"));
   };
 
   if (!user) {
-    return <div className="text-center mt-10 text-lg">Please log in to view your profile.</div>;
+    return <div className="text-center mt-10 text-lg">{t("please_login")}</div>;
   }
 
   return (
@@ -153,14 +155,14 @@ export default function ProfilePage() {
             />
           </div>
           <div className="text-zinc-600 dark:text-zinc-300 text-sm mt-1">
-            Click photo to change
+            {t("change_photo")}
           </div>
         </div>
         {/* Inputs */}
         {profileFields.map((field) => (
           <div className="flex flex-col gap-2" key={field.name}>
             <label className="font-medium text-zinc-700 dark:text-zinc-200">
-              {field.label}
+              {t(field.label)}
             </label>
             <input
               type={field.type}
@@ -171,7 +173,7 @@ export default function ProfilePage() {
                   : form[field.name as keyof typeof form]
               }
               onChange={field.name === "email" ? undefined : handleChange}
-              placeholder={field.placeholder}
+              placeholder={t(field.placeholder)}
               readOnly={field.readOnly}
               className={field.className}
             />
@@ -181,12 +183,12 @@ export default function ProfilePage() {
           type="submit"
           className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
         >
-          Update Profile
+          {t("update_profile")}
         </button>
         {success && (
           <div className="text-green-600 text-center mt-2">{success}</div>
         )}
-        {error && <div className="text-red-500 text-center mt-2">{error}</div>}
+        {error && <div className="text-red-500 text-center mt-2">{t("error")}</div>}
       </form>
     </section>
   );

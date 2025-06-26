@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { Users, UserPlus, TrendingUp, BookOpen, FileText, LifeBuoy, ArrowUpRight, ArrowDownRight, CheckCircle, Ban, Edit, Trash2, Download, NotebookPen, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const statCards = [
   { label: "Total Users", value: 1240, icon: <Users className="w-6 h-6 text-primary" />, trend: 5, up: true },
@@ -49,14 +50,15 @@ const supportTickets = [
 ];
 
 export default function AdminDashboard() {
+  const { t } = useTranslation("admin");
   const [metric, setMetric] = useState("users");
   const [notes, setNotes] = useState("");
 
   const metricOptions = [
-    { key: "users", label: "Users", color: "#34d399" },
-    { key: "recipes", label: "Recipes", color: "#fbbf24" },
-    { key: "blog", label: "Blog Posts", color: "#a78bfa" },
-    { key: "support", label: "Support Tickets", color: "#f87171" },
+    { key: "users", label: t("users"), color: "#34d399" },
+    { key: "recipes", label: t("recipes"), color: "#fbbf24" },
+    { key: "blog", label: t("blog"), color: "#a78bfa" },
+    { key: "support", label: t("support"), color: "#f87171" },
   ];
 
   return (
@@ -65,10 +67,10 @@ export default function AdminDashboard() {
         {/* Header */}
         <div className="mb-10 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-2 text-primary">
-            Admin Dashboard
+            {t("page_title")}
           </h1>
           <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
-            Monitor platform activity, manage users, and view analytics.
+            {t("page_subtitle")}
           </p>
         </div>
         {/* Stat Cards */}
@@ -80,7 +82,7 @@ export default function AdminDashboard() {
             >
               <div>{card.icon}</div>
               <div className="text-2xl font-bold mt-2">{card.value}</div>
-              <div className="text-xs text-zinc-400 mt-1">{card.label}</div>
+              <div className="text-xs text-zinc-400 mt-1">{t(`statCards.${card.label}`)}</div>
               <div
                 className={`flex items-center gap-1 text-xs mt-1 ${
                   card.up ? "text-green-500" : "text-red-500"
@@ -90,8 +92,7 @@ export default function AdminDashboard() {
                   <ArrowUpRight className="w-4 h-4" />
                 ) : (
                   <ArrowDownRight className="w-4 h-4" />
-                )}{" "}
-                {card.trend}%
+                )} {card.trend}%
               </div>
             </div>
           ))}
@@ -100,7 +101,7 @@ export default function AdminDashboard() {
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
             <h2 className="text-2xl font-bold text-primary">
-              Platform Analytics
+              {t("platform_analytics")}
             </h2>
             <div className="flex gap-2 flex-wrap">
               {metricOptions.map((opt) => (
@@ -133,9 +134,7 @@ export default function AdminDashboard() {
                   type="monotone"
                   dataKey={metric}
                   stroke={metricOptions.find((m) => m.key === metric)?.color}
-                  fill={
-                    metricOptions.find((m) => m.key === metric)?.color + "33"
-                  }
+                  fill={metricOptions.find((m) => m.key === metric)?.color + "33"}
                   strokeWidth={3}
                   dot={{ r: 5 }}
                   activeDot={{ r: 8 }}
@@ -148,23 +147,15 @@ export default function AdminDashboard() {
         {/* Recent Activity Feed */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-8 mb-12">
           <h2 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5" /> Recent Activity
+            <TrendingUp className="w-5 h-5" /> {t("recent_activity")}
           </h2>
           <ul className="divide-y divide-zinc-200 dark:divide-zinc-800">
             {recentActivity.map((a, i) => (
               <li key={i} className="flex items-center gap-3 py-3">
-                {a.type === "signup" && (
-                  <UserPlus className="w-5 h-5 text-blue-500" />
-                )}
-                {a.type === "recipe" && (
-                  <BookOpen className="w-5 h-5 text-yellow-500" />
-                )}
-                {a.type === "blog" && (
-                  <FileText className="w-5 h-5 text-purple-500" />
-                )}
-                {a.type === "support" && (
-                  <LifeBuoy className="w-5 h-5 text-red-500" />
-                )}
+                {a.type === "signup" && <UserPlus className="w-5 h-5 text-blue-500" />}
+                {a.type === "recipe" && <BookOpen className="w-5 h-5 text-yellow-500" />}
+                {a.type === "blog" && <FileText className="w-5 h-5 text-purple-500" />}
+                {a.type === "support" && <LifeBuoy className="w-5 h-5 text-red-500" />}
                 <span className="font-medium">{a.user}</span>
                 <span className="text-xs text-zinc-400 ml-auto">{a.time}</span>
               </li>
@@ -176,18 +167,18 @@ export default function AdminDashboard() {
           {/* User Management */}
           <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-6">
             <h3 className="text-lg sm:text-xl font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2">
-              <Users className="w-5 h-5" /> User Management
+              <Users className="w-5 h-5" /> {t("user_management")}
             </h3>
             {/* Table for md+, cards for mobile */}
             <div className="hidden md:block">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-zinc-400">
-                    <th className="text-left py-2">Name</th>
-                    <th className="text-left py-2">Email</th>
-                    <th className="text-left py-2">Signup</th>
-                    <th className="text-left py-2">Status</th>
-                    <th className="text-left py-2">Actions</th>
+                    <th className="text-left py-2">{t("name")}</th>
+                    <th className="text-left py-2">{t("email")}</th>
+                    <th className="text-left py-2">{t("signup_date")}</th>
+                    <th className="text-left py-2">{t("status")}</th>
+                    <th className="text-left py-2">{t("actions")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -202,11 +193,11 @@ export default function AdminDashboard() {
                       <td className="py-2">
                         {u.status === "active" ? (
                           <span className="text-green-500 font-semibold">
-                            Active
+                            {t("active")}
                           </span>
                         ) : (
                           <span className="text-red-500 font-semibold">
-                            Banned
+                            {t("banned")}
                           </span>
                         )}
                       </td>
@@ -237,10 +228,10 @@ export default function AdminDashboard() {
                 <div key={i} className="rounded-xl border border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 p-3 flex flex-col gap-2 shadow">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-base">{u.name}</span>
-                    <span className={`text-xs font-semibold ${u.status === 'active' ? 'text-green-500' : 'text-red-500'}`}>{u.status === 'active' ? 'Active' : 'Banned'}</span>
+                    <span className={`text-xs font-semibold ${u.status === 'active' ? 'text-green-500' : 'text-red-500'}`}>{u.status === 'active' ? t('active') : t('banned')}</span>
                   </div>
                   <div className="text-xs text-zinc-500 break-all">{u.email}</div>
-                  <div className="text-xs text-zinc-400">Signed up: {u.date}</div>
+                  <div className="text-xs text-zinc-400">{t("signed_up")} {u.date}</div>
                   <div className="flex gap-2 mt-2">
                     <button className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 hover:bg-accent flex-1 flex items-center justify-center">
                       <Edit className="w-4 h-4" />
@@ -271,11 +262,11 @@ export default function AdminDashboard() {
               >
                 <div className="mb-2 sm:mb-0">{c.icon}</div>
                 <div className="flex-1 text-center sm:text-left">
-                  <div className="text-base sm:text-lg font-bold text-primary">{c.label}</div>
+                  <div className="text-base sm:text-lg font-bold text-primary">{t(`statCards.${c.label}`)}</div>
                   <div className="text-xl sm:text-2xl font-bold mt-1">{c.count}</div>
                 </div>
                 <button className="w-full sm:w-auto mt-2 sm:mt-0 px-3 sm:px-4 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition text-sm sm:text-base">
-                  Manage
+                  {t("manage")}
                 </button>
               </div>
             ))}
@@ -286,42 +277,39 @@ export default function AdminDashboard() {
           {/* Support Overview */}
           <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6">
             <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-              <LifeBuoy className="w-5 h-5" /> Support Overview
+              <LifeBuoy className="w-5 h-5" /> {t("support_overview")}
             </h3>
             <div className="mb-4">
               <div className="flex gap-4 text-sm">
                 <span className="text-green-500 font-semibold">
-                  Open:{" "}
-                  {supportTickets.filter((t) => t.status === "open").length}
+                  {t("open")}: {supportTickets.filter((tkt) => tkt.status === "open").length}
                 </span>
                 <span className="text-yellow-500 font-semibold">
-                  Pending:{" "}
-                  {supportTickets.filter((t) => t.status === "pending").length}
+                  {t("pending")}: {supportTickets.filter((tkt) => tkt.status === "pending").length}
                 </span>
                 <span className="text-zinc-400 font-semibold">
-                  Closed:{" "}
-                  {supportTickets.filter((t) => t.status === "closed").length}
+                  {t("closed")}: {supportTickets.filter((tkt) => tkt.status === "closed").length}
                 </span>
               </div>
             </div>
             <ul className="divide-y divide-zinc-200 dark:divide-zinc-800">
-              {supportTickets.map((t, i) => (
+              {supportTickets.map((tkt, i) => (
                 <li key={i} className="py-2 flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4 text-primary" />
-                  <span className="font-medium">{t.subject}</span>
+                  <MessageCircle className="w-5 h-5 text-primary" />
+                  <span className="font-medium">{tkt.subject}</span>
                   <span className="text-xs text-zinc-400 ml-auto">
-                    {t.user}
+                    {tkt.user}
                   </span>
                   <span
                     className={`text-xs font-semibold ml-2 ${
-                      t.status === "open"
+                      tkt.status === "open"
                         ? "text-green-500"
-                        : t.status === "pending"
+                        : tkt.status === "pending"
                         ? "text-yellow-500"
                         : "text-zinc-400"
                     }`}
                   >
-                    {t.status}
+                    {t(tkt.status)}
                   </span>
                 </li>
               ))}
@@ -330,25 +318,25 @@ export default function AdminDashboard() {
           {/* Export Data */}
           <div className="flex flex-col items-center justify-center gap-6 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6">
             <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-              <Download className="w-5 h-5" /> Export Data
+              <Download className="w-5 h-5" /> {t("export_data")}
             </h3>
             <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-blue-400 text-[var(--darkcard)] font-bold shadow-lg hover:from-primary/90 hover:to-blue-500 transition text-lg">
-              <Download className="w-6 h-6" /> Export Analytics
+              <Download className="w-6 h-6" /> {t("export_analytics")}
             </button>
           </div>
           {/* Admin Notes */}
           <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6 flex flex-col h-full">
             <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-              <NotebookPen className="w-5 h-5" /> Admin Notes
+              <NotebookPen className="w-5 h-5" /> {t("admin_notes")}
             </h3>
             <textarea
               className="w-full min-h-[100px] rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 p-3 text-base text-zinc-700 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary mb-4"
-              placeholder="Add admin notes or reminders..."
+              placeholder={t("notes_placeholder")}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
             />
             <button className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-primary text-[var(--darkcard)] font-semibold shadow hover:bg-primary/90 transition">
-              <NotebookPen className="w-5 h-5" /> Save Note
+              <NotebookPen className="w-5 h-5" /> {t("save_note")}
             </button>
           </div>
         </div>

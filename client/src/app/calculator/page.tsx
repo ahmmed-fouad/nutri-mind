@@ -10,7 +10,7 @@ import {
   tips,
   mealPlan,
 } from "@/data/calculatorPageData";
-
+import { useTranslation } from "react-i18next";
 
 function calculateBMR(gender: string, weight: number, height: number, age: number) {
   // Mifflin-St Jeor Equation
@@ -22,12 +22,13 @@ function calculateMacros(calories: number, pref: string) {
   // Default: 30% protein, 40% carbs, 30% fat
   // Keto: 20% protein, 10% carbs, 70% fat
   // High-Protein: 40% protein, 30% carbs, 30% fat
-  if (pref === "Keto") return { protein: 0.2, carbs: 0.1, fat: 0.7 };
-  if (pref === "High-Protein") return { protein: 0.4, carbs: 0.3, fat: 0.3 };
+  if (pref === "dietaryPrefs.keto") return { protein: 0.2, carbs: 0.1, fat: 0.7 };
+  if (pref === "dietaryPrefs.high_protein") return { protein: 0.4, carbs: 0.3, fat: 0.3 };
   return { protein: 0.3, carbs: 0.4, fat: 0.3 };
 }
 
 export default function DietCalculatorPage() {
+  const { t } = useTranslation("calculator");
   const [form, setForm] = useState({
     age: 28,
     gender: "female",
@@ -35,7 +36,7 @@ export default function DietCalculatorPage() {
     weight: 62,
     activity: 1.375,
     goal: 0,
-    pref: "None",
+    pref: "dietaryPrefs.none",
     bodyFat: "",
     waist: "",
     hip: "",
@@ -66,30 +67,29 @@ export default function DietCalculatorPage() {
 
   // Chart data
   const macroData = results ? [
-    { name: "Protein", value: results.protein },
-    { name: "Carbs", value: results.carbs },
-    { name: "Fat", value: results.fat },
+    { name: t("protein"), value: results.protein },
+    { name: t("carbs"), value: results.carbs },
+    { name: t("fat"), value: results.fat },
   ] : [];
   const calorieBarData = results ? [
-    { name: "Calories", value: results.calories },
+    { name: t("calories"), value: results.calories },
   ] : [];
 
   return (
     <section className="min-h-[80vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900/60 py-10 px-2">
       <div className="max-w-3xl w-full glassmorphism p-8 rounded-3xl shadow-2xl mb-8 animate-fade-in">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 text-foreground">
-          Advanced Diet Calculator
+          {t("title")}
         </h1>
         <p className="text-center text-zinc-700 mb-6">
-          Personalize your nutrition plan with science-backed calculations and
-          instant visual feedback.
+          {t("subtitle")}
         </p>
         <form
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           onSubmit={handleCalculate}
         >
           <div className="flex flex-col gap-3 text-zinc-700">
-            <label className="font-semibold">Age</label>
+            <label className="font-semibold">{t("age")}</label>
             <input
               type="number"
               name="age"
@@ -100,17 +100,17 @@ export default function DietCalculatorPage() {
               className="input glassmorphism"
               required
             />
-            <label className="font-semibold">Gender</label>
+            <label className="font-semibold">{t("gender")}</label>
             <select
               name="gender"
               value={form.gender}
               onChange={handleChange}
               className="input glassmorphism"
             >
-              <option value="female">Female</option>
-              <option value="male">Male</option>
+              <option value="female">{t("female")}</option>
+              <option value="male">{t("male")}</option>
             </select>
-            <label className="font-semibold">Height (cm)</label>
+            <label className="font-semibold">{t("height")}</label>
             <input
               type="number"
               name="height"
@@ -121,7 +121,7 @@ export default function DietCalculatorPage() {
               className="input glassmorphism"
               required
             />
-            <label className="font-semibold">Weight (kg)</label>
+            <label className="font-semibold">{t("weight")}</label>
             <input
               type="number"
               name="weight"
@@ -132,7 +132,7 @@ export default function DietCalculatorPage() {
               className="input glassmorphism"
               required
             />
-            <label className="font-semibold">Activity Level</label>
+            <label className="font-semibold">{t("activity_level")}</label>
             <select
               name="activity"
               value={form.activity}
@@ -141,11 +141,11 @@ export default function DietCalculatorPage() {
             >
               {activityLevels.map((a) => (
                 <option key={a.value} value={a.value}>
-                  {a.label}
+                  {t(a.label)}
                 </option>
               ))}
             </select>
-            <label className="font-semibold">Goal</label>
+            <label className="font-semibold">{t("goal")}</label>
             <select
               name="goal"
               value={form.goal}
@@ -154,11 +154,11 @@ export default function DietCalculatorPage() {
             >
               {goals.map((g) => (
                 <option key={g.value} value={g.value}>
-                  {g.label}
+                  {t(g.label)}
                 </option>
               ))}
             </select>
-            <label className="font-semibold">Dietary Preference</label>
+            <label className="font-semibold">{t("dietary_preference")}</label>
             <select
               name="pref"
               value={form.pref}
@@ -167,13 +167,13 @@ export default function DietCalculatorPage() {
             >
               {dietaryPrefs.map((p) => (
                 <option key={p} value={p}>
-                  {p}
+                  {t(p)}
                 </option>
               ))}
             </select>
           </div>
           <div className="flex flex-col gap-3 text-zinc-700">
-            <label className="font-semibold">Body Fat % (optional)</label>
+            <label className="font-semibold">{t("body_fat")}</label>
             <input
               type="number"
               name="bodyFat"
@@ -183,7 +183,7 @@ export default function DietCalculatorPage() {
               onChange={handleChange}
               className="input glassmorphism"
             />
-            <label className="font-semibold">Waist (cm, optional)</label>
+            <label className="font-semibold">{t("waist")}</label>
             <input
               type="number"
               name="waist"
@@ -193,7 +193,7 @@ export default function DietCalculatorPage() {
               onChange={handleChange}
               className="input glassmorphism"
             />
-            <label className="font-semibold">Hip (cm, optional)</label>
+            <label className="font-semibold">{t("hip")}</label>
             <input
               type="number"
               name="hip"
@@ -203,7 +203,7 @@ export default function DietCalculatorPage() {
               onChange={handleChange}
               className="input glassmorphism"
             />
-            <label className="font-semibold">Meals per day</label>
+            <label className="font-semibold">{t("meals_per_day")}</label>
             <input
               type="number"
               name="meals"
@@ -213,20 +213,20 @@ export default function DietCalculatorPage() {
               onChange={handleChange}
               className="input glassmorphism"
             />
-            <label className="font-semibold">Allergies (comma separated)</label>
+            <label className="font-semibold">{t("allergies")}</label>
             <input
               type="text"
               name="allergies"
               value={form.allergies}
               onChange={handleChange}
               className="input glassmorphism"
-              placeholder="e.g. peanuts, gluten"
+              placeholder={t("allergies_placeholder")}
             />
             <button
               type="submit"
               className="mt-6 btn btn-primary py-3 rounded-xl font-bold text-lg shadow-lg bg-primary text-white hover:bg-primary/90 transition-all"
             >
-              Calculate
+              {t("calculate")}
             </button>
           </div>
         </form>
@@ -235,30 +235,30 @@ export default function DietCalculatorPage() {
         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 animate-fade-in-up">
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
             <h2 className="text-2xl font-bold text-primary mb-2">
-              Your Results
+              {t("your_results")}
             </h2>
             <div className="flex flex-col gap-2 text-lg">
               <span>
-                <b>Calories:</b> {results.calories} kcal
+                <b>{t("calories")}:</b> {results.calories} kcal
               </span>
               <span>
-                <b>Protein:</b> {results.protein} g
+                <b>{t("protein")}:</b> {results.protein} g
               </span>
               <span>
-                <b>Carbs:</b> {results.carbs} g
+                <b>{t("carbs")}:</b> {results.carbs} g
               </span>
               <span>
-                <b>Fat:</b> {results.fat} g
+                <b>{t("fat")}:</b> {results.fat} g
               </span>
               <span>
-                <b>Water:</b> {results.water} L/day
+                <b>{t("water")}:</b> {results.water} L/day
               </span>
             </div>
-            <button className="btn btn-accent mt-2">Download PDF</button>
+            <button className="btn btn-accent mt-2">{t("download_pdf")}</button>
           </div>
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-6">
             <h2 className="text-xl font-bold text-primary mb-2">
-              Macronutrient Breakdown
+              {t("macronutrient_breakdown")}
             </h2>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
@@ -298,14 +298,14 @@ export default function DietCalculatorPage() {
         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 mt-8 animate-fade-in-up">
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
             <h2 className="text-xl font-bold text-primary mb-2">
-              Sample Meal Plan
+              {t("sample_meal_plan")}
             </h2>
             <ul className="flex flex-col gap-2">
               {mealPlan.map((m, i) => (
                 <li key={i} className="flex items-center gap-3 text-lg">
                   <span className="text-2xl">{m.icon}</span>
                   <span>
-                    <b>{m.meal}:</b> {m.desc}
+                    <b>{t(m.meal)}:</b> {t(m.desc)}
                   </span>
                 </li>
               ))}
@@ -313,14 +313,14 @@ export default function DietCalculatorPage() {
           </div>
           <div className="glassmorphism p-6 rounded-2xl shadow-xl flex flex-col gap-4">
             <h2 className="text-xl font-bold text-primary mb-2">
-              Tips for Success
+              {t("tips_for_success")}
             </h2>
             <ul className="list-disc pl-6 text-lg text-zinc-600">
-              {tips.map((t, i) => (
-                <li key={i}>{t}</li>
+              {tips.map((tip, i) => (
+                <li key={i}>{t(tip)}</li>
               ))}
             </ul>
-            <button className="btn btn-secondary mt-2">Share Results</button>
+            <button className="btn btn-secondary mt-2">{t("share_results")}</button>
           </div>
         </div>
       )}

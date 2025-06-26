@@ -9,6 +9,7 @@ import NavLinks from "./NavLinks";
 import NavRight from "./NavRight";
 import { navbarLinks, socialLinks } from "./navigationData";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation("navbar");
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
@@ -92,8 +94,6 @@ export default function Navbar() {
         <div className="flex items-center justify-between w-full mb-2">
           <Logo />
           <NavRight
-            lang={lang}
-            handleLangChange={handleLangChange}
             theme={theme}
             toggleTheme={toggleTheme}
             photoUrl={photoUrl}
@@ -112,8 +112,6 @@ export default function Navbar() {
             <Menu className="w-7 h-7 mr-2" />
           </button>
           <NavRight
-            lang={lang}
-            handleLangChange={handleLangChange}
             theme={theme}
             toggleTheme={toggleTheme}
             photoUrl={photoUrl}
@@ -151,8 +149,7 @@ export default function Navbar() {
           onSocialLeave={() => setSocialOpen(false)}
         />
         <NavRight
-          lang={lang}
-          handleLangChange={handleLangChange}
+
           theme={theme}
           toggleTheme={toggleTheme}
           photoUrl={photoUrl}

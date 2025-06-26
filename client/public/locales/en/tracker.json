@@ -1,0 +1,28 @@
+{
+  "title": "Your Health Progress",
+  "subtitle": "Track your journey, celebrate your wins, and stay motivated every day!",
+  "progress_over_time": "Progress Over Time",
+  "export_data": "Export Data",
+  "metrics": {
+    "weight": "Weight",
+    "bmi": "BMI",
+    "calories": "Calories",
+    "steps": "Steps",
+    "water": "Water",
+    "sleep": "Sleep"
+  },
+  "badges": {
+    "5kg_lost": "5kg Lost",
+    "30_days_logged": "30 Days Logged",
+    "hydration_hero": "Hydration Hero"
+  },
+  "today_progress": "Today's Progress",
+  "log_today": "Log Today",
+  "progress_photos": "Progress Photos",
+  "upload_photo": "Upload Photo",
+  "notes_journal": "Notes & Journal",
+  "notes_placeholder": "Write your thoughts, reflections, or goals...",
+  "save_note": "Save Note",
+  "day_streak": "{{count}} day streak!",
+  "new_quote": "New Quote"
+} 

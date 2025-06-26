@@ -45,7 +45,7 @@ export default function HabitTrackerPage() {
         />
         <StreaksAchievements streak={streak} />
         <MotivationalQuote
-          quote={motivationalQuotes[quoteIdx]}
+          quoteIdx={quoteIdx}
           onNextQuote={() => setQuoteIdx((q) => (q + 1) % motivationalQuotes.length)}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">

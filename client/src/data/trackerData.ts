@@ -1,15 +1,15 @@
 export const demoStats = [
-  { label: "Weight", value: 72, unit: "kg", icon: "trendingUp" },
-  { label: "BMI", value: 23.1, unit: "", icon: "flame-orange" },
-  { label: "Calories", value: 1850, unit: "kcal", icon: "flame-red" },
-  { label: "Steps", value: 8200, unit: "", icon: "footprints" },
-  { label: "Water", value: 2.3, unit: "L", icon: "droplet" },
+  { label: "metrics.weight", value: 72, unit: "kg", icon: "trendingUp" },
+  { label: "metrics.bmi", value: 23.1, unit: "", icon: "flame-orange" },
+  { label: "metrics.calories", value: 1850, unit: "kcal", icon: "flame-red" },
+  { label: "metrics.steps", value: 8200, unit: "", icon: "footprints" },
+  { label: "metrics.water", value: 2.3, unit: "L", icon: "droplet" },
 ];
 
 export const demoBadges = [
-  { label: "5kg Lost", icon: "trophy-yellow" },
-  { label: "30 Days Logged", icon: "trophy-green" },
-  { label: "Hydration Hero", icon: "droplet" },
+  { label: "badges.5kg_lost", icon: "trophy-yellow" },
+  { label: "badges.30_days_logged", icon: "trophy-green" },
+  { label: "badges.hydration_hero", icon: "droplet" },
 ];
 
 export const progressData = [
@@ -33,8 +33,8 @@ export const motivationalQuotes = [
 ];
 
 export const metricOptions = [
-  { key: "weight", label: "Weight (kg)", color: "#34d399" },
-  { key: "calories", label: "Calories (kcal)", color: "#f87171" },
-  { key: "steps", label: "Steps", color: "#60a5fa" },
-  { key: "water", label: "Water (L)", color: "#38bdf8" },
+  { key: "weight", label: "metrics.weight", color: "#34d399" },
+  { key: "calories", label: "metrics.calories", color: "#f87171" },
+  { key: "steps", label: "metrics.steps", color: "#60a5fa" },
+  { key: "water", label: "metrics.water", color: "#38bdf8" },
 ]; 

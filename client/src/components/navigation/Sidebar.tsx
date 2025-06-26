@@ -5,11 +5,14 @@ import SidebarNavItems from "./SidebarNavItems";
 import SidebarFooter from "./SidebarFooter";
 import { navItems } from "./navigationData";
 import { Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar() {
   const [expanded, setExpanded] = useState(false);
   const [user, setUser] = useState<any>(null);
   const router = useRouter();
+  const { t, i18n } = useTranslation("sidebar");
+  const isRTL = i18n.language === "ar";
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
@@ -22,7 +25,9 @@ export default function Sidebar() {
   return (
     <>
       {/* Collapsed sidebar (always visible, just icons) */}
-      <aside className="fixed top-0 left-0 h-full bg-background border-r border-border z-40 flex flex-col w-16 items-center">
+      <aside
+        className={`fixed top-0 ${isRTL ? "right-0 border-l" : "left-0 border-r"} h-full bg-background border-border z-40 flex flex-col w-16 items-center`}
+      >
         <button
           className="p-[26px] focus:outline-none hover:bg-accent border-b border-border cursor-pointer"
           onClick={() => setExpanded(true)}
@@ -41,7 +46,9 @@ export default function Sidebar() {
             onClick={() => setExpanded(false)}
             aria-label="Sidebar backdrop"
           />
-          <aside className="fixed top-0 left-0 h-full w-56 bg-background border-r border-border z-50 flex flex-col shadow-lg animate-in fade-in">
+          <aside
+            className={`fixed top-0 ${isRTL ? "right-0 border-l" : "left-0 border-r"} h-full w-56 bg-background border-border z-50 flex flex-col shadow-lg animate-in fade-in`}
+          >
             <button
               className="p-3 focus:outline-none hover:bg-accent border-b border-border"
               onClick={() => setExpanded(false)}

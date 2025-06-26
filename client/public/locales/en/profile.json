@@ -1,0 +1,24 @@
+{
+  "please_login": "Please log in to view your profile.",
+  "change_photo": "Click photo to change",
+  "update_profile": "Update Profile",
+  "profile_updated": "Profile updated!",
+  "photo_previewed": "Photo previewed locally!",
+  "error": "An error occurred",
+  "fields": {
+    "name": "Name",
+    "age": "Age",
+    "length": "Height (cm)",
+    "weight": "Weight (kg)",
+    "email": "Email",
+    "password": "Password"
+  },
+  "placeholders": {
+    "name": "Enter your name",
+    "age": "Enter your age",
+    "length": "Enter your height in cm",
+    "weight": "Enter your weight in kg",
+    "email": "Enter your email",
+    "password": "Enter a new password"
+  }
+} 

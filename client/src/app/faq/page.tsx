@@ -3,8 +3,10 @@ import { useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { faqs, chartDatFaq, COLORS, formFields } from "@/data/faqData";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function FAQPage() {
+  const { t } = useTranslation("faq");
   const [open, setOpen] = useState<number | null>(null);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -24,15 +26,15 @@ export default function FAQPage() {
     <div className="min-h-[90vh] bg-zinc-50 dark:bg-zinc-900/60 py-6 px-2 sm:px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-primary">
-          FAQ & Support
+          {t("page_title")}
         </h1>
         <p className="text-center text-zinc-500 mb-12 max-w-2xl mx-auto text-base sm:text-lg">
-          Find answers to common questions or contact our support team for help.
+          {t("page_subtitle")}
         </p>
         {/* FAQ Accordion */}
         <div className="mb-12 sm:mb-16">
           <h2 className="text-lg sm:text-2xl font-bold mb-6 text-primary">
-            Frequently Asked Questions
+            {t("frequently_asked")}
           </h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
@@ -45,7 +47,7 @@ export default function FAQPage() {
                   onClick={() => setOpen(open === i ? null : i)}
                   aria-expanded={open === i}
                 >
-                  <span>{faq.q}</span>
+                  <span>{t(`faqs.${i}.q`, faq.q)}</span>
                   <span
                     className={`transition-transform ${open === i ? "rotate-180" : "rotate-0"}`}
                   >
@@ -59,7 +61,7 @@ export default function FAQPage() {
                       : "max-h-0 opacity-0 overflow-hidden"
                   }`}
                 >
-                  {faq.a}
+                  {t(`faqs.${i}.a`, faq.a)}
                 </div>
               </div>
             ))}
@@ -68,13 +70,13 @@ export default function FAQPage() {
         {/* Chart section */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 mb-12 sm:mb-16">
           <h3 className="text-lg sm:text-2xl font-bold mb-6 text-center text-primary">
-            Most Asked Topics
+            {t("most_asked_topics")}
           </h3>
           <div className="w-full h-56 sm:h-80 flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={chartDatFaq}
+                  data={chartDatFaq.map(d => ({...d, name: t(`topics.${d.name}`, d.name)}))}
                   dataKey="value"
                   nameKey="name"
                   cx="50%"
@@ -99,11 +101,10 @@ export default function FAQPage() {
         {/* Support Contact Form */}
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 mb-12 sm:mb-16">
           <h3 className="text-lg sm:text-2xl font-bold mb-6 text-center text-primary">
-            Contact Support
+            {t("contact_support")}
           </h3>
           <p className="text-center text-zinc-500 mb-6 text-sm sm:text-base">
-            Didn't find your answer? Fill out the form below and our team will
-            get back to you soon.
+            {t("contact_subtitle")}
           </p>
           <form className="max-w-xl mx-auto space-y-4" onSubmit={handleSubmit}>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -114,7 +115,7 @@ export default function FAQPage() {
                   type={field.type}
                   value={form[field.name as keyof typeof form]}
                   onChange={handleChange}
-                  placeholder={field.placeholder}
+                  placeholder={t(`form.${field.name}`, field.placeholder)}
                   className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm w-full`}
                   required={field.required}
                 />
@@ -129,7 +130,7 @@ export default function FAQPage() {
                     name={field.name}
                     value={form[field.name as keyof typeof form]}
                     onChange={handleChange}
-                    placeholder={field.placeholder}
+                    placeholder={t(`form_placeholders.${field.placeholder}`, t(`form.${field.name}`, field.placeholder))}
                     className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm w-full`}
                     required={field.required}
                   />
@@ -140,7 +141,7 @@ export default function FAQPage() {
                     type={field.type}
                     value={form[field.name as keyof typeof form]}
                     onChange={handleChange}
-                    placeholder={field.placeholder}
+                    placeholder={t(`form.${field.name}`, field.placeholder)}
                     className={`${field.className} px-4 py-2 rounded-lg border border-border bg-white/80 dark:bg-zinc-900/70 text-base text-foreground placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition hover:border-primary/70 shadow-sm w-full`}
                     required={field.required}
                   />
@@ -150,16 +151,16 @@ export default function FAQPage() {
               type="submit"
               className="btn btn-primary w-full py-2 rounded-lg font-semibold text-lg bg-primary text-[var(--darkcard)] shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition"
             >
-              Send
+              {t("send")}
             </button>
             {sent && (
               <div className="text-green-600 text-center mt-2">
-                Your message has been sent!
+                {t("sent")}
               </div>
             )}
           </form>
           <div className="text-center text-zinc-400 text-xs sm:text-sm mt-6">
-            Support hours: Mon–Fri, 9am–5pm | Email: {" "}
+            {t("support_hours")} {" "}
             <Link
               href="mailto:support@nutrimind.com"
               className="underline text-primary"

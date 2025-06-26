@@ -13,8 +13,9 @@ import {
   user,
   accent,
 } from "@/data/dashBoardData";
+import { useTranslation } from "react-i18next";
 
-function ProgressRing({ value, goal, color }: { value: number; goal: number; color: string }) {
+function ProgressRing({ value, goal, color, label }: { value: number; goal: number; color: string; label: string }) {
   const pct = Math.min(100, Math.round((value / goal) * 100));
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
   const radius = isMobile ? 24 : 36;
@@ -24,7 +25,7 @@ function ProgressRing({ value, goal, color }: { value: number; goal: number; col
   const size = isMobile ? 54 : 80;
   const fontSize = isMobile ? 14 : 20;
   return (
-    <svg width={size} height={size}>
+    <svg width={size} height={size} aria-label={label}>
       <circle cx={size/2} cy={size/2} r={radius} stroke="#e5e7eb" strokeWidth={stroke} fill="none" />
       <circle cx={size/2} cy={size/2} r={radius} stroke={color} strokeWidth={stroke} fill="none" strokeDasharray={circ} strokeDashoffset={offset} style={{ transition: "stroke-dashoffset 0.7s" }} />
       <text x={size/2} y={size/2+4} textAnchor="middle" fontSize={fontSize} fontWeight={700} fill={color}>{pct}%</text>
@@ -33,6 +34,7 @@ function ProgressRing({ value, goal, color }: { value: number; goal: number; col
 }
 
 export default function DashboardPage() {
+  const { t } = useTranslation("dashboard");
   const [counterAnim, setCounterAnim] = useState([0, 0, 0, 0]);
   useState(() => {
     const interval = setInterval(() => {
@@ -54,9 +56,9 @@ export default function DashboardPage() {
             />
             <div>
               <div className="text-xl sm:text-2xl font-bold text-foreground">
-                Welcome, {user.name}!
+                {t("greeting", { name: user.name })}
               </div>
-              <div className="text-zinc-500 text-xs sm:text-sm mt-1">{quote}</div>
+              <div className="text-zinc-500 text-xs sm:text-sm mt-1">{t("quote")}</div>
             </div>
           </div>
           {/* Responsive counters row */}
@@ -67,7 +69,7 @@ export default function DashboardPage() {
                   {counterAnim[i]}
                 </span>
                 <span className="text-zinc-500 text-xs sm:text-sm font-semibold flex items-center gap-1">
-                  {c.icon} {c.label}
+                  {c.icon} {t(`counters.${c.label}`)}
                 </span>
               </div>
             ))}
@@ -77,20 +79,20 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-8">
           <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col items-center gap-3 sm:gap-4">
             <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
-              Daily Progress
+              {t("progress.Daily Progress")}
             </div>
             <div className="flex gap-3 sm:gap-6">
               {progressRings.map((p, i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <ProgressRing value={p.value} goal={p.goal} color={p.color} />
-                  <span className="text-xs sm:text-sm text-zinc-500 mt-1 sm:mt-2">{p.label}</span>
+                  <ProgressRing value={p.value} goal={p.goal} color={p.color} label={t(`progress.${p.label}`)} />
+                  <span className="text-xs sm:text-sm text-zinc-500 mt-1 sm:mt-2">{t(`progress.${p.label}`)}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col items-center gap-3 sm:gap-4 col-span-1 md:col-span-2">
             <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
-              Weekly Progress
+              {t("progress.Weekly Progress")}
             </div>
             <ResponsiveContainer width="100%" height={120} className="sm:!h-[180px]">
               <AreaChart data={chartDataDash} margin={{ left: -20, right: 10 }}>
@@ -104,7 +106,7 @@ export default function DashboardPage() {
                   stroke="#6366f1"
                   fill="#6366f1"
                   fillOpacity={0.15}
-                  name="Weight (kg)"
+                  name={t("chart.Weight (kg)")}
                 />
                 <Area
                   type="monotone"
@@ -112,7 +114,7 @@ export default function DashboardPage() {
                   stroke="#fbbf24"
                   fill="#fbbf24"
                   fillOpacity={0.15}
-                  name="Calories"
+                  name={t("chart.Calories")}
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -122,12 +124,12 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-8">
           <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4">
             <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
-              Your Goals
+              {t("goals.Your Goals")}
             </div>
             {goalsDash.map((g, i) => (
               <div key={i} className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                 {g.icon}
-                <span className="font-semibold text-zinc-700 text-xs sm:text-base">{g.label}:</span>
+                <span className="font-semibold text-zinc-700 text-xs sm:text-base">{t(`goals.${g.label}`)}:</span>
                 <span className="text-zinc-700 font-bold text-xs sm:text-base">{g.value}</span>
                 <span className="ml-auto text-[10px] sm:text-xs text-zinc-400">
                   {g.progress}/{g.target}
@@ -137,28 +139,28 @@ export default function DashboardPage() {
           </div>
           <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4 items-center">
             <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
-              Quick Actions
+              {t("quick_actions.Quick Actions")}
             </div>
             <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4">
               <button className="btn btn-primary flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow w-full sm:w-auto text-xs sm:text-base">
-                <Plus className="w-4 h-4 sm:w-5 sm:h-5" /> Log Meal
+                <Plus className="w-4 h-4 sm:w-5 sm:h-5" /> {t("quick_actions.Log Meal")}
               </button>
               <button className="btn btn-accent flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow w-full sm:w-auto text-xs sm:text-base">
-                <Droplet className="w-4 h-4 sm:w-5 sm:h-5" /> Add Water
+                <Droplet className="w-4 h-4 sm:w-5 sm:h-5" /> {t("quick_actions.Add Water")}
               </button>
               <button className="btn btn-secondary flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold shadow w-full sm:w-auto text-xs sm:text-base">
-                <Footprints className="w-4 h-4 sm:w-5 sm:h-5" /> Add Steps
+                <Footprints className="w-4 h-4 sm:w-5 sm:h-5" /> {t("quick_actions.Add Steps")}
               </button>
             </div>
           </div>
           <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4">
             <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
-              Recent Activity
+              {t("recent_activity.Recent Activity")}
             </div>
             <ul className="flex flex-col gap-1 sm:gap-2">
               {activityFeed.map((a, i) => (
                 <li key={i} className="flex items-center gap-2 text-zinc-700 text-xs sm:text-base">
-                  <span className="text-primary">•</span> {a.desc} {" "}
+                  <span className="text-primary">•</span> {t(`recent_activity.${a.desc.split(":")[0]}`)}{a.desc.includes(":") ? ":" + a.desc.split(":")[1] : ""}
                   <span className="ml-auto text-[10px] sm:text-xs text-zinc-400">
                     {a.time}
                   </span>
@@ -170,17 +172,24 @@ export default function DashboardPage() {
         {/* Recommendations & Insights */}
         <div className="glassmorphism p-3 sm:p-6 rounded-2xl shadow-xl flex flex-col gap-3 sm:gap-4 items-center">
           <div className="text-base sm:text-lg font-bold text-zinc-700 mb-1 sm:mb-2">
-            Recommendations & Insights
+            {t("recommendations.title")}
           </div>
           <ul className="flex flex-wrap gap-2 sm:gap-4 justify-center">
-            {recommendations.map((r, i) => (
-              <li
-                key={i}
-                className="px-3 sm:px-4 py-1 sm:py-2 rounded-full text-zinc-700 bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 text-xs sm:text-sm font-semibold shadow"
-              >
-                {r}
-              </li>
-            ))}
+            {(() => {
+              const recMap: Record<string, string> = {
+                "Try a new high-protein recipe today!": "TryRecipe",
+                "You're close to your water goal. Drink another glass!": "CloseToWaterGoal",
+                "Keep your streak going—log your dinner tonight.": "KeepStreak"
+              };
+              return recommendations.map((r, i) => (
+                <li
+                  key={i}
+                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-full text-zinc-700 bg-gradient-to-r from-green-100 via-blue-100 to-yellow-100 text-xs sm:text-sm font-semibold shadow"
+                >
+                  {t(`recommendations.${recMap[r]}`)}
+                </li>
+              ));
+            })()}
           </ul>
         </div>
       </div>

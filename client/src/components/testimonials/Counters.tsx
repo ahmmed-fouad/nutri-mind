@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 type CountersProps = {
   counters: { label: string; value: number }[];
@@ -6,6 +7,7 @@ type CountersProps = {
 };
 
 export default function Counters({ counters, counterAnim }: CountersProps) {
+  const { t } = useTranslation("testimonials");
   return (
     <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-4 w-full">
       {counters.map((c, i) => (
@@ -14,7 +16,7 @@ export default function Counters({ counters, counterAnim }: CountersProps) {
             {counterAnim[i]}
           </span>
           <span className="text-zinc-500 text-sm font-semibold text-center">
-            {c.label}
+            {t(`counters.${c.label}`, c.label)}
           </span>
         </div>
       ))}

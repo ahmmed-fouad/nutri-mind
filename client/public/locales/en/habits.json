@@ -1,0 +1,49 @@
+{
+  "page_title": "Habit Tracker",
+  "page_subtitle": "Build healthy routines and track your daily wins.",
+  "today_habits": "Today's Habits",
+  "add_habit": "+ Add Habit",
+  "mark_as_done": "Mark as done",
+  "progress_this_week": "% this week",
+  "habit_completion": "Habit Completion",
+  "week": "Week",
+  "month": "Month",
+  "year": "Year",
+  "demoHabits": {
+    "Drink Water": "Drink Water",
+    "Walk 10,000 steps": "Walk 10,000 steps",
+    "Eat Vegetables": "Eat Vegetables",
+    "No Sugar": "No Sugar",
+    "Sleep 8h": "Sleep 8h"
+  },
+  "demoProgress": {
+    "Water": "Water",
+    "Steps": "Steps",
+    "Veg": "Vegetables",
+    "Sugar": "No Sugar",
+    "Sleep": "Sleep"
+  },
+  "calendar_view": "Calendar View",
+  "days": {
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat",
+    "Sun": "Sun"
+  },
+  "notes_reflections": "Notes & Reflections",
+  "notes_placeholder": "Write your thoughts, reflections, or goals...",
+  "save_note": "Save Note",
+  "export_data": "Export Data",
+  "streak_7_days": "7 days in a row!",
+  "streak_days": "{{count}} day streak!",
+  "motivational_quotes": [
+    "Consistency is the key to success!",
+    "Small habits make a big difference.",
+    "Every day is a fresh start.",
+    "You are building your best self!"
+  ],
+  "new_quote": "New Quote"
+} 

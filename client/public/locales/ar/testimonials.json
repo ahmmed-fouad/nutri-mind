@@ -1,0 +1,38 @@
+{
+  "page_title": "آراء المستخدمين",
+  "page_subtitle": "شاهد كيف يغير NutriMind حياة الناس حول العالم.",
+  "user_satisfaction": "رضا المستخدمين",
+  "what_users_say": "ماذا يقول مستخدمونا",
+  "add_your_story": "أضف قصتك",
+  "counters": {
+    "Users Helped": "مستخدمون تمت مساعدتهم",
+    "Kilos Lost": "كيلوغرامات تم فقدها",
+    "Meals Planned": "وجبات مخططة"
+  },
+  "modal": {
+    "title": "شارك تجربتك",
+    "name": "اسمك",
+    "story": "قصتك",
+    "rating": "تقييمك",
+    "submit": "إرسال",
+    "cancel": "إلغاء"
+  },
+  "quotes": {
+    "The AI meal planner changed my life! I lost 12kg and feel amazing.": "مخطط الوجبات الذكي غيّر حياتي! فقدت 12 كجم وأشعر بالروعة.",
+    "Tracking my progress is so easy now. The charts keep me motivated!": "متابعة تقدمي أصبحت سهلة الآن. المخططات تحفزني باستمرار!",
+    "Love the healthy recipes and grocery list! My family eats better now.": "أحب الوصفات الصحية وقائمة التسوق! عائلتي تأكل بشكل أفضل الآن.",
+    "The food scanner is so cool! I always know what I'm eating.": "ماسح الطعام رائع! أعرف دائمًا ماذا آكل."
+  },
+  "goals": {
+    "Lost 12kg": "فقدت 12 كجم",
+    "Built healthy habits": "بنيت عادات صحية",
+    "Family nutrition": "تغذية عائلية",
+    "Better food choices": "خيارات غذائية أفضل"
+  },
+  "names": {
+    "Alice Smith": "أليس سميث",
+    "Bob Lee": "بوب لي",
+    "Jane Doe": "جين دو",
+    "Sam Patel": "سام باتيل"
+  }
+} 

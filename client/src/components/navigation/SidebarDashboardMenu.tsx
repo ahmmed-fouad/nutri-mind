@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { LayoutDashboard, ShieldUser, UserRound } from "lucide-react";
 import { useState as useLocalState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function SidebarDashboardMenu({ expanded, onLinkClick }: { expanded: boolean; onLinkClick?: () => void }) {
   const [open, setOpen] = useLocalState(false);
+  const { t } = useTranslation("sidebar");
   return (
     <div
       className="relative"
@@ -20,7 +22,7 @@ export default function SidebarDashboardMenu({ expanded, onLinkClick }: { expand
         aria-expanded={open}
       >
         <LayoutDashboard className="w-5 h-5" />
-        {expanded && <span>Dashboard</span>}
+        {expanded && <span>{t("links.Dashboard")}</span>}
       </button>
       {open && (
         <div className="absolute top-1/2 -translate-y-1/2">
@@ -37,7 +39,7 @@ export default function SidebarDashboardMenu({ expanded, onLinkClick }: { expand
               onClick={onLinkClick}
             >
               <ShieldUser className="w-5 h-5 text-primary" />
-              <span>Admin</span>
+              <span>{t("links.Admin")}</span>
             </Link>
             <Link
               href="/dashboard"
@@ -45,7 +47,7 @@ export default function SidebarDashboardMenu({ expanded, onLinkClick }: { expand
               onClick={onLinkClick}
             >
               <UserRound className="w-5 h-5 text-primary" />
-              <span>User Dashboard</span>
+              <span>{t("links.User Dashboard")}</span>
             </Link>
           </div>
         </div>

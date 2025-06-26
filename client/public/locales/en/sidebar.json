@@ -1,0 +1,27 @@
+{
+  "login": "Login",
+  "signup": "Sign Up",
+  "logout": "Logout",
+  "links": {
+    "Profile": "Profile",
+    "Progress Tracker": "Progress Tracker",
+    "Diet Calculator": "Diet Calculator",
+    "User Form": "User Form",
+    "Settings": "Settings",
+    "AI Chatbot": "AI Chatbot",
+    "Habit Tracker": "Habit Tracker",
+    "Grocery List": "Grocery List",
+    "Dashboard": "Dashboard",
+    "Admin": "Admin",
+    "User Dashboard": "User Dashboard",
+    "Recipes": "Recipes",
+    "Food Scanner": "Food Scanner",
+    "Plans": "Plans",
+    "Testimonials": "Testimonials",
+    "FAQ": "FAQ",
+    "Blog": "Blog",
+    "Forum": "Forum",
+    "Notifications": "Notifications",
+    "SocialHub": "Social Hub"
+  }
+} 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SocialDropdown from "./SocialDropdown";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 interface NavLinksProps {
   navbarLinks: { href: string; label: string }[];
@@ -14,6 +15,7 @@ interface NavLinksProps {
 
 export default function NavLinks({ navbarLinks, socialLinks, socialOpen, onSocialEnter, onSocialLeave, vertical, onLinkClick }: NavLinksProps) {
   const pathname = usePathname();
+  const { t } = useTranslation("navbar");
   return (
     <ul className={vertical ? "flex flex-col items-center gap-6 text-2xl mt-8" : "flex-1 flex justify-center gap-4 text-lg relative items-center"}>
       {navbarLinks.map((link) => (
@@ -28,7 +30,7 @@ export default function NavLinks({ navbarLinks, socialLinks, socialOpen, onSocia
             }
             onClick={onLinkClick}
           >
-            {link.label}
+            {t(`links.${link.label}`, link.label)}
           </Link>
         </li>
       ))}
