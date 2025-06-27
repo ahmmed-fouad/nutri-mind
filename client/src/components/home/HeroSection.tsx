@@ -5,7 +5,9 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function HeroSection() {
-  const { t } = useTranslation("page");
+  const { t, i18n } = useTranslation("page");
+  const isRTL = i18n.language === "ar";
+  const textAlignClass = isRTL ? "md:text-right" : "md:text-left";
   const [chatInput, setChatInput] = useState("");
   const handleGoToChatbot = () => {
     if (chatInput.trim()) {
@@ -17,7 +19,7 @@ export default function HeroSection() {
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
-      <div className="flex-1 text-center md:text-left">
+      <div className={`flex-1 text-center ${textAlignClass}`}>
         <h1 className="text-5xl font-bold mb-4 text-primary">
           {t("hero.title")}
         </h1>

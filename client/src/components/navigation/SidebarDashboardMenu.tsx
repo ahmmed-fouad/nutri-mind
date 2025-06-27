@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 
 export default function SidebarDashboardMenu({ expanded, onLinkClick }: { expanded: boolean; onLinkClick?: () => void }) {
   const [open, setOpen] = useLocalState(false);
-  const { t } = useTranslation("sidebar");
+  const { t, i18n } = useTranslation("sidebar");
+  const isRTL = i18n.language === "ar";
   return (
     <div
       className="relative"
@@ -29,7 +30,13 @@ export default function SidebarDashboardMenu({ expanded, onLinkClick }: { expand
           <div
             className={`left-full z-50 bg-background border border-border 
               rounded-lg shadow-lg min-w-[180px] ${
-                expanded ? "ml-[232px]" : "ml-[65px]"
+                isRTL
+                  ? expanded
+                    ? "mr-[232px]"
+                    : "mr-[65px]"
+                  : expanded
+                    ? "ml-[232px]"
+                    : "ml-[65px]"
               }`}
             style={{ minWidth: 180 }}
           >

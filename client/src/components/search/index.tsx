@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Search, Home, User, BarChart2, Calculator, UserPlus, Settings, Bot, ListTodo, ShoppingBasket, LayoutDashboard, ShieldUser, UserRound, BookOpen, FileText, LifeBuoy, MessageCircle, Star, Bell } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type PageEntry = {
   title: string;
@@ -179,6 +180,8 @@ export function SearchIconInput() {
   const inputRef = useRef<HTMLInputElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
@@ -233,7 +236,7 @@ export function SearchIconInput() {
       {open && (
         <div
           ref={modalRef}
-          className="absolute right-[-9rem] mt-5 w-[30rem]  glassmorphism rounded-xl shadow-2xl z-50 animate-fade-in"
+          className={`absolute mt-5 w-[22em] glassmorphism rounded-xl shadow-2xl z-50 animate-fade-in ${isRTL ? 'left-[-3rem]' : 'right-[-3rem]'}`}
         >
           <div className="flex gap-2 p-2">
             <input

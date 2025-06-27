@@ -16,6 +16,8 @@ export function NotificationsDropdown() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const unreadCount = notifications.filter(n => n.unread).length;
   const { t } = useTranslation("notifications-dropdown");
+    const { i18n } = useTranslation();
+    const isRTL = i18n.language === "ar";
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -42,7 +44,11 @@ export function NotificationsDropdown() {
         )}
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-zinc-900/90 glassmorphism rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 z-50 animate-fade-in">
+        <div
+          className={`absolute mt-4 w-80 bg-white dark:bg-zinc-900/90 glassmorphism rounded-xl shadow-2xl border border-zinc-200 dark:border-zinc-800 z-50 animate-fade-in ${
+            isRTL ? "left-[-6rem]" : "right-[-6rem]"
+          }`}
+        >
           <div className="p-4 border-b border-zinc-200 dark:border-zinc-800 font-bold text-zinc-700 text-lg flex items-center gap-2">
             <Bell className="w-5 h-5" /> {t("notifications")}
           </div>
@@ -74,6 +80,7 @@ export function NotificationsDropdown() {
             <Link
               href="/notifications"
               className="text-primary font-semibold hover:underline"
+              onClick={() => setOpen(false)}
             >
               {t("see_more")}
             </Link>

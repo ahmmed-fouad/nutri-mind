@@ -16,9 +16,11 @@ export default function Sidebar() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
     return () => listener.subscription.unsubscribe();
   }, []);
 
@@ -26,7 +28,9 @@ export default function Sidebar() {
     <>
       {/* Collapsed sidebar (always visible, just icons) */}
       <aside
-        className={`fixed top-0 ${isRTL ? "right-0 border-l" : "left-0 border-r"} h-full bg-background border-border z-40 flex flex-col w-16 items-center`}
+        className={`fixed top-0 ${
+          isRTL ? "right-0 border-l" : "left-0 border-r"
+        } h-full bg-background border-border z-40 flex flex-col w-16 items-center`}
       >
         <button
           className="p-[26px] focus:outline-none hover:bg-accent border-b border-border cursor-pointer"
@@ -47,20 +51,30 @@ export default function Sidebar() {
             aria-label="Sidebar backdrop"
           />
           <aside
-            className={`fixed top-0 ${isRTL ? "right-0 border-l" : "left-0 border-r"} h-full w-56 bg-background border-border z-50 flex flex-col shadow-lg animate-in fade-in`}
+            className={`fixed top-0 ${
+              isRTL ? "right-0 border-l" : "left-0 border-r"
+            } h-full w-56 bg-background border-border z-50 flex flex-col shadow-lg animate-in fade-in`}
           >
             <button
               className="p-3 focus:outline-none hover:bg-accent border-b border-border"
               onClick={() => setExpanded(false)}
               aria-label="Collapse sidebar"
             >
-              <Menu className="w-5 h-5 mx-auto"/>
+              <Menu className="w-5 h-5 mx-auto" />
             </button>
-            <SidebarNavItems navItems={navItems} expanded={true} onLinkClick={() => setExpanded(false)} />
-            <SidebarFooter user={user} expanded={true} setExpanded={setExpanded} />
+            <SidebarNavItems
+              navItems={navItems}
+              expanded={true}
+              onLinkClick={() => setExpanded(false)}
+            />
+            <SidebarFooter
+              user={user}
+              expanded={true}
+              setExpanded={setExpanded}
+            />
           </aside>
         </>
       )}
     </>
   );
-} 
+}
